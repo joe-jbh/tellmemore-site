@@ -1,0 +1,28 @@
+{
+  "_comment": "Everything on the site that changes without the pages changing. tools/build.py reads this; edit here, run the build, commit.",
+  "site_url": "https://jbhstudio.app",
+  "app_name": "Tell Me More",
+  "app_subtitle": "Bible Reader",
+  "studio": "JBH Studio",
+  "contact_email": "joe.hocker@gmail.com",
+
+  "testflight_app_store_url": "https://apps.apple.com/app/testflight/id899247664",
+  "testflight_join_url": "",
+  "_testflight_join_url": "The external group's Public Link, https://testflight.apple.com/join/XXXXXXXX. Empty until the group's first build has passed Beta App Review; beta.html says 'coming soon' while it is empty. The flyer's QR code points at SITE_URL/beta, not here, so a printed flyer never goes stale.",
+
+  "app_store_url": "",
+  "_app_store_url": "Filled in when 1.0 is on the App Store; the Get-the-app page switches from TestFlight to the store.",
+
+  "commentaries_download_mb": 157,
+
+  "videos": [
+    {"id": "first-open",   "title": "The first minute",             "youtube": "", "length": "1:00", "blurb": "What you see when the app opens, and the three buttons that matter."},
+    {"id": "profile",      "title": "Simple, Standard or Study",     "youtube": "", "length": "1:30", "blurb": "One setting decides how much is on the screen. Which one is for you."},
+    {"id": "speak",        "title": "Have it read to you",          "youtube": "", "length": "1:00", "blurb": "Speak, Pause, and jumping to a verse while it reads."},
+    {"id": "voices",       "title": "A better voice",               "youtube": "", "length": "2:00", "blurb": "Downloading a natural voice in Settings › Accessibility, and choosing it in the app."},
+    {"id": "ask",          "title": "Ask a question",               "youtube": "", "length": "1:30", "blurb": "Type it or say it; what the answer is made of; the chips."},
+    {"id": "margin",       "title": "The Margin",                   "youtube": "", "length": "1:30", "blurb": "Names, words, cross-references and commentary beside the page, on the Study profile."},
+    {"id": "commentaries", "title": "Five more commentaries",       "youtube": "", "length": "1:00", "blurb": "The one-time download, and what it adds."},
+    {"id": "siri",         "title": "Ask Siri",                     "youtube": "", "length": "0:45", "blurb": "“Open Romans 8” and “Ask Bible Reader” from across the room."}
+  ]
+}

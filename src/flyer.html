@@ -1,0 +1,70 @@
+<!-- title: Flyer — Tell Me More | layout: flyer | description: A one-page printable flyer for the Tell Me More Bible Reader beta, with QR codes for TestFlight and the app. -->
+<style>
+  /* The flyer: one US-letter page, black on white whatever the screen theme,
+     everything large. Print with File › Print, "Save as PDF" for a file. */
+  body.flyer { background: #fff; color: #111; }
+  body.flyer header.site, body.flyer footer.site { display: none; }
+  body.flyer main { padding: 0; }
+  .sheet { width: 8.5in; min-height: 11in; margin: 1rem auto; padding: .7in .75in; background: #fff; color: #111; box-shadow: 0 2px 30px rgba(0,0,0,.18); display: grid; grid-template-rows: auto auto 1fr auto; gap: .35in; }
+  .sheet .top { display: grid; grid-template-columns: 1.4in 1fr; gap: .35in; align-items: center; }
+  .sheet .top img { width: 1.4in; height: 1.4in; border-radius: 22%; }
+  .sheet h1 { font-size: 34pt; line-height: 1.05; margin: 0; }
+  .sheet .sub { font-family: var(--display); font-size: 16pt; color: #444; margin: .1in 0 0; }
+  .sheet .what { font-size: 13.5pt; line-height: 1.45; columns: 2; column-gap: .4in; }
+  .sheet .what p { margin: 0 0 .6em; break-inside: avoid; }
+  .sheet .codes { display: grid; grid-template-columns: 1fr 1fr; gap: .4in; align-content: start; }
+  .sheet .code { border: 2px solid #111; border-radius: 14px; padding: .25in; text-align: center; }
+  .sheet .code svg { width: 2.4in; height: 2.4in; display: block; margin: 0 auto .15in; }
+  .sheet .code .n { font-family: var(--display); font-size: 30pt; font-weight: 600; line-height: 1; }
+  .sheet .code .label { font-family: var(--sans); font-weight: 700; font-size: 14pt; margin-top: .05in; }
+  .sheet .code .hint { font-family: var(--sans); font-size: 11pt; color: #333; margin-top: .05in; }
+  .sheet .code .url { font-family: ui-monospace, Menlo, monospace; font-size: 9pt; color: #444; margin-top: .08in; word-break: break-all; }
+  .sheet .how { font-family: var(--sans); font-size: 12.5pt; border-top: 2px solid #111; padding-top: .18in; display: grid; grid-template-columns: 1fr auto; gap: .3in; align-items: end; }
+  .sheet .how p { margin: 0 0 .3em; }
+  .sheet .how .site { font-family: var(--display); font-size: 15pt; white-space: nowrap; }
+  @page { size: letter; margin: 0; }
+  @media print { .sheet { margin: 0; box-shadow: none; width: auto; min-height: auto; height: 11in; } body.flyer { padding: 0; } .wrap { max-width: none; } }
+  @media (max-width: 9in) { .sheet { width: auto; min-height: auto; } .sheet .what { columns: 1; } .sheet .codes { grid-template-columns: 1fr; } }
+</style>
+
+<div class="sheet">
+  <div class="top">
+    <img src="img/icon-512.png" alt="">
+    <div>
+      <h1>{{app_name}}</h1>
+      <p class="sub">{{app_subtitle}} · for iPad and Mac · free</p>
+    </div>
+  </div>
+
+  <div class="what">
+    <p><strong>A Bible that reads to you, listens to you, and answers you</strong> — built for hands that shake and eyes that tire.</p>
+    <p>One screen. Big buttons with words on them. Tap <strong>Speak</strong> and the page is read aloud, each word lit as it's said. Say <em>"Romans 8"</em> and you're there.</p>
+    <p>Ask about a name, a word or a passage — <em>"Who was Melchizedek?"</em>, <em>"What does this mean?"</em> — and get the answer from six reference works, in their own words, with the commentary on the very verse you're reading.</p>
+    <p>No account, no sign-in, no subscription. Nothing you read or say leaves the iPad.</p>
+  </div>
+
+  <div class="codes">
+    <div class="code">
+      {{qr:{{testflight_app_store_url}}}}
+      <div class="n">1</div>
+      <div class="label">Get TestFlight</div>
+      <div class="hint">Apple's free app for trying apps before release</div>
+      <div class="url">{{testflight_app_store_url}}</div>
+    </div>
+    <div class="code">
+      {{qr:{{site_url}}/beta.html}}
+      <div class="n">2</div>
+      <div class="label">Get {{app_name}}</div>
+      <div class="hint">Opens the page with the install button</div>
+      <div class="url">{{site_url}}/beta.html</div>
+    </div>
+  </div>
+
+  <div class="how">
+    <div>
+      <p><strong>To scan a square:</strong> open the <strong>Camera</strong> app, point it at the square, hold still, and tap the yellow banner that appears.</p>
+      <p>Do square <strong>1</strong> first, then square <strong>2</strong>. On a Mac, TestFlight is in the Mac App Store; then open the address under square 2.</p>
+    </div>
+    <div class="site">{{site_url}}</div>
+  </div>
+</div>
