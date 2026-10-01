@@ -127,14 +127,14 @@ footer.site a { color: inherit; }
 }
 .hero h1 { font-size: clamp(2.2rem, 5.2vw, 3.5rem); line-height: 1.12; margin-top: .4rem; }
 .hero .get {
-  display: grid; justify-items: center; gap: .55rem; text-decoration: none;
+  display: grid; justify-items: center; gap: .55rem; text-decoration: none; text-align: center;
   font: 600 1.35rem/1.1 var(--sans); color: var(--accent);
 }
 .hero .get:hover span { text-decoration: underline; text-underline-offset: .15em; }
 .hero .icon { width: clamp(120px, 15vw, 180px); height: auto; border-radius: 22%; box-shadow: var(--shadow); }
 @media (max-width: 640px) {
   .hero { grid-template-columns: 1fr; align-items: start; }
-  .hero .get { order: -1; justify-items: start; justify-content: start; grid-template-columns: auto auto; align-items: center; gap: 1rem; }
+  .hero .get { order: -1; justify-self: start; }   /* still a label under the icon, as on wider screens */
   .hero .icon { width: 96px; }
   .hero h1 br { display: none; }
 }

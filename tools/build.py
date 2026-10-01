@@ -30,6 +30,7 @@ marked "draft" in shorts.json is left off the site unless you build with
     python3 tools/build.py --drafts && open index.html
 """
 import datetime as dt
+import hashlib
 import json
 import os
 import re
@@ -105,6 +106,12 @@ def short_length(s):
 def usable(s):
     """A short that has a video and is ready (or drafts are wanted)."""
     return not s.get("placeholder") and (DRAFTS or not s.get("draft"))
+
+
+def asset_version(path):
+    """A short fingerprint of a file, for cache-busting its link."""
+    with open(os.path.join(ROOT, path), "rb") as f:
+        return hashlib.sha1(f.read()).hexdigest()[:8]
 
 
 def item_for(s, chapters, **extra):
@@ -288,8 +295,15 @@ def build():
         html = html.replace("{{nav}}", meta.get("nav", ""))
         html = html.replace("{{layout}}", meta.get("layout", ""))
         html = fill(html, site)
-        # Mark the current page in the nav.
-        html = re.sub(rf'<a href="{re.escape(name)}"', f'<a href="{name}" aria-current="page"', html, count=1)
+        # A version on the stylesheet and script, from their contents, so a
+        # browser holding an older copy (Cloudflare tells it to keep one for
+        # hours) fetches the new one the moment it changes.
+        for asset in ("css/site.css", "js/shorts.js"):
+            html = html.replace(f'"{asset}"', f'"{asset}?v={asset_version(asset)}"')
+        # Mark the current page in the nav (in the nav only: the brand also links home).
+        html = re.sub(r'<nav class="site".*?</nav>',
+                      lambda m: m.group(0).replace(f'<a href="{name}"', f'<a href="{name}" aria-current="page"', 1),
+                      html, count=1, flags=re.S)
         with open(os.path.join(ROOT, name), "w", encoding="utf-8") as f:
             f.write(html)
         built.append(name)
