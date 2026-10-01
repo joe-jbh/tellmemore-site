@@ -271,11 +271,10 @@
       this.cue = cue;
       if (!cue) { this.ring.className = "ring"; this.callout.className = "callout"; return; }
       this.place(cue);
-      // A glow only where it points at something small. Round a whole
-      // card or panel it would be a wash over half the screen; the
-      // callout alone says where to look. "ring": false turns it off.
-      var big = cue.box[2] * cue.box[3] > 1200;
-      this.ring.className = cue.ring === false || big ? "ring" : "ring on" + (cue.tap ? " tap" : "");
+      // The callout says where to look; the screen shows the change.
+      // A glow only where a cue asks for one ("glow": true) — round a tab,
+      // a button or a panel it fought the shape it sat on (Joe, Oct 1).
+      this.ring.className = cue.glow ? "ring on" + (cue.tap ? " tap" : "") : "ring";
       this.callout.className = "callout";
     }
     if (cue) {

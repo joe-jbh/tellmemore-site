@@ -1,5 +1,5 @@
 {
- "_comment": "The video shorts. tools/cut_shorts.py cuts video/<id>.mp4 from the recordings; tools/build.py lays out the carousel and the tutorial tiles. Times are seconds in the source recording. A cue draws a ring round box ([x, y, w, h] as % of the screen) at t seconds into the short, and its words a moment later, for d seconds; tap: true pulses the ring like a finger. draft: true keeps a short off the published site (build with --drafts to see it).",
+ "_comment": "The video shorts. tools/cut_shorts.py cuts video/<id>.mp4 from the recordings; tools/build.py lays out the carousel and the tutorial tiles. Times are seconds in the source recording. A cue shows its words (text) at t seconds into the short, for d seconds, pointing at box ([x, y, w, h] as % of the screen). glow: true also lights a soft glow round the box (off by default: the callout is enough); tap: true makes that glow pulse like a finger. draft: true keeps a short off the published site (build with --drafts to see it).",
  "frame": "ipad",
  "chapters": [
   {
