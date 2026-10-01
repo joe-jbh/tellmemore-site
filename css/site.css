@@ -293,6 +293,22 @@ th { font-family: var(--sans); font-weight: 600; }
   0%, 100% { box-shadow: 0 0 2.6cqw 1.2cqw rgba(214,160,60,.42), 0 0 .8cqw .2cqw rgba(214,160,60,.25); }
   50% { box-shadow: 0 0 3.8cqw 2.2cqw rgba(214,160,60,.6), 0 0 1.2cqw .4cqw rgba(214,160,60,.35); }
 }
+/* ---- the fingertip ---- */
+/* Where the finger touched, like iOS's Show Touches: a soft dot that
+   presses, a ring that ripples out, and for a drag the dot travels.
+   Drawn by js/shorts.js frame by frame from the video's own clock, so it
+   pauses with the video. Fixed colours: it sits on the iPad's screen, which
+   is the same in either page theme. */
+.touch {
+  position: absolute; width: 4.6cqw; height: 4.6cqw; margin: -2.3cqw 0 0 -2.3cqw;
+  border-radius: 50%; pointer-events: none; opacity: 0; will-change: transform, opacity;
+  background: radial-gradient(circle, rgba(255,255,255,.92) 0 34%, rgba(255,255,255,.62) 62%, rgba(255,255,255,.45) 100%);
+  box-shadow: 0 0 0 .22cqw rgba(68,45,28,.55), 0 .3cqw 1.2cqw rgba(30,20,10,.35);
+}
+.touch .ripple {
+  position: absolute; inset: 0; border-radius: 50%; opacity: 0;
+  box-shadow: 0 0 0 .3cqw rgba(135,83,52,.75);
+}
 .callout {
   --tail: 50%;
   position: absolute; max-width: 42%; padding: 1.1cqw 1.6cqw; border-radius: 1.3cqw;

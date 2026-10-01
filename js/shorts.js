@@ -8,7 +8,9 @@
  *   - the frame round the screen (an iPad, a plain screen, a cinema), by CSS
  *     from data-frame, so it can change without touching a video;
  *   - a title card that opens each short;
- *   - the focus ring and the callout for each cue, timed to the video;
+ *   - the callout for each cue (and a glow, where one asks for it), timed
+ *     to the video;
+ *   - a fingertip at each tap and drag, so a viewer sees what was touched;
  *   - the chapter cards between topics when the shorts play as one video.
  *
  * Nothing here is needed to read the page: without JavaScript the
@@ -68,6 +70,7 @@
     this.callout.setAttribute("aria-hidden", "true");
     this.overlay.appendChild(this.ring);
     this.overlay.appendChild(this.callout);
+    this.touches = [];                                // fingertip dots, made as needed
 
     this.video.controls = false;
     this.video.muted = true;
@@ -250,6 +253,7 @@
     this.cue = null;
     this.ring.className = "ring";
     this.callout.className = "callout";
+    this.touches.forEach(function (d) { d.style.opacity = 0; });
   };
 
   Player.prototype.tick = function () {
@@ -269,19 +273,71 @@
     (item.cues || []).forEach(function (c) { if (t >= c.t && t < c.t + c.d) cue = c; });
     if (cue !== this.cue) {
       this.cue = cue;
-      if (!cue) { this.ring.className = "ring"; this.callout.className = "callout"; return; }
-      this.place(cue);
-      // The callout says where to look; the screen shows the change.
-      // A glow only where a cue asks for one ("glow": true) — round a tab,
-      // a button or a panel it fought the shape it sat on (Joe, Oct 1).
-      this.ring.className = cue.glow ? "ring on" + (cue.tap ? " tap" : "") : "ring";
-      this.callout.className = "callout";
+      if (!cue) { this.ring.className = "ring"; this.callout.className = "callout"; }
+      else {
+        this.place(cue);
+        // The callout says where to look; the screen shows the change.
+        // A glow only where a cue asks for one ("glow": true) — round a tab,
+        // a button or a panel it fought the shape it sat on (Joe, Oct 1).
+        this.ring.className = cue.glow ? "ring on" + (cue.tap ? " tap" : "") : "ring";
+        this.callout.className = "callout";
+      }
     }
     if (cue) {
-      var lead = Math.min(CALLOUT_LEAD, cue.d * 0.35);
+      // With a glow, the glow first and the words a moment later; without
+      // one the words come at once, timed a second ahead of the tap they name.
+      var lead = cue.glow ? Math.min(CALLOUT_LEAD, cue.d * 0.35) : 0;
       this.callout.classList.toggle("on", t >= cue.t + lead && t < cue.t + cue.d - 0.15);
       if (this.ring.classList.contains("on")) this.ring.classList.toggle("off", t >= cue.t + cue.d - 0.2);
     }
+    this.drawTouches(item, t);
+  };
+
+  /* The fingertip: every tap in the short ("taps" in shorts.json) drawn
+     where and when the finger touched. A tap comes down, presses and lifts
+     with a ripple; a drag ("to", "d") comes down, travels and lifts. All
+     worked out from the video's time, so it pauses and seeks with it. */
+  var TOUCH_IN = 0.14, TOUCH_HOLD = 0.22, TOUCH_OUT = 0.28, RIPPLE = 0.6;
+  function ease(p) { return p < 0.5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2; }
+
+  Player.prototype.drawTouches = function (item, t) {
+    var taps = item.taps || [], self = this, n = 0;
+    taps.forEach(function (tp) {
+      var p = t - tp.t, d = tp.d || 0, end = d + TOUCH_HOLD + TOUCH_OUT;
+      if (p < -TOUCH_IN || p > Math.max(end, RIPPLE)) return;
+      var dot = self.touches[n];
+      if (!dot) {
+        dot = self.touches[n] = el("div", "touch");
+        dot.setAttribute("aria-hidden", "true");
+        dot.appendChild(el("div", "ripple"));
+        self.overlay.appendChild(dot);
+      }
+      n++;
+      // Where: at the start, or along the drag.
+      var x = tp.at[0], y = tp.at[1];
+      if (tp.to && d > 0) {
+        var k = ease(clamp((p - 0.08) / d, 0, 1));
+        x += (tp.to[0] - x) * k; y += (tp.to[1] - y) * k;
+      }
+      // How: coming down, pressed, lifting.
+      var op, sc;
+      if (p < 0) { op = 1 + p / TOUCH_IN; sc = 1.25 + 0.25 * (-p / TOUCH_IN); }
+      else if (p < d + TOUCH_HOLD) { op = 1; sc = 1 - 0.16 * Math.min(1, p / 0.1); }
+      else { var q = (p - d - TOUCH_HOLD) / TOUCH_OUT; op = Math.max(0, 1 - q); sc = 0.84 + 0.3 * Math.min(1, q); }
+      if (reduceMotion) sc = 1;
+      dot.style.left = x + "%";
+      dot.style.top = y + "%";
+      dot.style.opacity = clamp(op, 0, 1);
+      dot.style.transform = "scale(" + sc + ")";
+      var r = dot.firstChild, rp = p / RIPPLE;
+      if (!reduceMotion && rp > 0 && rp < 1) {
+        r.style.opacity = 0.9 * (1 - rp);
+        r.style.transform = "scale(" + (1 + 1.7 * ease(rp)) / sc + ")";
+      } else {
+        r.style.opacity = 0;
+      }
+    });
+    for (var i = n; i < this.touches.length; i++) this.touches[i].style.opacity = 0;
   };
 
   /* Place the callout where it covers neither the thing it points at nor

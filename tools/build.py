@@ -114,6 +114,8 @@ def item_for(s, chapters, **extra):
         it = {"kind": "short", "id": s["id"], "title": s["title"], "text": s.get("blurb", ""),
               "eyebrow": ch.get("title", ""), "src": f"video/{s['id']}.mp4",
               "poster": f"video/{s['id']}.jpg", "cues": s.get("cues", [])}
+        if s.get("taps"):
+            it["taps"] = s["taps"]
         if s.get("silent"):
             it["silent"] = True
     else:
