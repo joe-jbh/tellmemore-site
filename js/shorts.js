@@ -271,13 +271,17 @@
       this.cue = cue;
       if (!cue) { this.ring.className = "ring"; this.callout.className = "callout"; return; }
       this.place(cue);
-      this.ring.className = "ring on" + (cue.tap ? " tap" : "");
+      // A glow only where it points at something small. Round a whole
+      // card or panel it would be a wash over half the screen; the
+      // callout alone says where to look. "ring": false turns it off.
+      var big = cue.box[2] * cue.box[3] > 1200;
+      this.ring.className = cue.ring === false || big ? "ring" : "ring on" + (cue.tap ? " tap" : "");
       this.callout.className = "callout";
     }
     if (cue) {
       var lead = Math.min(CALLOUT_LEAD, cue.d * 0.35);
       this.callout.classList.toggle("on", t >= cue.t + lead && t < cue.t + cue.d - 0.15);
-      this.ring.classList.toggle("off", t >= cue.t + cue.d - 0.2);
+      if (this.ring.classList.contains("on")) this.ring.classList.toggle("off", t >= cue.t + cue.d - 0.2);
     }
   };
 
@@ -285,7 +289,7 @@
      falls off the screen: below, above, right or left, nearest first. All
      in % of the screen, which is the video's own coordinate space. */
   Player.prototype.place = function (cue) {
-    var b = cue.box, pad = 1.2;
+    var b = cue.box, pad = 0.4;
     var bx = b[0] - pad, by = b[1] - pad, bw = b[2] + pad * 2, bh = b[3] + pad * 2;
     this.ring.style.left = bx + "%";
     this.ring.style.top = by + "%";
