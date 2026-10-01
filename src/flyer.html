@@ -1,4 +1,4 @@
-<!-- title: Flyer — Tell Me More | layout: flyer | description: A one-page printable flyer for the Tell Me More Bible Reader beta, with QR codes for TestFlight and the app. -->
+<!-- title: Flyer — Tell Me More | layout: flyer | description: A one-page printable flyer for the Tell Me More Bible Reader beta, with a QR code for the app. -->
 <style>
   /* The flyer: one US-letter page, black on white whatever the screen theme,
      everything large. Print with File › Print, "Save as PDF" for a file. */
@@ -12,7 +12,7 @@
   .sheet .sub { font-family: var(--display); font-size: 16pt; color: #444; margin: .1in 0 0; }
   .sheet .what { font-size: 13.5pt; line-height: 1.45; columns: 2; column-gap: .4in; }
   .sheet .what p { margin: 0 0 .6em; break-inside: avoid; }
-  .sheet .codes { display: grid; grid-template-columns: 1fr 1fr; gap: .4in; align-content: start; }
+  .sheet .codes { display: grid; grid-template-columns: minmax(0, 3.6in); justify-content: center; gap: .4in; align-content: start; }
   .sheet .code { border: 2px solid #111; border-radius: 14px; padding: .25in; text-align: center; }
   .sheet .code svg { width: 2.4in; height: 2.4in; display: block; margin: 0 auto .15in; }
   .sheet .code .n { font-family: var(--display); font-size: 30pt; font-weight: 600; line-height: 1; }
@@ -45,15 +45,7 @@
 
   <div class="codes">
     <div class="code">
-      {{qr:{{testflight_app_store_url}}}}
-      <div class="n">1</div>
-      <div class="label">Get TestFlight</div>
-      <div class="hint">Apple's free app for trying apps before release</div>
-      <div class="url">{{testflight_app_store_url}}</div>
-    </div>
-    <div class="code">
       {{qr:{{site_url}}/beta.html}}
-      <div class="n">2</div>
       <div class="label">Get {{app_name}}</div>
       <div class="hint">Opens the page with the install button</div>
       <div class="url">{{site_url}}/beta.html</div>
@@ -63,7 +55,7 @@
   <div class="how">
     <div>
       <p><strong>To scan a square:</strong> open the <strong>Camera</strong> app, point it at the square, hold still, and tap the yellow banner that appears.</p>
-      <p>Do square <strong>1</strong> first, then square <strong>2</strong>. On a Mac, TestFlight is in the Mac App Store; then open the address under square 2.</p>
+      <p>If TestFlight, Apple's free app for trying apps before release, isn't on the iPad yet, it's offered first. On a Mac, open the address under the square.</p>
     </div>
     <div class="site">{{site_url}}</div>
   </div>
