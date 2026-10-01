@@ -7,7 +7,7 @@
   "contact_email": "joe.hocker@gmail.com",
 
   "testflight_app_store_url": "https://apps.apple.com/app/testflight/id899247664",
-  "testflight_join_url": "",
+  "testflight_join_url": "https://testflight.apple.com/join/3uJ31DX7",
   "_testflight_join_url": "The external group's Public Link, https://testflight.apple.com/join/XXXXXXXX. Empty until the group's first build has passed Beta App Review; beta.html says 'coming soon' while it is empty. The flyer's QR code points at SITE_URL/beta, not here, so a printed flyer never goes stale.",
 
   "app_store_url": "",

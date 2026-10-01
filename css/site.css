@@ -175,3 +175,167 @@ th { font-family: var(--sans); font-weight: 600; }
 
 @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
 @media print { header.site, footer.site, nav.site { display: none; } body { background: #fff; color: #000; } }
+
+/* ==== video shorts (js/shorts.js) ====================================
+   The video is the iPad's screen only. The frame round it is drawn here
+   from data-frame, so an iPad can become a plain screen or a cinema with
+   no new video. The ring and callout are drawn over it in % of the
+   screen, which is the video's own coordinate space. */
+
+.shorts { margin-block: 2rem 2.5rem; }
+.shorts-tabs { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 1rem; }
+.shorts-tabs button {
+  font: 600 1.05rem/1 var(--sans); letter-spacing: .02em; color: var(--ink);
+  min-height: 48px; padding: .5rem 1.05rem; border-radius: 999px;
+  background: var(--band); border: 2px solid transparent; cursor: pointer;
+}
+.shorts-tabs button:hover { border-color: var(--rule); }
+.shorts-tabs button[aria-selected="true"] { background: var(--accent); color: var(--on-accent); }
+
+.device {
+  --bezel: #1F1B18; --bezel-edge: #3A332D;
+  position: relative; container-type: inline-size;
+  margin-inline: auto; max-width: 56rem;
+}
+.device .screen {
+  position: relative; aspect-ratio: 1280 / 882; overflow: hidden;
+  background: #F5EEDD; cursor: pointer; isolation: isolate;
+}
+.device video, .device .hold { position: absolute; inset: 0; width: 100%; height: 100%; display: block; object-fit: cover; }
+.device .hold { background: center / cover no-repeat; z-index: 0; }
+.device video { z-index: 1; }
+.device .overlay { position: absolute; inset: 0; z-index: 3; pointer-events: none; }
+
+/* The iPad: a dark bezel of even width, rounded to match the display's own corners. */
+.device[data-frame="ipad"] {
+  padding: 2.6cqw; border-radius: 4.6cqw; background: var(--bezel);
+  box-shadow: inset 0 0 0 .25cqw var(--bezel-edge), 0 2px 4px rgba(0,0,0,.18), 0 18px 48px rgba(68,53,41,.22);
+}
+.device[data-frame="ipad"]::before {      /* the camera, on the long edge */
+  content: ""; position: absolute; top: 1.15cqw; left: 50%; width: .7cqw; height: .7cqw;
+  border-radius: 50%; background: #0B0A09; box-shadow: inset 0 0 0 .12cqw #2A2622; transform: translateX(-50%);
+}
+.device[data-frame="ipad"] .screen { border-radius: 2.1cqw; }
+
+/* A plain screen: just rounded corners and a soft shadow. */
+.device[data-frame="plain"] .screen { border-radius: 1.6cqw; box-shadow: var(--shadow); }
+
+/* The cinema: a dark room, the screen glowing, a row of seats in front. */
+.device[data-frame="theater"] {
+  padding: 5cqw 7cqw 11cqw; border-radius: 1.4cqw;
+  background: radial-gradient(120% 90% at 50% 35%, #3A2A20 0%, #120D0A 60%, #050404 100%);
+}
+.device[data-frame="theater"] .screen { box-shadow: 0 0 6cqw rgba(255, 232, 196, .22), 0 0 1.4cqw rgba(255, 232, 196, .35); }
+.device[data-frame="theater"]::after {   /* two rows of seat backs, the near row darker */
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 9cqw; border-radius: 0 0 1.4cqw 1.4cqw;
+  background:
+    radial-gradient(closest-side, #020101 92%, transparent 100%) -3cqw 3.6cqw / 9cqw 9cqw repeat-x,
+    radial-gradient(closest-side, #0D0907 92%, transparent 100%) 1.5cqw 1.2cqw / 9cqw 8cqw repeat-x;
+}
+
+/* ---- the title card that opens each short ---- */
+.titlecard {
+  position: absolute; inset: 0; z-index: 4; display: grid; align-content: center; justify-items: center;
+  text-align: center; padding: 6cqw; gap: 1.2cqw; pointer-events: none;
+  background: rgba(245, 238, 221, .88); color: #443529;
+  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+  opacity: 0; transition: opacity .5s ease;
+}
+.titlecard.solid { background: #F5EEDD; }
+.titlecard.on { opacity: 1; }
+.titlecard .eyebrow { font: 700 clamp(10px, 1.6cqw, 22px)/1 var(--sans); letter-spacing: .14em; text-transform: uppercase; color: #70604B; }
+.titlecard .rule { width: 9cqw; height: .35cqw; background: #A5791F; border-radius: 1px; transform-origin: center; }
+.titlecard .title { font: 600 clamp(18px, 5.2cqw, 64px)/1.1 var(--display); max-width: 80%; text-wrap: balance; }
+.titlecard .line { font: 400 clamp(13px, 2.4cqw, 28px)/1.35 var(--serif); color: #70604B; max-width: 70%; }
+.titlecard .w { display: inline-block; }
+@media (prefers-reduced-motion: no-preference) {
+  .titlecard.on .rule { animation: tc-rule .7s cubic-bezier(.2,.7,.2,1) both; }
+  .titlecard.on .eyebrow { animation: tc-up .6s ease both; }
+  .titlecard.on .w { animation: tc-up .55s cubic-bezier(.2,.7,.2,1) both; animation-delay: calc(.18s + var(--i) * .08s); }
+  .titlecard.on .line { animation: tc-up .6s ease .55s both; }
+}
+@keyframes tc-rule { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes tc-up { from { opacity: 0; transform: translateY(.9cqw); } to { opacity: 1; transform: none; } }
+
+/* ---- the focus ring and the callout ---- */
+.ring {
+  position: absolute; border: .38cqw solid #C08A2C; border-radius: 1.2cqw;
+  box-shadow: 0 0 0 .3cqw rgba(255, 248, 232, .85), 0 0 2.2cqw rgba(192, 138, 44, .55);
+  opacity: 0; transform: scale(1.06); transition: opacity .3s ease, transform .35s cubic-bezier(.2,.7,.2,1);
+}
+.ring.on { opacity: 1; transform: none; }
+.ring.on.off { opacity: 0; }
+@media (prefers-reduced-motion: no-preference) {
+  .ring.on.tap { animation: ring-tap 1.1s ease-out .35s 2; }
+}
+@keyframes ring-tap {
+  0% { box-shadow: 0 0 0 .3cqw rgba(255,248,232,.85), 0 0 0 0 rgba(192,138,44,.6); }
+  100% { box-shadow: 0 0 0 .3cqw rgba(255,248,232,.85), 0 0 0 2.4cqw rgba(192,138,44,0); }
+}
+.callout {
+  --tail: 50%;
+  position: absolute; max-width: 42%; padding: 1.1cqw 1.6cqw; border-radius: 1.3cqw;
+  background: #2A1F17; color: #FFF8EC; font: 600 clamp(11px, 2.15cqw, 26px)/1.25 var(--sans);
+  box-shadow: 0 .4cqw 1.6cqw rgba(0,0,0,.28);
+  opacity: 0; transform: translateY(.6cqw); transition: opacity .35s ease, transform .4s cubic-bezier(.2,.7,.2,1);
+}
+.callout.on { opacity: 1; transform: none; }
+.callout::after {   /* the tail, pointing back at the ring */
+  content: ""; position: absolute; width: 1.8cqw; height: 1.8cqw; background: inherit; border-radius: .25cqw;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+.callout[data-side="below"]::after { left: var(--tail); top: 0; }
+.callout[data-side="above"]::after { left: var(--tail); top: 100%; }
+.callout[data-side="right"]::after { left: 0; top: var(--tail); }
+.callout[data-side="left"]::after { left: 100%; top: var(--tail); }
+.callout[data-side="inside"]::after { display: none; }
+
+/* ---- the words beside it, and the controls ---- */
+.shorts-below { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 1rem 2rem; align-items: start; margin-top: 1.2rem; max-width: 56rem; margin-inline: auto; }
+.showcase-text { min-height: 7.5rem; }
+.showcase-text .glyph { font: 700 .9rem/1 var(--sans); letter-spacing: .06em; text-transform: uppercase; color: var(--accent); margin-bottom: .4rem; }
+.showcase-text h3 { margin: 0; font-size: 1.45rem; }
+.showcase-text p { margin: .4rem 0 0; font-size: 1.12rem; max-width: 40rem; }
+.showcase-text .soon { font-family: var(--sans); font-weight: 600; color: var(--ink-2); font-size: 1rem; }
+.shorts-controls { display: flex; gap: .5rem; flex-wrap: wrap; justify-content: flex-end; }
+.shorts-controls button {
+  display: inline-flex; flex-direction: column; align-items: center; justify-content: center; gap: .2rem;
+  min-width: 64px; min-height: 64px; padding: .4rem .6rem; border-radius: 16px;
+  font: 600 .85rem/1 var(--sans); color: var(--ink); background: var(--band); border: 2px solid transparent; cursor: pointer;
+}
+.shorts-controls button:hover { border-color: var(--rule); }
+.shorts-controls button svg { width: 22px; height: 22px; fill: currentColor; }
+.shorts-controls [data-act="play"].is-playing { background: var(--accent); color: var(--on-accent); }
+.shorts-controls [data-act="sound"][aria-pressed="true"] { background: var(--accent); color: var(--on-accent); }
+.shorts-controls .i-pause, .is-playing .i-play { display: none; }
+.is-playing .i-pause { display: inline; }
+.shorts:not(.js) .shorts-controls, .shorts:not(.js) .shorts-tabs { display: none; }
+.shorts:not(.js) video { position: static; }
+@media (max-width: 640px) {
+  .shorts-below { grid-template-columns: 1fr; }
+  .shorts-controls { justify-content: flex-start; order: -1; }
+  .callout { max-width: 60%; font-size: 3.2cqw; }
+}
+
+/* ---- the tutorials page ---- */
+.chapter-head { margin-top: 2.8rem; }
+.chapter-head p { margin: .3rem 0 0; color: var(--ink-2); }
+.tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr)); gap: 1.3rem; margin-top: 1.2rem; }
+.tile { background: var(--band); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; }
+.tile .thumb { position: relative; display: block; aspect-ratio: 1280 / 882; background: var(--rule) center / cover no-repeat; border: 0; padding: 0; cursor: pointer; width: 100%; }
+.tile .thumb::after {
+  content: ""; position: absolute; left: 50%; top: 50%; width: 64px; height: 64px; transform: translate(-50%, -50%);
+  border-radius: 50%; background: rgba(42, 31, 23, .82) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23FFF8EC' d='M8 5v14l11-7z'/%3E%3C/svg%3E") 56% 50% / 30px no-repeat;
+}
+.tile .thumb.soon::after { display: none; }
+.tile .thumb.soon { display: grid; place-items: center; font: 600 1rem var(--sans); color: var(--ink-2); cursor: default; }
+.tile .body { padding: .9rem 1.1rem 1.1rem; }
+.tile h3 { margin: 0; font-size: 1.2rem; }
+.tile .len { font: 600 .9rem var(--sans); color: var(--ink-2); margin-top: .2rem; }
+.tile p { margin: .4rem 0 0; font-size: 1.02rem; }
+.draft-flag { font: 700 .75rem var(--sans); letter-spacing: .06em; text-transform: uppercase; background: var(--gold); color: #fff; border-radius: 6px; padding: .1rem .4rem; margin-left: .4rem; vertical-align: middle; }
+
+dialog.reel { width: min(96vw, 64rem); max-height: 96vh; border: 0; border-radius: 20px; padding: 1.2rem 1.2rem 1.4rem; background: var(--page); color: var(--ink); box-shadow: 0 30px 80px rgba(0,0,0,.45); }
+dialog.reel::backdrop { background: rgba(20, 14, 10, .72); }
+dialog.reel .reel-top { display: flex; justify-content: flex-end; margin-bottom: .6rem; }
+dialog.reel .shorts { margin: 0; }

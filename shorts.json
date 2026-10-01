@@ -1,0 +1,976 @@
+{
+ "_comment": "The video shorts. tools/cut_shorts.py cuts video/<id>.mp4 from the recordings; tools/build.py lays out the carousel and the tutorial tiles. Times are seconds in the source recording. A cue draws a ring round box ([x, y, w, h] as % of the screen) at t seconds into the short, and its words a moment later, for d seconds; tap: true pulses the ring like a finger. draft: true keeps a short off the published site (build with --drafts to see it).",
+ "frame": "ipad",
+ "chapters": [
+  {
+   "id": "reader",
+   "title": "The Simple Reader",
+   "line": "A page and a few big buttons. Nothing else."
+  },
+  {
+   "id": "margin",
+   "title": "The Margin",
+   "line": "What a study Bible prints beside the text, one tap away."
+  },
+  {
+   "id": "search",
+   "title": "Search",
+   "line": "The verse you half-remember, from one word."
+  },
+  {
+   "id": "ask",
+   "title": "Ask – Tell Me More",
+   "line": "Questions answered from trusted references, on the iPad itself."
+  },
+  {
+   "id": "setup",
+   "title": "Setting up",
+   "line": "Two settings on the iPad that make the app sound and work its best."
+  }
+ ],
+ "shorts": [
+  {
+   "id": "reader-book",
+   "chapter": "reader",
+   "title": "Choosing a book and chapter",
+   "blurb": "Tap the title to pick any book and chapter. The arrows step to the next or previous chapter.",
+   "segments": [
+    [
+     "Walkthrough up to Ask.mov",
+     131.3,
+     162
+    ]
+   ],
+   "poster": 2,
+   "cues": [
+    {
+     "t": 0,
+     "d": 2,
+     "box": [
+      11,
+      7,
+      20,
+      10
+     ],
+     "text": "Tap the book and chapter",
+     "tap": true
+    },
+    {
+     "t": 2.7,
+     "d": 3.5,
+     "box": [
+      33,
+      25,
+      34,
+      9
+     ],
+     "text": "Old Testament or New"
+    },
+    {
+     "t": 12.9,
+     "d": 2.8,
+     "box": [
+      37,
+      7,
+      8,
+      10
+     ],
+     "text": "Next chapter",
+     "tap": true
+    },
+    {
+     "t": 16.0,
+     "d": 2.6,
+     "box": [
+      1,
+      7,
+      8,
+      10
+     ],
+     "text": "Previous chapter",
+     "tap": true
+    },
+    {
+     "t": 19.7,
+     "d": 6,
+     "box": [
+      27,
+      14,
+      46,
+      77
+     ],
+     "text": "Pick a book, then a chapter"
+    }
+   ]
+  },
+  {
+   "id": "reader-size",
+   "chapter": "reader",
+   "title": "Making the words bigger",
+   "blurb": "Size makes every word on the page larger, as large as you need.",
+   "segments": [
+    [
+     "Walkthrough up to Ask.mov",
+     165,
+     178
+    ]
+   ],
+   "poster": 9,
+   "cues": [
+    {
+     "t": 1,
+     "d": 2.8,
+     "box": [
+      77,
+      7,
+      10,
+      11
+     ],
+     "text": "Size",
+     "tap": true
+    },
+    {
+     "t": 4.2,
+     "d": 6,
+     "box": [
+      67,
+      17,
+      30,
+      22
+     ],
+     "text": "Tap the big A until it's comfortable"
+    }
+   ]
+  },
+  {
+   "id": "reader-speak",
+   "chapter": "reader",
+   "title": "Hear it read aloud",
+   "blurb": "Tap a verse, then Speak. Each word lights up as it's read. Tap the verse to pause, and again to carry on.",
+   "segments": [
+    [
+     "Walkthrough up to Ask.mov",
+     181,
+     210
+    ]
+   ],
+   "poster": 7,
+   "cues": [
+    {
+     "t": 1.4,
+     "d": 2.6,
+     "box": [
+      1,
+      40,
+      98,
+      19
+     ],
+     "text": "Tap a verse to start there",
+     "tap": true
+    },
+    {
+     "t": 4,
+     "d": 4,
+     "box": [
+      54,
+      7,
+      13,
+      11
+     ],
+     "text": "Speak reads it aloud",
+     "tap": true
+    },
+    {
+     "t": 8.6,
+     "d": 3,
+     "box": [
+      1,
+      40,
+      98,
+      19
+     ],
+     "text": "Tap the verse to pause",
+     "tap": true
+    },
+    {
+     "t": 12.6,
+     "d": 3,
+     "box": [
+      1,
+      40,
+      98,
+      19
+     ],
+     "text": "Tap again to carry on",
+     "tap": true
+    }
+   ]
+  },
+  {
+   "id": "profiles",
+   "chapter": "reader",
+   "title": "Three ways to read",
+   "blurb": "One setting decides how much is on the screen: Simple Reader, Reference Bible, or Ask – Tell Me More.",
+   "segments": [
+    [
+     "Walkthrough up to Ask.mov",
+     209,
+     218
+    ],
+    [
+     "Walkthrough - Ask to end.mov",
+     32,
+     43
+    ]
+   ],
+   "poster": 3,
+   "cues": [
+    {
+     "t": 0.6,
+     "d": 4.4,
+     "box": [
+      27,
+      40,
+      46,
+      13
+     ],
+     "text": "Reference Bible adds Search and the Margin",
+     "tap": true
+    },
+    {
+     "t": 5.6,
+     "d": 3,
+     "box": [
+      40,
+      5,
+      40,
+      13
+     ],
+     "text": "The new buttons"
+    },
+    {
+     "t": 11.6,
+     "d": 4.4,
+     "box": [
+      27,
+      54,
+      46,
+      13
+     ],
+     "text": "Ask – Tell Me More adds Ask",
+     "tap": true
+    },
+    {
+     "t": 16.6,
+     "d": 3,
+     "box": [
+      57,
+      5,
+      13,
+      13
+     ],
+     "text": "Ask"
+    }
+   ]
+  },
+  {
+   "id": "margin",
+   "chapter": "margin",
+   "title": "The Margin",
+   "blurb": "Beside the page: the people a verse names, its words in the Hebrew or Greek, and the verses that speak to it.",
+   "segments": [
+    [
+     "Walkthrough up to Ask.mov",
+     217,
+     257
+    ]
+   ],
+   "poster": 10,
+   "cues": [
+    {
+     "t": 0.6,
+     "d": 3,
+     "box": [
+      65,
+      5,
+      14,
+      13
+     ],
+     "text": "Margin",
+     "tap": true
+    },
+    {
+     "t": 4,
+     "d": 4.5,
+     "box": [
+      66,
+      22,
+      33,
+      13
+     ],
+     "text": "The people it names"
+    },
+    {
+     "t": 9.5,
+     "d": 5,
+     "box": [
+      66,
+      37,
+      34,
+      42
+     ],
+     "text": "Its words in the Hebrew or Greek"
+    },
+    {
+     "t": 21,
+     "d": 4.5,
+     "box": [
+      1,
+      39,
+      64,
+      24
+     ],
+     "text": "Small letters tie the verse to the margin"
+    },
+    {
+     "t": 27,
+     "d": 6,
+     "box": [
+      68,
+      45,
+      31,
+      40
+     ],
+     "text": "Cross-references, under the word they explain"
+    }
+   ]
+  },
+  {
+   "id": "margin-card",
+   "chapter": "margin",
+   "title": "A reference, and the way back",
+   "blurb": "A tapped reference opens over the page. Go to takes you there, and a bookmark brings you back.",
+   "segments": [
+    [
+     "Walkthrough up to Ask.mov",
+     256,
+     282
+    ],
+    [
+     "Walkthrough up to Ask.mov",
+     309,
+     322
+    ]
+   ],
+   "poster": 4,
+   "cues": [
+    {
+     "t": 0.5,
+     "d": 2.5,
+     "box": [
+      68,
+      57,
+      31,
+      15
+     ],
+     "text": "Tap a reference",
+     "tap": true
+    },
+    {
+     "t": 3.2,
+     "d": 3.5,
+     "box": [
+      26,
+      43,
+      48,
+      51
+     ],
+     "text": "It opens over the page; your place stays put"
+    },
+    {
+     "t": 7,
+     "d": 4,
+     "box": [
+      27,
+      86,
+      11,
+      9
+     ],
+     "text": "Speak reads it",
+     "tap": true
+    },
+    {
+     "t": 16.2,
+     "d": 3,
+     "box": [
+      39,
+      86,
+      20,
+      9
+     ],
+     "text": "Go to takes you there",
+     "tap": true
+    },
+    {
+     "t": 20,
+     "d": 5,
+     "box": [
+      52,
+      17,
+      12,
+      6
+     ],
+     "text": "A bookmark keeps your place"
+    },
+    {
+     "t": 27.5,
+     "d": 3,
+     "box": [
+      52,
+      17,
+      12,
+      6
+     ],
+     "text": "Tap it to go back",
+     "tap": true
+    }
+   ]
+  },
+  {
+   "id": "margin-over",
+   "chapter": "margin",
+   "title": "Over or beside the page",
+   "blurb": "The Margin can sit beside the page or rise over it as a drawer you can raise and lower.",
+   "segments": [
+    [
+     "Walkthrough up to Ask.mov",
+     281,
+     310
+    ]
+   ],
+   "poster": 6,
+   "cues": [
+    {
+     "t": 0.3,
+     "d": 3,
+     "box": [
+      83,
+      18,
+      7,
+      8
+     ],
+     "text": "Over or beside",
+     "tap": true
+    },
+    {
+     "t": 6.5,
+     "d": 4.5,
+     "box": [
+      44,
+      30,
+      12,
+      6
+     ],
+     "text": "Drag the bar to raise or lower it"
+    },
+    {
+     "t": 19.5,
+     "d": 3.5,
+     "box": [
+      86,
+      29,
+      7,
+      8
+     ],
+     "text": "And back beside the page",
+     "tap": true
+    }
+   ]
+  },
+  {
+   "id": "search",
+   "chapter": "search",
+   "title": "Search for a word",
+   "blurb": "Type a word or a phrase. Every verse that has it, and the word lit on the page.",
+   "segments": [
+    [
+     "Walkthrough up to Ask.mov",
+     389,
+     424
+    ]
+   ],
+   "poster": 30,
+   "cues": [
+    {
+     "t": 1.5,
+     "d": 3,
+     "box": [
+      53,
+      5,
+      11,
+      13
+     ],
+     "text": "Search",
+     "tap": true
+    },
+    {
+     "t": 8,
+     "d": 4.5,
+     "box": [
+      45,
+      34,
+      10,
+      6
+     ],
+     "text": "Lower the panel to see the page"
+    },
+    {
+     "t": 19.5,
+     "d": 4.5,
+     "box": [
+      1,
+      88,
+      98,
+      8
+     ],
+     "text": "Type a word"
+    },
+    {
+     "t": 27,
+     "d": 5,
+     "box": [
+      73,
+      19,
+      13,
+      7
+     ],
+     "text": "It lights up on the page too"
+    }
+   ]
+  },
+  {
+   "id": "search-filter",
+   "chapter": "search",
+   "title": "Narrowing it down",
+   "blurb": "Whole Bible, Old Testament, New Testament, or just the book you're in. Tap a verse for its card.",
+   "segments": [
+    [
+     "Walkthrough up to Ask.mov",
+     430,
+     452
+    ],
+    [
+     "Walkthrough up to Ask.mov",
+     462,
+     469
+    ]
+   ],
+   "poster": 12,
+   "cues": [
+    {
+     "t": 5.5,
+     "d": 4.5,
+     "box": [
+      1,
+      86,
+      85,
+      9
+     ],
+     "text": "Narrow it to a testament or this book",
+     "tap": true
+    },
+    {
+     "t": 15.5,
+     "d": 4,
+     "box": [
+      67,
+      86,
+      12,
+      9
+     ],
+     "text": "Just John",
+     "tap": true
+    },
+    {
+     "t": 23,
+     "d": 4,
+     "box": [
+      26,
+      44,
+      48,
+      52
+     ],
+     "text": "Tap a verse for its card"
+    }
+   ]
+  },
+  {
+   "id": "ask-open",
+   "chapter": "ask",
+   "draft": true,
+   "title": "Asking a question",
+   "blurb": "Start from a suggestion, or ask in your own words, typed or spoken.",
+   "segments": [
+    [
+     "Walkthrough - Ask to end.mov",
+     46,
+     94
+    ]
+   ],
+   "poster": 6,
+   "cues": [
+    {
+     "t": 1,
+     "d": 3,
+     "box": [
+      57,
+      5,
+      13,
+      13
+     ],
+     "text": "Ask",
+     "tap": true
+    },
+    {
+     "t": 5,
+     "d": 5,
+     "box": [
+      1,
+      28,
+      68,
+      52
+     ],
+     "text": "Suggestions to start from"
+    },
+    {
+     "t": 11,
+     "d": 4.5,
+     "box": [
+      1,
+      89,
+      90,
+      7
+     ],
+     "text": "Or ask in your own words"
+    },
+    {
+     "t": 43.5,
+     "d": 4,
+     "box": [
+      1,
+      60,
+      68,
+      7
+     ],
+     "text": "Tap a question",
+     "tap": true
+    }
+   ]
+  },
+  {
+   "id": "ask-answer",
+   "chapter": "ask",
+   "draft": true,
+   "title": "An answer from trusted references",
+   "blurb": "Apple Intelligence reads the commentaries and dictionaries on this iPad and writes a short answer. Every point says where it came from.",
+   "segments": [
+    [
+     "Walkthrough - Ask to end.mov",
+     93,
+     146
+    ]
+   ],
+   "poster": 20,
+   "cues": [
+    {
+     "t": 1,
+     "d": 6,
+     "box": [
+      1,
+      32,
+      98,
+      14
+     ],
+     "text": "Reading the references, on this iPad"
+    },
+    {
+     "t": 15,
+     "d": 6,
+     "box": [
+      1,
+      29,
+      98,
+      62
+     ],
+     "text": "An answer in plain words"
+    },
+    {
+     "t": 22,
+     "d": 5,
+     "box": [
+      67,
+      51,
+      6,
+      6
+     ],
+     "text": "Each point cites its source",
+     "tap": true
+    },
+    {
+     "t": 28,
+     "d": 4,
+     "box": [
+      2,
+      66,
+      30,
+      6
+     ],
+     "text": "Sections with labelled points"
+    }
+   ]
+  },
+  {
+   "id": "ask-results",
+   "chapter": "ask",
+   "draft": true,
+   "title": "The references behind it",
+   "blurb": "Under the answer, the references themselves, in their own words. A verse they mention opens as a card.",
+   "segments": [
+    [
+     "Walkthrough - Ask to end.mov",
+     153,
+     190
+    ]
+   ],
+   "poster": 4,
+   "cues": [
+    {
+     "t": 1.5,
+     "d": 5,
+     "box": [
+      1,
+      26,
+      98,
+      32
+     ],
+     "text": "The references, in their own words"
+    },
+    {
+     "t": 7,
+     "d": 3,
+     "box": [
+      1,
+      45,
+      16,
+      6
+     ],
+     "text": "See a verse without leaving",
+     "tap": true
+    }
+   ]
+  },
+  {
+   "id": "ask-filters",
+   "chapter": "ask",
+   "draft": true,
+   "title": "Choosing what to see",
+   "blurb": "Show every kind of reference, or just one: commentary, cross-references, the dictionaries.",
+   "segments": [
+    [
+     "Walkthrough - Ask to end.mov",
+     215,
+     238
+    ],
+    [
+     "Walkthrough - Ask to end.mov",
+     298,
+     330
+    ]
+   ],
+   "poster": 4,
+   "cues": [
+    {
+     "t": 1,
+     "d": 5,
+     "box": [
+      1,
+      43,
+      19,
+      55
+     ],
+     "text": "Show one kind of reference"
+    },
+    {
+     "t": 28,
+     "d": 4,
+     "box": [
+      1,
+      89,
+      16,
+      8
+     ],
+     "text": "Now just the dictionaries"
+    }
+   ]
+  },
+  {
+   "id": "ask-goto",
+   "chapter": "ask",
+   "draft": true,
+   "title": "Going to a verse, and back",
+   "blurb": "Go to opens the verse in the Bible. The bookmark takes you back to where you were.",
+   "segments": [
+    [
+     "Walkthrough - Ask to end.mov",
+     329,
+     347
+    ]
+   ],
+   "poster": 2,
+   "cues": [
+    {
+     "t": 0.6,
+     "d": 3,
+     "box": [
+      26,
+      44,
+      48,
+      52
+     ],
+     "text": "A verse card"
+    },
+    {
+     "t": 3,
+     "d": 3,
+     "box": [
+      39,
+      86,
+      20,
+      9
+     ],
+     "text": "Go to",
+     "tap": true
+    },
+    {
+     "t": 7,
+     "d": 4.5,
+     "box": [
+      88,
+      14,
+      12,
+      6
+     ],
+     "text": "Your bookmark"
+    },
+    {
+     "t": 12.5,
+     "d": 3,
+     "box": [
+      88,
+      14,
+      12,
+      6
+     ],
+     "text": "Tap it to go back",
+     "tap": true
+    }
+   ]
+  },
+  {
+   "id": "settings",
+   "chapter": "ask",
+   "draft": true,
+   "title": "Settings",
+   "blurb": "The reading profile, the voice, text size, the words of Christ in red, and which reference works Ask reads.",
+   "segments": [
+    [
+     "Walkthrough - Ask to end.mov",
+     405,
+     462
+    ]
+   ],
+   "poster": 6,
+   "cues": [
+    {
+     "t": 1,
+     "d": 6,
+     "box": [
+      26,
+      10,
+      48,
+      85
+     ],
+     "text": "Everything in one place"
+    }
+   ]
+  },
+  {
+   "id": "setup-voice",
+   "chapter": "setup",
+   "title": "A better voice",
+   "blurb": "Settings › Accessibility › Read & Speak › Voices: download a natural voice, then choose it in the app. A Siri voice is the most natural of all.",
+   "segments": [
+    [
+     "Accessibility - Voice Selection.mov",
+     0,
+     43.5
+    ]
+   ],
+   "crop": [
+    1210,
+    834,
+    355,
+    123
+   ],
+   "poster": 30,
+   "cues": [],
+   "silent": true
+  },
+  {
+   "id": "setup-ai",
+   "chapter": "setup",
+   "title": "Turning on Apple Intelligence",
+   "blurb": "Ask writes its answers with Apple Intelligence. Settings › Apple Intelligence & Siri, on an iPad that supports it.",
+   "placeholder": true,
+   "cues": []
+  }
+ ],
+ "carousel": [
+  {
+   "glyph": "One screen",
+   "title": "Big buttons, nothing to set up",
+   "text": "The page is the Bible. Above it, a few buttons, each larger than any you've pressed on an iPad, each labelled in words. No menus, no gestures to learn, nothing to confirm.",
+   "short": "reader-book"
+  },
+  {
+   "glyph": "Speak",
+   "title": "It reads to you",
+   "text": "Tap Speak and the page is read aloud, every word lit as it's spoken. Pause and resume with one tap. Tap a verse and it picks up from there.",
+   "short": "reader-speak"
+  },
+  {
+   "glyph": "Listen",
+   "title": "It listens to you",
+   "text": "Every place you can type, you can talk instead. Say \"Romans 8\" and you're there. Say \"who was Melchizedek\" and you get the answer. Speech is recognised on the iPad itself.",
+   "short": null
+  },
+  {
+   "glyph": "Ask",
+   "title": "It answers you",
+   "text": "Ask about a name, a word, a passage, and you get the reference works' own words. On an iPad with Apple Intelligence, a short written answer to your question, every point cited.",
+   "short": "ask-answer"
+  },
+  {
+   "glyph": "Margin",
+   "title": "A study Bible's margin",
+   "text": "What is known about a verse sits beside the page: the people it names, its words in the Hebrew or Greek, the verses that speak to it, and commentary.",
+   "short": "margin"
+  },
+  {
+   "glyph": "Siri",
+   "title": "Ask Siri",
+   "text": "\"Open John 3:16 in Bible Reader.\" From the lock screen, from Shortcuts, from across the room. \"Ask Bible Reader\" and your question goes straight to Ask.",
+   "short": null
+  }
+ ]
+}
