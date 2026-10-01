@@ -328,12 +328,13 @@ th { font-family: var(--sans); font-weight: 600; }
 .callout[data-side="inside"]::after { display: none; }
 
 /* ---- the words beside it, and the controls ---- */
-/* Centred under the video, the controls first, then the words. */
-.shorts-below { display: flex; flex-direction: column; align-items: center; gap: 1rem; margin-top: 1.1rem; max-width: 56rem; margin-inline: auto; text-align: center; }
-.showcase-text { min-height: 7.5rem; }
+/* The controls centred under the video; the words under them left-justified,
+   on the same left edge as the page's text (Joe, Oct 1). */
+.shorts-below { display: flex; flex-direction: column; align-items: stretch; gap: 1rem; margin-top: 1.1rem; }
+.showcase-text { min-height: 7.5rem; max-width: var(--measure); text-align: left; }
 .showcase-text .glyph { font: 700 .9rem/1 var(--sans); letter-spacing: .06em; text-transform: uppercase; color: var(--accent); margin-bottom: .4rem; }
 .showcase-text h3 { margin: 0; font-size: 1.45rem; }
-.showcase-text p { margin: .4rem auto 0; font-size: 1.12rem; max-width: 40rem; }
+.showcase-text p { margin: .4rem 0 0; font-size: 1.12rem; }
 .showcase-text .soon { font-family: var(--sans); font-weight: 600; color: var(--ink-2); font-size: 1rem; }
 .shorts-controls { display: flex; gap: .5rem; flex-wrap: wrap; justify-content: center; order: -1; }
 .shorts-controls button {
