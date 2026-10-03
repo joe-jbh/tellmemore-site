@@ -6,26 +6,40 @@
 <title>Flyer — Tell Me More</title>
 <meta name="description" content="A one-page printable flyer for the Tell Me More Bible Reader beta, with a QR code for the app.">
 <meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#FBFBF8" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#161614" media="(prefers-color-scheme: dark)">
 <link rel="icon" href="img/favicon.png">
 <link rel="apple-touch-icon" href="img/icon-192.png">
+<link rel="alternate" type="application/rss+xml" title="Tell Me More — Developer notes" href="https://jbhstudio.app/feed.xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Source+Sans+3:wght@400;600;700&display=swap">
-<link rel="stylesheet" href="css/site.css?v=06c87879">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Public+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="css/site.css?v=030efb0a">
 </head>
 <body class="flyer">
-<div class="wrap">
 <header class="site">
-  <a class="brand" href="index.html"><img src="img/icon-64.png" alt="" width="40" height="40">Tell Me More <span>· Bible Reader</span></a>
-  <nav class="site" aria-label="Site">
-    <a href="index.html">Home</a>
-    <a href="guide.html">Guide</a>
-    <a href="voices.html">Voices</a>
-    <a href="tutorials.html">Tutorials</a>
-    <a href="beta.html">Get the app</a>
-    <a href="privacy.html">Privacy</a>
-  </nav>
+  <div class="bar">
+    <a class="brand" href="index.html"><img src="img/icon-64.png" alt="" width="30" height="30">Bible Reader <span>· JBH Studio</span></a>
+    <nav class="site" aria-label="Site">
+      <a href="guide.html">Guide</a>
+      <a href="tutorials.html">Tutorials</a>
+      <a href="notes.html">Notes</a>
+      <a class="cta" href="beta.html">Get the app</a>
+    </nav>
+    <details class="menu">
+      <summary>Menu</summary>
+      <nav aria-label="Site">
+        <a href="index.html">Home</a>
+        <a href="guide.html">Guide</a>
+        <a href="voices.html">Choosing a voice</a>
+        <a href="tutorials.html">Tutorials</a>
+        <a href="notes.html">Developer notes</a>
+        <a href="beta.html">Get the app</a>
+      </nav>
+    </details>
+  </div>
 </header>
+<div class="wrap">
 <main>
 <style>
   /* The flyer: one US-letter page, black on white whatever the screen theme,
@@ -92,7 +106,14 @@
 </main>
 <footer class="site">
   <span>Tell Me More — Bible Reader · JBH Studio · 2026</span>
-  <span><a href="sources.html">What's in the app</a> · <a href="privacy.html">Privacy</a> · <a href="mailto:joe.hocker@gmail.com">Contact</a> · <a href="flyer.html">Flyer</a></span>
+  <nav aria-label="More">
+    <a href="voices.html">Choosing a voice</a>
+    <a href="sources.html">What's in the app</a>
+    <a href="privacy.html">Privacy</a>
+    <a href="flyer.html">Flyer</a>
+    <a href="feed.xml">RSS</a>
+    <a href="mailto:joe.hocker@gmail.com">Contact</a>
+  </nav>
 </footer>
 </div>
 <script src="js/shorts.js?v=652d1236" defer></script>

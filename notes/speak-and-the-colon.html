@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Why Speak said "twenty-four thousand twenty-two" — Tell Me More</title>
+<meta name="description" content="One colon, read as a thousands comma. A small fix that matters to someone who listens instead of reads.">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#FBFBF8" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#161614" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="../img/favicon.png">
+<link rel="apple-touch-icon" href="../img/icon-192.png">
+<link rel="alternate" type="application/rss+xml" title="Tell Me More — Developer notes" href="https://jbhstudio.app/feed.xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Public+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../css/site.css?v=030efb0a">
+</head>
+<body class="">
+<header class="site">
+  <div class="bar">
+    <a class="brand" href="../index.html"><img src="../img/icon-64.png" alt="" width="30" height="30">Bible Reader <span>· JBH Studio</span></a>
+    <nav class="site" aria-label="Site">
+      <a href="../guide.html">Guide</a>
+      <a href="../tutorials.html">Tutorials</a>
+      <a href="../notes.html" aria-current="page">Notes</a>
+      <a class="cta" href="../beta.html">Get the app</a>
+    </nav>
+    <details class="menu">
+      <summary>Menu</summary>
+      <nav aria-label="Site">
+        <a href="../index.html">Home</a>
+        <a href="../guide.html">Guide</a>
+        <a href="../voices.html">Choosing a voice</a>
+        <a href="../tutorials.html">Tutorials</a>
+        <a href="../notes.html" aria-current="page">Developer notes</a>
+        <a href="../beta.html">Get the app</a>
+      </nav>
+    </details>
+  </div>
+</header>
+<div class="wrap">
+<main>
+<article class="note-page"><div class="head"><small>Accessibility · Engineering · <time datetime="2026-10-02">October 2, 2026</time></small><h1>Why Speak said &quot;twenty-four thousand twenty-two&quot;</h1></div><div class="aside">1 min read<br><a href="../notes.html#accessibility">Accessibility</a>, <a href="../notes.html#engineering">Engineering</a><br><a href="../notes.html">All notes</a></div><div class="body"><p>I asked Ask about Genesis 24:22 and had its answer read aloud. Where the answer gave the verse &ldquo;in today&rsquo;s words&rdquo;, the voice said &ldquo;Genesis twenty-four thousand twenty-two.&rdquo;</p>
+<h2>Where it came from</h2>
+<p>A chapter-and-verse colon is ambiguous to a speech voice, so the app rewrites references before speaking them. That rewrite turned the colon into a comma: <code>24:22</code> became <code>24,22</code>.</p>
+<p>To a person, a comma there is a pause. To the speech engine, <code>24,22</code> is a number with a thousands separator: twenty-four thousand and twenty-two.</p>
+<h2>The fix</h2>
+<p>The colon now becomes a plain space. <code>Genesis 24 22</code> is read &ldquo;Genesis twenty-four, twenty-two&rdquo;, which is how people say it out loud anyway. The voices for other languages take the same path now too, and there are tests that pin down exactly what each reference turns into.</p>
+<p>It&rsquo;s a one-character change. But for someone who listens to the app instead of reading it, a wrong number in the reference sends them to the wrong place. Bugs like this only turn up when real people use the app in a real room, which is why the beta matters.</p></div><nav class="note-nav" aria-label="More notes"><a href="tabs-not-dots.html" rel="prev"><span>Older</span>Tabs, not dots</a><a href="rebekahs-earring.html" rel="next" style="text-align:right;margin-left:auto"><span>Newer</span>What was Rebekah's earring worth?</a></nav></article>
+</main>
+<footer class="site">
+  <span>Tell Me More — Bible Reader · JBH Studio · 2026</span>
+  <nav aria-label="More">
+    <a href="../voices.html">Choosing a voice</a>
+    <a href="../sources.html">What's in the app</a>
+    <a href="../privacy.html">Privacy</a>
+    <a href="../flyer.html">Flyer</a>
+    <a href="../feed.xml">RSS</a>
+    <a href="mailto:joe.hocker@gmail.com">Contact</a>
+  </nav>
+</footer>
+</div>
+<script src="../js/shorts.js?v=652d1236" defer></script>
+</body>
+</html>

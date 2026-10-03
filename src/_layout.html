@@ -6,34 +6,55 @@
 <title>{{title}}</title>
 <meta name="description" content="{{description}}">
 <meta name="color-scheme" content="light dark">
-<link rel="icon" href="img/favicon.png">
-<link rel="apple-touch-icon" href="img/icon-192.png">
+<meta name="theme-color" content="#FBFBF8" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#161614" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="{{root}}img/favicon.png">
+<link rel="apple-touch-icon" href="{{root}}img/icon-192.png">
+<link rel="alternate" type="application/rss+xml" title="{{app_name}} — Developer notes" href="{{site_url}}/feed.xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Source+Sans+3:wght@400;600;700&display=swap">
-<link rel="stylesheet" href="css/site.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Public+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="{{root}}css/site.css">
 </head>
 <body class="{{layout}}">
-<div class="wrap">
 <header class="site">
-  <a class="brand" href="index.html"><img src="img/icon-64.png" alt="" width="40" height="40">{{app_name}} <span>· {{app_subtitle}}</span></a>
-  <nav class="site" aria-label="Site">
-    <a href="index.html">Home</a>
-    <a href="guide.html">Guide</a>
-    <a href="voices.html">Voices</a>
-    <a href="tutorials.html">Tutorials</a>
-    <a href="beta.html">Get the app</a>
-    <a href="privacy.html">Privacy</a>
-  </nav>
+  <div class="bar">
+    <a class="brand" href="{{root}}index.html"><img src="{{root}}img/icon-64.png" alt="" width="30" height="30">{{app_subtitle}} <span>· {{studio}}</span></a>
+    <nav class="site" aria-label="Site">
+      <a href="{{root}}guide.html">Guide</a>
+      <a href="{{root}}tutorials.html">Tutorials</a>
+      <a href="{{root}}notes.html">Notes</a>
+      <a class="cta" href="{{root}}beta.html">Get the app</a>
+    </nav>
+    <details class="menu">
+      <summary>Menu</summary>
+      <nav aria-label="Site">
+        <a href="{{root}}index.html">Home</a>
+        <a href="{{root}}guide.html">Guide</a>
+        <a href="{{root}}voices.html">Choosing a voice</a>
+        <a href="{{root}}tutorials.html">Tutorials</a>
+        <a href="{{root}}notes.html">Developer notes</a>
+        <a href="{{root}}beta.html">Get the app</a>
+      </nav>
+    </details>
+  </div>
 </header>
+<div class="wrap">
 <main>
 {{content}}
 </main>
 <footer class="site">
   <span>{{app_name}} — {{app_subtitle}} · {{studio}} · {{year}}</span>
-  <span><a href="sources.html">What's in the app</a> · <a href="privacy.html">Privacy</a> · <a href="mailto:{{contact_email}}">Contact</a> · <a href="flyer.html">Flyer</a></span>
+  <nav aria-label="More">
+    <a href="{{root}}voices.html">Choosing a voice</a>
+    <a href="{{root}}sources.html">What's in the app</a>
+    <a href="{{root}}privacy.html">Privacy</a>
+    <a href="{{root}}flyer.html">Flyer</a>
+    <a href="{{root}}feed.xml">RSS</a>
+    <a href="mailto:{{contact_email}}">Contact</a>
+  </nav>
 </footer>
 </div>
-<script src="js/shorts.js" defer></script>
+<script src="{{root}}js/shorts.js" defer></script>
 </body>
 </html>
