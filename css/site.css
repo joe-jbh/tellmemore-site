@@ -177,6 +177,20 @@ footer.site a:hover { color: var(--ink); text-decoration: underline; }
   .flist li { grid-template-columns: 9rem 1fr; }
 }
 
+/* ---- the essential settings callout ---- */
+/* The one boxed thing on a page: these settings decide whether the app
+   sounds good, so they are lifted out rather than left in the prose. */
+.essentials { border: 1px solid var(--rule); border-left: 4px solid var(--accent); border-radius: 10px; background: var(--band); padding: 1.4rem 1.5rem 1.2rem; margin: 2rem 0; max-width: 52rem; }
+.essentials .eyebrow { margin-bottom: .4rem; color: var(--accent); }
+.essentials h2 { margin: 0 0 .4rem; font-size: clamp(1.5rem, 2.8vw, 1.9rem); }
+.essentials > p { margin: 0 0 1rem; color: var(--ink-2); font-family: var(--sans); font-size: 1rem; }
+.essentials ol { list-style: none; counter-reset: ess; margin: 0; padding: 0; display: grid; gap: 1rem; }
+.essentials li { counter-increment: ess; display: grid; grid-template-columns: 2.2rem 1fr; gap: .2rem .8rem; margin: 0; }
+.essentials li::before { content: counter(ess); grid-row: span 2; width: 2rem; height: 2rem; border-radius: 50%; background: var(--accent); color: var(--on-accent); font: 600 1rem/2rem var(--sans); text-align: center; }
+.essentials h3 { margin: .2rem 0 0; font-size: 1.1rem; }
+.essentials li p { margin: 0; font-family: var(--sans); font-size: 1rem; color: var(--ink-2); line-height: 1.55; }
+.essentials a { white-space: nowrap; font-weight: 500; }
+
 /* ---- home: what's in the app, as tiers ---- */
 .tiers { list-style: none; margin: 1.6rem 0 0; padding: 0; display: grid; gap: 0; }
 .tiers > li { margin: 0; padding: 1.4rem 0; border-top: 1px solid var(--rule); }

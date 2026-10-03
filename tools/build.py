@@ -22,6 +22,7 @@ Placeholders a page body may use:
     {{showcase}}          the home page's carousel: the feature cards from shorts.json, each with its short
     {{shorts_tiles}}      every short as a tile, by chapter, with "Play all" (the tutorials page)
     {{short:<id>}}        one short on its own, waiting for a tap
+    {{essentials}}        the essential-settings callout (voices, Apple Intelligence)
     {{notes_latest}}      the three newest developer notes (src/notes/*.md; see load_notes)
     {{root}}              "" on top-level pages, "../" on notes/*.html (the layout's links use it)
 
@@ -241,11 +242,36 @@ def join_or_soon(site):
             'when the first build clears Apple\'s review the button appears here, and nothing printed has to change.</p>')
 
 
+# The settings the app depends on, called out on the home page, Get the
+# app and the Voices page (Joe, Oct 4): a natural voice for reading aloud,
+# voices for the Spanish and Chinese Bibles, and Apple Intelligence for Ask.
+ESSENTIALS = """<aside class="essentials" aria-labelledby="essentials-title">
+  <p class="eyebrow">Before you start · about ten minutes, once</p>
+  <h2 id="essentials-title">Essential settings</h2>
+  <p>Done once, in the iPad's own Settings, by whoever sets the app up. The reader never has to see them again.</p>
+  <ol>
+    <li>
+      <h3>A natural voice for reading aloud</h3>
+      <p>The iPad comes with a basic voice that sounds robotic. Download one marked <strong>Premium</strong> or <strong>Enhanced</strong> in <em>Settings › Accessibility › Read &amp; Speak › Voices › English</em>, then choose it in the app under <em>Settings › Read Aloud</em>. <a href="voices.html#english">Step by step</a></p>
+    </li>
+    <li>
+      <h3>Voices for the Spanish and Chinese Bibles</h3>
+      <p>If you read the extra Bibles aloud, download a Premium or Enhanced voice for each language too, from the main list in the same place. Apps can't use the Siri voices. <a href="voices.html#other-languages">Which voices</a></p>
+    </li>
+    <li>
+      <h3>Apple Intelligence, for Ask's written answers</h3>
+      <p>Turn it on in <em>Settings › Siri</em> on an iPad that supports it. Ask still finds everything without it. <a href="voices.html#apple-intelligence">How</a></p>
+    </li>
+  </ol>
+</aside>"""
+
+
 def fill(text, site):
     values = {k: str(v) for k, v in site.items() if not k.startswith("_") and not isinstance(v, (list, dict))}
     values["year"] = str(dt.date.today().year)
     values["videos"] = video_cards(site)
     values["join_or_soon"] = join_or_soon(site)
+    values["essentials"] = ESSENTIALS
     sh = load_shorts()
     if sh:
         if "{{showcase}}" in text:
