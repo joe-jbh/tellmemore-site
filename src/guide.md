@@ -2,7 +2,7 @@
 
 Ten minutes, start to finish. Everything is on one screen.
 
-## What this is
+## What this app is
 
 A Bible reader built for someone who finds ordinary apps hard: large buttons, one screen, nothing to set up. It reads aloud, it listens, and it answers questions about what you are reading. Nothing you read, say or ask leaves the device.
 
@@ -20,7 +20,11 @@ Tap a verse to select it. Tap it again to unselect. Press and hold a verse to co
 
 ## Read aloud
 
-Tap **Speak** and the page is read to you, each word highlighted as it is spoken. The button becomes **Pause** while it reads; tap it to pause, and **Speak** again to continue. Tap a different verse while it is reading to jump there.
+Tap **Speak** and the page is read to you, each word highlighted as it is spoken. The button becomes **Pause** while it reads: tap it to pause, and tap it again to carry on. The verse being read works the same way — tap it to pause, tap it again to continue.
+
+To **stop** reading, rather than pause it, **double-tap** the button or the verse being read.
+
+Double-tap any other verse to read from there, whether or not it is reading already. A single tap only selects a verse.
 
 If you have selected a verse, **Speak** starts from it. With Ask open and a result selected, **Speak** reads that result instead of the page.
 
