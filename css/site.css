@@ -528,3 +528,20 @@ dialog.reel { width: min(96vw, 64rem); max-height: 96vh; border: 0; border-radiu
 dialog.reel::backdrop { background: rgba(20, 14, 10, .72); }
 dialog.reel .reel-top { display: flex; justify-content: flex-end; margin-bottom: .6rem; }
 dialog.reel .shorts { margin: 0; }
+
+/* ---- arriving at a section by a link ---- */
+/* A link to "voices.html#other-languages" lands with the heading clear of
+   the sticky bar, marked with the accent rule while it is the target, and
+   lit for a moment so the eye finds it (Joe, Oct 4: "no indication of
+   where I am"). */
+:where(h2, h3)[id] { scroll-margin-top: 5.5rem; }
+h2:target, h3:target { position: relative; }
+h2:target::before, h3:target::before { content: ""; position: absolute; left: -1rem; top: .1em; bottom: .1em; width: 4px; border-radius: 2px; background: var(--accent); }
+@media (prefers-reduced-motion: no-preference) {
+  h2:target, h3:target { animation: arrive 2.4s ease-out; border-radius: 6px; }
+  @keyframes arrive {
+    0%, 35% { background: color-mix(in srgb, var(--accent) 16%, transparent); box-shadow: 0 0 0 .4rem color-mix(in srgb, var(--accent) 16%, transparent); }
+    100% { background: transparent; box-shadow: 0 0 0 .4rem transparent; }
+  }
+}
+@media (max-width: 900px) { header.site .brand span { display: none; } }
