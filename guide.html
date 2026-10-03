@@ -14,7 +14,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Public+Sans:wght@400;500;600&display=swap">
-<link rel="stylesheet" href="css/site.css?v=030efb0a">
+<link rel="stylesheet" href="css/site.css?v=5995df46">
 </head>
 <body class="">
 <header class="site">
@@ -41,24 +41,12 @@
 </header>
 <div class="wrap">
 <main>
-<div class="prose">
+<div class="doc-head">
 <p class="eyebrow">Guide</p>
 <h1>A short guide</h1>
 <p class="muted">The same guide that is inside the app, under Settings › About.</p>
-<nav class="toc" aria-label="Contents"><strong>On this page</strong><ol><li><a href="#what-this-is">What this is</a></li>
-<li><a href="#the-screen">The screen</a></li>
-<li><a href="#reading">Reading</a></li>
-<li><a href="#read-aloud">Read aloud</a></li>
-<li><a href="#going-somewhere">Going somewhere</a></li>
-<li><a href="#search">Search</a></li>
-<li><a href="#ask">Ask</a></li>
-<li><a href="#margin">Margin</a></li>
-<li><a href="#talking-to-it">Talking to it</a></li>
-<li><a href="#siri-and-shortcuts">Siri and Shortcuts</a></li>
-<li><a href="#on-a-mac">On a Mac</a></li>
-<li><a href="#settings-worth-knowing">Settings worth knowing</a></li>
-<li><a href="#what-to-tell-us">What to tell us</a></li></ol></nav>
-<div class="guide"><p>Ten minutes, start to finish. Everything is on one screen.</p>
+</div>
+<div class="doc"><nav class="doc-nav" aria-label="Guide sections"><p class="label">On this page</p><ol><li><a href="#what-this-is">What this is</a></li><li><a href="#the-screen">The screen</a></li><li><a href="#reading">Reading</a></li><li><a href="#read-aloud">Read aloud</a></li><li><a href="#going-somewhere">Going somewhere</a></li><li><a href="#search">Search</a></li><li><a href="#ask">Ask</a><ol><li><a href="#with-apple-intelligence">With Apple Intelligence</a></li></ol></li><li><a href="#margin">Margin</a></li><li><a href="#talking-to-it">Talking to it</a></li><li><a href="#siri-and-shortcuts">Siri and Shortcuts</a><ol><li><a href="#saying-it-to-siri">Saying it to Siri</a></li><li><a href="#your-own-shortcuts">Your own shortcuts</a></li><li><a href="#not-yet">Not yet</a></li></ol></li><li><a href="#on-a-mac">On a Mac</a></li><li><a href="#settings-worth-knowing">Settings worth knowing</a></li><li><a href="#what-to-tell-us">What to tell us</a></li></ol></nav><div class="doc-main"><details class="doc-jump"><summary>On this page</summary><nav aria-label="Guide sections"><ol><li><a href="#what-this-is">What this is</a></li><li><a href="#the-screen">The screen</a></li><li><a href="#reading">Reading</a></li><li><a href="#read-aloud">Read aloud</a></li><li><a href="#going-somewhere">Going somewhere</a></li><li><a href="#search">Search</a></li><li><a href="#ask">Ask</a><ol><li><a href="#with-apple-intelligence">With Apple Intelligence</a></li></ol></li><li><a href="#margin">Margin</a></li><li><a href="#talking-to-it">Talking to it</a></li><li><a href="#siri-and-shortcuts">Siri and Shortcuts</a><ol><li><a href="#saying-it-to-siri">Saying it to Siri</a></li><li><a href="#your-own-shortcuts">Your own shortcuts</a></li><li><a href="#not-yet">Not yet</a></li></ol></li><li><a href="#on-a-mac">On a Mac</a></li><li><a href="#settings-worth-knowing">Settings worth knowing</a></li><li><a href="#what-to-tell-us">What to tell us</a></li></ol></nav></details><div class="guide"><p>Ten minutes, start to finish. Everything is on one screen.</p>
 <h2 id="what-this-is">What this is</h2>
 <p>A Bible reader built for someone who finds ordinary apps hard: large buttons, one screen, nothing to set up. It reads aloud, it listens, and it answers questions about what you are reading. Nothing you read, say or ask leaves the device.</p>
 <h2 id="the-screen">The screen</h2>
@@ -141,8 +129,22 @@
 <li><strong>A wrong answer in Ask</strong> — say which chip and what you asked.</li>
 <li><strong>Anything that felt like one step too many.</strong></li>
 </ul>
-<p>There is nothing to sign into, and nothing is collected.</p></div>
-</div>
+<p>There is nothing to sign into, and nothing is collected.</p></div></div></div>
+<script>
+(() => {
+  // Mark the section on screen in both lists; close the phone list after a choice.
+  const links = [...document.querySelectorAll('.doc-nav a, .doc-jump a')];
+  const heads = [...document.querySelectorAll('.guide h2[id], .guide h3[id]')];
+  const jump = document.querySelector('.doc-jump');
+  links.forEach(a => a.addEventListener('click', () => { if (jump) jump.open = false; }));
+  function mark() {
+    let here = heads[0];
+    for (const h of heads) { if (h.getBoundingClientRect().top < 120) here = h; else break; }
+    links.forEach(a => a.setAttribute('aria-current', String(here && a.hash === '#' + here.id)));
+  }
+  addEventListener('scroll', mark, { passive: true }); mark();
+})();
+</script>
 
 </main>
 <footer class="site">

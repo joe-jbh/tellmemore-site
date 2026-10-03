@@ -270,11 +270,36 @@ th { font-family: var(--sans); font-weight: 600; }
 .table-wrap { overflow-x: auto; }
 
 /* ---- guide (generated from the app's own guide) ---- */
-.guide h2 { scroll-margin-top: 1rem; }
-.toc { font-family: var(--sans); font-size: 1.05rem; background: var(--band); border-radius: 14px; padding: 1rem 1.3rem; margin-bottom: 2rem; }
-.toc ol { margin: .4rem 0 0; padding-left: 1.3rem; columns: 2; column-gap: 2rem; }
-.toc li { break-inside: avoid; }
-@media (max-width: 560px) { .toc ol { columns: 1; } }
+/* A sidebar of sections on iPad landscape and Mac, sticky, with the
+   section on screen marked; on narrower screens an "On this page" button
+   above the text. Pictures in the guide are figures with a caption. */
+.doc-head { max-width: var(--measure); margin-bottom: 2rem; }
+.doc-head h1 { margin-bottom: .4rem; }
+.doc { display: grid; gap: 1.5rem; }
+.doc-nav { display: none; }
+.doc-nav ol, .doc-jump ol { list-style: none; margin: 0; padding: 0; }
+.doc-nav li, .doc-jump li { margin: 0; }
+.doc-nav a, .doc-jump a { display: flex; align-items: center; min-height: 40px; padding: .35rem .8rem; border-left: 2px solid var(--rule); color: var(--ink-2); text-decoration: none; font-size: 1rem; line-height: 1.3; }
+.doc-nav ol ol a, .doc-jump ol ol a { padding-left: 1.6rem; font-size: .93rem; }
+.doc-nav a:hover, .doc-jump a:hover { color: var(--ink); background: var(--band); }
+.doc-nav a[aria-current="true"], .doc-jump a[aria-current="true"] { color: var(--ink); border-left-color: var(--accent); font-weight: 600; }
+.doc-jump { border: 1px solid var(--rule); border-radius: 10px; margin-bottom: 1.8rem; }
+.doc-jump summary { min-height: 52px; padding: .6rem 1rem; display: flex; align-items: center; justify-content: space-between; cursor: pointer; font-weight: 500; list-style: none; }
+.doc-jump summary::-webkit-details-marker { display: none; }
+.doc-jump summary::after { content: "+"; font-size: 1.4rem; color: var(--ink-2); }
+.doc-jump[open] summary::after { content: "\2212"; }
+.doc-jump nav { padding: 0 1rem 1rem; }
+.guide { max-width: var(--measure); min-width: 0; }
+.guide h2, .guide h3 { scroll-margin-top: 5.5rem; }
+.guide h2:first-child { margin-top: 0; }
+.guide figure { margin: 2rem 0; }
+.guide figure img { display: block; width: 100%; height: auto; border-radius: 10px; border: 1px solid var(--rule); }
+.guide figcaption { font-size: .92rem; color: var(--ink-2); margin-top: .6rem; }
+@media (min-width: 900px) {
+  .doc { grid-template-columns: 15rem minmax(0, 1fr); gap: 3.5rem; align-items: start; }
+  .doc-nav { display: block; position: sticky; top: 5rem; max-height: calc(100vh - 6rem); overflow-y: auto; padding-bottom: 1rem; }
+  .doc-jump { display: none; }
+}
 
 @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
 @media print { header.site, footer.site, nav.site { display: none; } body { background: #fff; color: #000; } }

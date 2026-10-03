@@ -261,18 +261,65 @@ def fill(text, site):
 
 
 def guide_html():
-    """The app's guide, from src/guide.md, with a table of contents."""
+    """The app's guide, from src/guide.md, beside a sidebar of its sections.
+
+    On iPad landscape and Mac the sections sit in a sticky sidebar that
+    marks where you are; on a phone and iPad portrait they fold into an
+    "On this page" button above the text.
+
+    Pictures: write them in guide.md as
+        ![What the picture shows](img/guide/margin-card.jpg "The caption under it")
+    and put the file in img/guide/. A picture alone in its paragraph
+    becomes a figure, its title the caption (the alt text is for VoiceOver)."""
     path = os.path.join(SRC, "guide.md")
     with open(path, encoding="utf-8") as f:
         md = f.read()
     # The app's H1 is its own title; the page supplies one.
     md = re.sub(r"^# .*\n", "", md, count=1)
-    body = markdown.markdown(md, extensions=["toc", "smarty"], extension_configs={"toc": {"toc_depth": "2"}})
-    # A slug per H2 from the toc extension; build the contents list.
-    heads = re.findall(r'<h2 id="([^"]+)">(.*?)</h2>', body)
-    toc = "\n".join(f'<li><a href="#{i}">{t}</a></li>' for i, t in heads)
-    return f'<nav class="toc" aria-label="Contents"><strong>On this page</strong><ol>{toc}</ol></nav>\n<div class="guide">{body}</div>'
+    body = markdown.markdown(md, extensions=["toc", "smarty", "attr_list"],
+                             extension_configs={"toc": {"toc_depth": "2-3"}})
 
+    def figure(m):
+        attrs = dict(re.findall(r'(\w+)="([^"]*)"', m.group(1)))
+        cap = f'<figcaption>{attrs["title"]}</figcaption>' if attrs.get("title") else ""
+        return (f'<figure><img src="{attrs.get("src", "")}" alt="{attrs.get("alt", "")}" loading="lazy">'
+                f'{cap}</figure>')
+    body = re.sub(r"<p>\s*<img ([^>]*?)/?>\s*</p>", figure, body)
+
+    # Sections and their subsections, for the sidebar.
+    items, current = [], None
+    for level, sid, text in re.findall(r'<h([23]) id="([^"]+)">(.*?)</h\1>', body):
+        if level == "2":
+            current = {"id": sid, "text": text, "subs": []}
+            items.append(current)
+        elif current:
+            current["subs"].append({"id": sid, "text": text})
+    def toc():
+        out = []
+        for it in items:
+            subs = "".join(f'<li><a href="#{s["id"]}">{s["text"]}</a></li>' for s in it["subs"])
+            out.append(f'<li><a href="#{it["id"]}">{it["text"]}</a>' + (f"<ol>{subs}</ol>" if subs else "") + "</li>")
+        return "<ol>" + "".join(out) + "</ol>"
+    script = """<script>
+(() => {
+  // Mark the section on screen in both lists; close the phone list after a choice.
+  const links = [...document.querySelectorAll('.doc-nav a, .doc-jump a')];
+  const heads = [...document.querySelectorAll('.guide h2[id], .guide h3[id]')];
+  const jump = document.querySelector('.doc-jump');
+  links.forEach(a => a.addEventListener('click', () => { if (jump) jump.open = false; }));
+  function mark() {
+    let here = heads[0];
+    for (const h of heads) { if (h.getBoundingClientRect().top < 120) here = h; else break; }
+    links.forEach(a => a.setAttribute('aria-current', String(here && a.hash === '#' + here.id)));
+  }
+  addEventListener('scroll', mark, { passive: true }); mark();
+})();
+</script>"""
+    return (f'<div class="doc">'
+            f'<nav class="doc-nav" aria-label="Guide sections"><p class="label">On this page</p>{toc()}</nav>'
+            f'<div class="doc-main"><details class="doc-jump"><summary>On this page</summary>'
+            f'<nav aria-label="Guide sections">{toc()}</nav></details>'
+            f'<div class="guide">{body}</div></div></div>\n{script}')
 
 def nice_date(d):
     return f"{d:%B} {d.day}, {d.year}"
