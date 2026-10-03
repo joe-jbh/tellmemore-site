@@ -308,9 +308,14 @@ def guide_html():
   const jump = document.querySelector('.doc-jump');
   links.forEach(a => a.addEventListener('click', () => { if (jump) jump.open = false; }));
   function mark() {
-    let here = heads[0];
-    for (const h of heads) { if (h.getBoundingClientRect().top < 120) here = h; else break; }
-    links.forEach(a => a.setAttribute('aria-current', String(here && a.hash === '#' + here.id)));
+    let here = heads[0], section = heads[0];
+    for (const h of heads) {
+      if (h.getBoundingClientRect().top >= 120) break;
+      here = h; if (h.tagName === 'H2') section = h;
+    }
+    // The section is marked, and the subsection too when you are in one.
+    const on = new Set([here, section].filter(Boolean).map(h => '#' + h.id));
+    links.forEach(a => a.setAttribute('aria-current', String(on.has(a.hash))));
   }
   addEventListener('scroll', mark, { passive: true }); mark();
 })();
