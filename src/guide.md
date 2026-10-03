@@ -38,6 +38,10 @@ Three ways; use whichever is natural.
 - Say it: tap **Ask**, tap the microphone, and say *"Romans 8"* or *"John chapter 3 verse 16"* or just *"chapter 4"* — or *"Read me Romans 8"* to go there and hear it.
 - Ask Siri: *"Navigate in Bible Reader"* — Siri asks which book, chapter or verse — then say *"Romans 8."* (More under **Siri and Shortcuts**.)
 
+Or follow a link: tap a reference in Ask or Search, or **Go to** in the Margin, and the page goes there.
+
+When a link takes you somewhere, a gold **bookmark** appears at the top of the page with the place you left, *Genesis 24:22*. Tap it to go back. It keeps that place however many links you follow, and even if you close the app, and it goes away once you are back at that verse.
+
 ## Search
 
 Tap **Search** and type or say a word or a phrase. You see every verse that contains it. With more than one word, two choices appear under the count: the words together as a phrase (*“kingdom of heaven”*), or all the words in any order. Each shows how many verses it finds. For a single word, the count at the top — *"281 verses, with related forms"* — opens to show what else was matched (*loved*, *loveth*, *lovingkindness*). **Strict**, in the row of chips, turns that off: only the exact word. Tap a result to open it in the page.
