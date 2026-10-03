@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tabs, not dots — Tell Me More</title>
+<meta name="description" content="A carousel's dots are a few points wide. For a reader with Parkinson's they may as well not be there.">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#FBFBF8" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#161614" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="../img/favicon.png">
+<link rel="apple-touch-icon" href="../img/icon-192.png">
+<link rel="alternate" type="application/rss+xml" title="Tell Me More — Developer notes" href="https://jbhstudio.app/feed.xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Public+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../css/site.css?v=030efb0a">
+</head>
+<body class="">
+<header class="site">
+  <div class="bar">
+    <a class="brand" href="../index.html"><img src="../img/icon-64.png" alt="" width="30" height="30">Bible Reader <span>· JBH Studio</span></a>
+    <nav class="site" aria-label="Site">
+      <a href="../guide.html">Guide</a>
+      <a href="../tutorials.html">Tutorials</a>
+      <a href="../notes.html" aria-current="page">Notes</a>
+      <a class="cta" href="../beta.html">Get the app</a>
+    </nav>
+    <details class="menu">
+      <summary>Menu</summary>
+      <nav aria-label="Site">
+        <a href="../index.html">Home</a>
+        <a href="../guide.html">Guide</a>
+        <a href="../voices.html">Choosing a voice</a>
+        <a href="../tutorials.html">Tutorials</a>
+        <a href="../notes.html" aria-current="page">Developer notes</a>
+        <a href="../beta.html">Get the app</a>
+      </nav>
+    </details>
+  </div>
+</header>
+<div class="wrap">
+<main>
+<article class="note-page"><div class="head"><small>Design · Accessibility · <time datetime="2026-10-01">October 1, 2026</time></small><h1>Tabs, not dots</h1></div><div class="aside">1 min read<br><a href="../notes.html#design">Design</a>, <a href="../notes.html#accessibility">Accessibility</a><br><a href="../notes.html">All notes</a></div><div class="body"><p>The home page shows six short videos, one for each thing the app does. The usual way to build that is a carousel with a row of dots underneath: one dot per slide, the current one filled in.</p>
+<p>I never shipped the dots. A dot is a few points across, and it says nothing about what it leads to. The app was built for my mother, whose hand shakes and whose eyes struggle with small grey shapes on a light page. A row of dots would give her nothing to aim at and no way to tell one slide from another.</p>
+<h2>What replaced them</h2>
+<ul>
+<li><strong>Tabs with words on them.</strong> <em>One screen · Speak · Listen · Ask · Margin · Siri.</em> Each one is at least 48 points tall and says what it is.</li>
+<li><strong>Big controls under the video.</strong> Back, Play/Pause, Sound and Next, each a 64-point button with a label under the icon.</li>
+<li><strong>A tap on the video pauses it.</strong> That&rsquo;s the one gesture everyone tries first.</li>
+<li><strong>It starts muted and moves on by itself</strong> when one short ends, so someone who just watches still sees all six.</li>
+</ul>
+<p>None of this is clever. It&rsquo;s what you get when the person you design for is in the room. The rule I keep coming back to: if a target is too small for her, it&rsquo;s too small.</p></div><nav class="note-nav" aria-label="More notes"><a href="speak-and-the-colon.html" rel="next" style="text-align:right;margin-left:auto"><span>Newer</span>Why Speak said &quot;twenty-four thousand twenty-two&quot;</a></nav></article>
+</main>
+<footer class="site">
+  <span>Tell Me More — Bible Reader · JBH Studio · 2026</span>
+  <nav aria-label="More">
+    <a href="../voices.html">Choosing a voice</a>
+    <a href="../sources.html">What's in the app</a>
+    <a href="../privacy.html">Privacy</a>
+    <a href="../flyer.html">Flyer</a>
+    <a href="../feed.xml">RSS</a>
+    <a href="mailto:joe.hocker@gmail.com">Contact</a>
+  </nav>
+</footer>
+</div>
+<script src="../js/shorts.js?v=652d1236" defer></script>
+</body>
+</html>

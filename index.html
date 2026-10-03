@@ -4,46 +4,56 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Tell Me More — Bible Reader</title>
-<meta name="description" content="A Bible that reads to you, listens to you, and answers your questions. Free, for iPad, Mac and iPhone. Nothing leaves the device.">
+<meta name="description" content="A Bible that reads to you, listens to you, and answers your questions. For iPad, Mac and iPhone. The reader is free, with optional in-app purchases for study aids. Nothing leaves the device.">
 <meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#FBFBF8" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#161614" media="(prefers-color-scheme: dark)">
 <link rel="icon" href="img/favicon.png">
 <link rel="apple-touch-icon" href="img/icon-192.png">
+<link rel="alternate" type="application/rss+xml" title="Tell Me More — Developer notes" href="https://jbhstudio.app/feed.xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Source+Sans+3:wght@400;600;700&display=swap">
-<link rel="stylesheet" href="css/site.css?v=06c87879">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Public+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="css/site.css?v=030efb0a">
 </head>
 <body class="">
-<div class="wrap">
 <header class="site">
-  <a class="brand" href="index.html"><img src="img/icon-64.png" alt="" width="40" height="40">Tell Me More <span>· Bible Reader</span></a>
-  <nav class="site" aria-label="Site">
-    <a href="index.html" aria-current="page">Home</a>
-    <a href="guide.html">Guide</a>
-    <a href="voices.html">Voices</a>
-    <a href="tutorials.html">Tutorials</a>
-    <a href="beta.html">Get the app</a>
-    <a href="privacy.html">Privacy</a>
-  </nav>
+  <div class="bar">
+    <a class="brand" href="index.html"><img src="img/icon-64.png" alt="" width="30" height="30">Bible Reader <span>· JBH Studio</span></a>
+    <nav class="site" aria-label="Site">
+      <a href="guide.html">Guide</a>
+      <a href="tutorials.html">Tutorials</a>
+      <a href="notes.html">Notes</a>
+      <a class="cta" href="beta.html">Get the app</a>
+    </nav>
+    <details class="menu">
+      <summary>Menu</summary>
+      <nav aria-label="Site">
+        <a href="index.html" aria-current="page">Home</a>
+        <a href="guide.html">Guide</a>
+        <a href="voices.html">Choosing a voice</a>
+        <a href="tutorials.html">Tutorials</a>
+        <a href="notes.html">Developer notes</a>
+        <a href="beta.html">Get the app</a>
+      </nav>
+    </details>
+  </div>
 </header>
+<div class="wrap">
 <main>
 <section class="hero">
-  <div>
-    <p class="eyebrow">For iPad, Mac and iPhone · Free · Nothing leaves the device</p>
-    <h1>A Bible that reads to you,<br> listens to you,<br> &amp; answers your questions.</h1>
+  <h1>A Bible that reads to you, listens to you, and <em>answers</em>.</h1>
+  <p class="sub">Made for one reader with Parkinson's and failing eyesight. The reader is free for everyone; study aids are optional in-app purchases.</p>
+  <div class="btn-row">
+    <a class="btn" href="beta.html">Get the app</a>
+    <a class="link" href="guide.html">Read the guide</a>
   </div>
-  <a class="get" href="beta.html">
-    <img class="icon" src="img/icon-512.png" alt="" width="512" height="512">
-    <span>Get the App</span>
-  </a>
+  <ul class="facts">
+    <li>iPad, iPhone and Mac</li>
+    <li>No account</li>
+    <li>Nothing leaves the device</li>
+  </ul>
 </section>
-
-<div class="prose">
-<p>Most Bible apps are built for people who find iPads easy. This one was built for someone who doesn't.</p>
-<p>It started as one app for one reader: a mother with Parkinson's and failing vision, who loved her Bible and couldn't use any of the apps that put it on a screen. The buttons were too small. The menus went three deep. The text was fine at arm's length and gone up close. Every app assumed a steady hand and a patient eye, and she had neither.</p>
-<p>So this one assumes nothing.</p>
-<p>(Except that someone sets up two things for the reader, once, in the iPad's own Settings: <a href="voices.html">a natural voice to read aloud</a>, under Accessibility, and <a href="voices.html#apple-intelligence">Apple Intelligence</a>, for Ask's written answers. Ten minutes, and the reader never sees either again.)</p>
-</div>
 
 <section class="shorts" data-shorts data-mode="carousel" aria-label="What it does">
 <div class="shorts-tabs" role="tablist" aria-label="Features"><button role="tab" type="button" data-goto="0" aria-selected="true">One screen</button><button role="tab" type="button" data-goto="1" aria-selected="false">Speak</button><button role="tab" type="button" data-goto="2" aria-selected="false">Listen</button><button role="tab" type="button" data-goto="3" aria-selected="false">Ask</button><button role="tab" type="button" data-goto="4" aria-selected="false">Margin</button><button role="tab" type="button" data-goto="5" aria-selected="false">Siri</button></div><div class="device" data-frame="ipad">
@@ -56,20 +66,54 @@
 <script type="application/json">{"items": [{"kind": "short", "id": "reader-book", "title": "Big buttons, nothing to set up", "text": "The page is the Bible. Above it, a few buttons, each larger than any you've pressed on an iPad, each labelled in words. No menus, no gestures to learn, nothing to confirm.", "eyebrow": "One screen", "src": "video/reader-book.mp4", "poster": "video/reader-book.jpg", "cues": [{"t": 0.2, "d": 1.9, "box": [11, 7, 20, 10], "text": "Tap the book and chapter"}, {"t": 2.1, "d": 1.6, "box": [28, 19, 24, 8], "text": "Then the book's name"}, {"t": 3.3, "d": 1.5, "box": [29, 26, 20, 8], "text": "Old Testament"}, {"t": 4.6, "d": 1.4, "box": [30, 44, 30, 8], "text": "Genesis"}, {"t": 6.2, "d": 2.0, "box": [27, 57, 12, 9], "text": "Then a chapter"}, {"t": 14.1, "d": 2.0, "box": [36, 5, 9, 10], "text": "Next chapter"}, {"t": 15.9, "d": 1.8, "box": [0, 5, 9, 10], "text": "Previous chapter"}, {"t": 17.6, "d": 1.6, "box": [11, 7, 20, 10], "text": "The book and chapter again"}, {"t": 19.0, "d": 1.8, "box": [28, 19, 24, 8], "text": "The book's name for the list"}, {"t": 22.2, "d": 1.9, "box": [51, 26, 20, 8], "text": "New Testament"}, {"t": 24.5, "d": 2.1, "box": [29, 79, 22, 8], "text": "John"}, {"t": 27.6, "d": 2.4, "box": [43, 41, 12, 10], "text": "Then chapter 3"}], "taps": [{"t": 1.4, "at": [22, 11]}, {"t": 2.6, "at": [40, 23]}, {"t": 4.2, "at": [39, 30]}, {"t": 5.2, "at": [45, 48]}, {"t": 7.4, "at": [33, 61]}, {"t": 15.2, "at": [40, 10]}, {"t": 16.9, "at": [4.5, 10]}, {"t": 18.2, "at": [22, 11]}, {"t": 19.9, "at": [40, 23]}, {"t": 23.4, "at": [61, 30]}, {"t": 25.8, "at": [40, 83]}, {"t": 29.2, "at": [49, 46]}], "glyph": "One screen"}, {"kind": "short", "id": "reader-speak", "title": "It reads to you", "text": "Tap Speak and the page is read aloud, every word lit as it's spoken. Pause and resume with one tap. Tap a verse and it picks up from there.", "eyebrow": "Speak", "src": "video/reader-speak.mp4", "poster": "video/reader-speak.jpg", "cues": [{"t": 1.2, "d": 1.9, "box": [1, 46, 98, 13], "text": "Tap a verse to start there"}, {"t": 3.8, "d": 2.0, "box": [55, 4, 11, 11], "text": "Speak reads it aloud"}, {"t": 7.6, "d": 2.0, "box": [55, 4, 11, 11], "text": "Pause"}, {"t": 12.6, "d": 2.0, "box": [55, 4, 11, 11], "text": "Resume carries on"}, {"t": 16.6, "d": 2.4, "box": [55, 4, 11, 11], "text": "Double-tap to stop"}, {"t": 19.4, "d": 1.9, "box": [1, 46, 98, 13], "text": "Tap the verse again to let it go"}, {"t": 21.4, "d": 5.0, "box": [1, 62, 98, 26], "text": "Or tap another verse"}], "taps": [{"t": 2.4, "at": [50, 52]}, {"t": 5.0, "at": [60, 10]}, {"t": 8.8, "at": [60, 10]}, {"t": 13.8, "at": [60, 10]}, {"t": 17.75, "at": [60, 10]}, {"t": 17.95, "at": [60, 10]}, {"t": 20.6, "at": [50, 52]}, {"t": 22.4, "at": [50, 69]}, {"t": 25.3, "at": [50, 82]}], "glyph": "Speak"}, {"kind": "placeholder", "id": "listen", "glyph": "Listen", "title": "It listens to you", "text": "Every place you can type, you can talk instead. Say \"Romans 8\" and you're there. Say \"who was Melchizedek\" and you get the answer. Speech is recognised on the iPad itself."}, {"kind": "placeholder", "id": "ask", "glyph": "Ask", "title": "It answers you", "text": "Ask about a name, a word, a passage, and you get the reference works' own words. On an iPad with Apple Intelligence, a short written answer to your question, every point cited."}, {"kind": "short", "id": "margin", "title": "A study Bible's margin", "text": "What is known about a verse sits beside the page: the people it names, its words in the Hebrew or Greek, the verses that speak to it, and commentary.", "eyebrow": "Margin", "src": "video/margin.mp4", "poster": "video/margin.jpg", "cues": [{"t": 0.6, "d": 2.0, "box": [65, 4, 14, 10], "text": "Margin"}, {"t": 3.6, "d": 4.5, "box": [66, 22, 33, 13], "text": "The people it names"}, {"t": 8.4, "d": 4.4, "box": [57, 47, 8, 16], "text": "Drag its edge to make room"}, {"t": 13.4, "d": 5.0, "box": [69, 37, 30, 42], "text": "Its words in the Hebrew or Greek"}, {"t": 21.2, "d": 2.0, "box": [1, 44, 64, 22], "text": "Tap another verse"}, {"t": 23.4, "d": 3.4, "box": [1, 44, 64, 22], "text": "Small letters tie the verse to the margin"}, {"t": 27.0, "d": 6.0, "box": [68, 45, 31, 40], "text": "Cross-references, under the word they explain"}], "taps": [{"t": 1.8, "at": [72, 9]}, {"t": 9.9, "at": [58, 55], "to": [52, 55], "d": 0.6}, {"t": 11.6, "at": [52, 55], "to": [66, 55], "d": 0.8}, {"t": 22.4, "at": [25, 48]}], "glyph": "Margin"}, {"kind": "placeholder", "id": "siri", "glyph": "Siri", "title": "Ask Siri", "text": "\"Open John 3:16 in Bible Reader.\" From the lock screen, from Shortcuts, from across the room. \"Ask Bible Reader\" and your question goes straight to Ask."}]}</script>
 </section>
 
-<div class="prose">
-<h2>Everything stays on your iPad</h2>
-<p>No account. No sign-in. Nothing you read or say leaves the device — not because of a privacy policy, but because there is no code that could send it. The King James text and loads of public domain reference works are built in, each credited on its own page inside the app, and any of them can be exported as a plain text file. <a href="sources.html">See the Bibles and references included</a>, and the commentaries you can add.</p>
+<section class="sect">
+  <p class="label">Why</p>
+  <div class="story">
+    <p>Every Bible app assumed a steady hand and a patient eye. She had neither.</p>
+    <p>So this one assumes nothing.</p>
+    <p class="muted">The buttons were too small, the menus went three deep, and the text was fine at arm's length and gone up close. This app has large type, large buttons, and a voice that reads. Someone sets up two things once, in the iPad's own Settings: <a href="voices.html">a natural voice</a> and <a href="voices.html#apple-intelligence">Apple Intelligence</a> for Ask's written answers. Ten minutes, and the reader never sees either again.</p>
+  </div>
+</section>
 
-<h2>Free</h2>
-<p>The simple reader was written as a gift, for one person. It's free for everyone else for the same reason.</p>
+<section class="sect">
+  <p class="label">Private</p>
+  <div>
+    <h2>Everything stays on your iPad.</h2>
+    <p>No account. No sign-in. Nothing you read or say leaves the device — not because of a privacy policy, but because there is no code that could send it. The King James text and loads of public-domain reference works are built in, each credited inside the app. <a href="sources.html">See what's included</a>.</p>
+  </div>
+</section>
+
+<section class="sect">
+  <p class="label">Price</p>
+  <div>
+    <h2>The reader is free.</h2>
+    <p>Reading the Bible and searching it cost nothing, with no ads and no account. The study aids are optional in-app purchases: the <strong>Margin</strong>, which puts names, old words, places and measures beside the verse you're on, and <strong>Ask</strong>, which answers your questions from the Bible and the references built into the app.</p>
+  </div>
+</section>
+
+<section class="sect">
+  <p class="label">Developer notes</p>
+  <div>
+    <a class="nrow" href="notes/three-ocr-engines.html"><b>Reading an 1871 dictionary with three OCR engines</b><small><time datetime="2026-10-03">October 3, 2026</time></small></a>
+<a class="nrow" href="notes/rebekahs-earring.html"><b>What was Rebekah's earring worth?</b><small><time datetime="2026-10-02">October 2, 2026</time></small></a>
+<a class="nrow" href="notes/speak-and-the-colon.html"><b>Why Speak said &quot;twenty-four thousand twenty-two&quot;</b><small><time datetime="2026-10-02">October 2, 2026</time></small></a>
+    <p class="btn-row" style="margin-top:1.2rem"><a class="link" href="notes.html">All notes</a></p>
+  </div>
+</section>
 
 <p class="muted small">Requires an iPad or iPhone running iPadOS or iOS 26 or later, or a Mac with Apple silicon running macOS 26. Written answers require Apple Intelligence.</p>
-</div>
 
 </main>
 <footer class="site">
   <span>Tell Me More — Bible Reader · JBH Studio · 2026</span>
-  <span><a href="sources.html">What's in the app</a> · <a href="privacy.html">Privacy</a> · <a href="mailto:joe.hocker@gmail.com">Contact</a> · <a href="flyer.html">Flyer</a></span>
+  <nav aria-label="More">
+    <a href="voices.html">Choosing a voice</a>
+    <a href="sources.html">What's in the app</a>
+    <a href="privacy.html">Privacy</a>
+    <a href="flyer.html">Flyer</a>
+    <a href="feed.xml">RSS</a>
+    <a href="mailto:joe.hocker@gmail.com">Contact</a>
+  </nav>
 </footer>
 </div>
 <script src="js/shorts.js?v=652d1236" defer></script>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reading an 1871 dictionary with three OCR engines — Tell Me More</title>
+<meta name="description" content="Two readers agreeing isn't the same as being right. How glm, Apple Vision and the Internet Archive voted on 2,409 Bible names.">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#FBFBF8" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#161614" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="../img/favicon.png">
+<link rel="apple-touch-icon" href="../img/icon-192.png">
+<link rel="alternate" type="application/rss+xml" title="Tell Me More — Developer notes" href="https://jbhstudio.app/feed.xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Public+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../css/site.css?v=030efb0a">
+</head>
+<body class="">
+<header class="site">
+  <div class="bar">
+    <a class="brand" href="../index.html"><img src="../img/icon-64.png" alt="" width="30" height="30">Bible Reader <span>· JBH Studio</span></a>
+    <nav class="site" aria-label="Site">
+      <a href="../guide.html">Guide</a>
+      <a href="../tutorials.html">Tutorials</a>
+      <a href="../notes.html" aria-current="page">Notes</a>
+      <a class="cta" href="../beta.html">Get the app</a>
+    </nav>
+    <details class="menu">
+      <summary>Menu</summary>
+      <nav aria-label="Site">
+        <a href="../index.html">Home</a>
+        <a href="../guide.html">Guide</a>
+        <a href="../voices.html">Choosing a voice</a>
+        <a href="../tutorials.html">Tutorials</a>
+        <a href="../notes.html" aria-current="page">Developer notes</a>
+        <a href="../beta.html">Get the app</a>
+      </nav>
+    </details>
+  </div>
+</header>
+<div class="wrap">
+<main>
+<article class="note-page"><div class="head"><small>Engineering · Content · <time datetime="2026-10-03">October 3, 2026</time></small><h1>Reading an 1871 dictionary with three OCR engines</h1></div><div class="aside">2 min read<br><a href="../notes.html#engineering">Engineering</a>, <a href="../notes.html#content">Content</a><br><a href="../notes.html">All notes</a></div><div class="body"><p>Hitchcock&rsquo;s <em>Interpreting Dictionary of Scripture Proper Names</em> fills ten pages at the back of <em>Hitchcock&rsquo;s New and Complete Analysis of the Holy Bible</em> (1871): three columns to a page, one name and its meaning to a line. <em>Boaz, or Booz, in strength.</em> The app uses it to explain the names you meet in the text.</p>
+<p>There&rsquo;s already a well-known e-text of it. I wanted our own copy, read from the printed page, that we could check line by line and stand behind.</p>
+<h2>Three readers</h2>
+<p>Each column is cut into halves, and each half is read three times:</p>
+<ul>
+<li><strong>glm-ocr</strong>, a small vision model running locally on my Mac through Ollama;</li>
+<li><strong>Apple Vision</strong>, the text recognition built into macOS, with its language correction turned off so it reports what it sees;</li>
+<li>the <strong>Internet Archive&rsquo;s</strong> own OCR of the same scan.</li>
+</ul>
+<p>At first the rule was simple. glm&rsquo;s reading is the base, and wherever Apple and the Archive agree on something different, take their version.</p>
+<h2>Two readers, one mistake</h2>
+<p>That rule turned out to be wrong more often than right. Old type wears out. A semicolon&rsquo;s tail fades, and both machines see a colon. A worn <em>u</em> prints like an <em>n</em>, so both read &ldquo;house&rdquo; as &ldquo;honse&rdquo;. A word split across two lines (&ldquo;smit- … ing of his son&rdquo;) gets rejoined by glm and left in pieces by the other two. In each case glm, which reads more like a person does, had it right, and the vote overruled it.</p>
+<p>So the rule changed: a correction is only taken if it produces a real word. It&rsquo;s the rule a human proofreader uses without thinking about it.</p>
+<h2>Checking against the page</h2>
+<p>After the change, 2,341 of the 2,390 names that appear in both our copy and the earlier e-text read exactly the same. I checked every remaining difference against the scan, zoomed in:</p>
+<ul>
+<li><strong>Where we were wrong</strong>, glm misread a few names. <em>Zibcon</em> is Zibeon, and <em>roof</em> had been read as <em>root</em>.</li>
+<li><strong>Where the print itself is damaged</strong>, the name is certain from the King James text. <em>Chnza</em> is Chuza (Luke 8:3) and <em>Zcr</em> is Zer.</li>
+<li><strong>Where the print is simply wrong</strong>, we fix it and say so: &ldquo;release; per-don&rdquo;.</li>
+<li><strong>Where the earlier e-text is wrong</strong>, the scan sides with us. Bethphage is &ldquo;house of my <em>mouth</em>&rdquo;, not &ldquo;month&rdquo;, and Habaziniah, Sanhedrim and Shaaph are spelled the way the page spells them.</li>
+</ul>
+<p>Every correction is logged with what the page shows and a cropped image of it. One line, <em>Mizar, little</em>, was lost because the column was cut through the middle of it; the next version of the cutter looks for a blank row in the image before it cuts.</p>
+<p>Next up: Nave&rsquo;s Topical Bible, at two columns and about eight hundred pages.</p></div><nav class="note-nav" aria-label="More notes"><a href="rebekahs-earring.html" rel="prev"><span>Older</span>What was Rebekah's earring worth?</a></nav></article>
+</main>
+<footer class="site">
+  <span>Tell Me More — Bible Reader · JBH Studio · 2026</span>
+  <nav aria-label="More">
+    <a href="../voices.html">Choosing a voice</a>
+    <a href="../sources.html">What's in the app</a>
+    <a href="../privacy.html">Privacy</a>
+    <a href="../flyer.html">Flyer</a>
+    <a href="../feed.xml">RSS</a>
+    <a href="mailto:joe.hocker@gmail.com">Contact</a>
+  </nav>
+</footer>
+</div>
+<script src="../js/shorts.js?v=652d1236" defer></script>
+</body>
+</html>

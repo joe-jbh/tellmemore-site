@@ -22,6 +22,8 @@ Placeholders a page body may use:
     {{showcase}}          the home page's carousel: the feature cards from shorts.json, each with its short
     {{shorts_tiles}}      every short as a tile, by chapter, with "Play all" (the tutorials page)
     {{short:<id>}}        one short on its own, waiting for a tap
+    {{notes_latest}}      the three newest developer notes (src/notes/*.md; see load_notes)
+    {{root}}              "" on top-level pages, "../" on notes/*.html (the layout's links use it)
 
 The shorts themselves are cut by tools/cut_shorts.py into video/. A short
 marked "draft" in shorts.json is left off the site unless you build with
@@ -272,10 +274,175 @@ def guide_html():
     return f'<nav class="toc" aria-label="Contents"><strong>On this page</strong><ol>{toc}</ol></nav>\n<div class="guide">{body}</div>'
 
 
+def nice_date(d):
+    return f"{d:%B} {d.day}, {d.year}"
+
+
+def tag_id(tag):
+    return re.sub(r"[^a-z0-9]+", "-", tag.lower()).strip("-")
+
+
+def load_notes():
+    """The developer notes: src/notes/*.md, newest first. Each starts with
+    front matter between --- lines:
+
+        ---
+        title: What was Rebekah's earring worth?
+        date: 2026-10-02
+        tags: Design, Content
+        summary: One line for the list, the home page and the feed.
+        draft: true            (optional: left out unless built with --drafts)
+        ---
+
+    The file name is the date and the page's address: 2026-10-02-rebekahs-earring.md
+    becomes notes/rebekahs-earring.html. Pictures go in notes/img/."""
+    folder = os.path.join(SRC, "notes")
+    notes = []
+    if not os.path.isdir(folder):
+        return notes
+    for name in sorted(os.listdir(folder)):
+        if not name.endswith(".md"):
+            continue
+        with open(os.path.join(folder, name), encoding="utf-8") as f:
+            text = f.read()
+        meta, body = {}, text
+        m = re.match(r"---\n(.*?)\n---\n", text, re.S)
+        if m:
+            for line in m.group(1).splitlines():
+                if ":" in line:
+                    k, v = line.split(":", 1)
+                    meta[k.strip().lower()] = v.strip()
+            body = text[m.end():]
+        draft = meta.get("draft", "").lower() in ("true", "yes")
+        if draft and not DRAFTS:
+            continue
+        slug = meta.get("slug") or re.sub(r"^\d{4}-\d{2}-\d{2}-", "", name[:-3])
+        notes.append({
+            "slug": slug,
+            "title": meta.get("title", slug),
+            "date": dt.date.fromisoformat(meta.get("date") or name[:10]),
+            "tags": [t.strip() for t in meta.get("tags", "").split(",") if t.strip()],
+            "summary": meta.get("summary", ""),
+            "draft": draft,
+            "minutes": max(1, round(len(re.findall(r"\w+", body)) / 220)),
+            "html": markdown.markdown(body, extensions=["smarty", "tables", "fenced_code", "attr_list"]),
+        })
+    notes.sort(key=lambda n: n["date"], reverse=True)
+    return notes
+
+
+def draft_flag(n):
+    return '<span class="draft-flag">Draft</span>' if n["draft"] else ""
+
+
+def notes_latest(notes, root=""):
+    if not notes:
+        return '<p class="muted">The first notes are on their way.</p>'
+    return "\n".join(
+        f'<a class="nrow" href="{root}notes/{n["slug"]}.html"><b>{html_escape(n["title"])}{draft_flag(n)}</b>'
+        f'<small><time datetime="{n["date"].isoformat()}">{nice_date(n["date"])}</time></small></a>'
+        for n in notes[:3])
+
+
+def notes_index(notes):
+    tags = sorted({t for n in notes for t in n["tags"]})
+    chips = "".join(f'<li><a href="#{tag_id(t)}" data-tag="{tag_id(t)}">{html_escape(t)}</a></li>' for t in tags)
+    out = ['<section class="notes-head"><p class="eyebrow">Developer notes</p><h1>How it’s made</h1>'
+           '<p>The hard problems, the design choices, and what changed because a reader said so.</p>'
+           f'<ul class="tags" aria-label="Show notes about"><li><a href="#" data-tag="" aria-current="true">All</a></li>{chips}</ul></section>']
+    year = None
+    for n in notes:
+        if n["date"].year != year:
+            year = n["date"].year
+            out.append(f'<div class="year">{year}</div>')
+        label = " · ".join([f'{n["date"]:%B} {n["date"].day}'] + n["tags"][:2])
+        out.append(f'<a class="entry" href="notes/{n["slug"]}.html" data-tags="{" ".join(tag_id(t) for t in n["tags"])}">'
+                   f'<small>{html_escape(label)}</small><b>{html_escape(n["title"])}{draft_flag(n)}</b><p>{html_escape(n["summary"])}</p></a>')
+    if not notes:
+        out.append('<p class="muted">The first notes are on their way.</p>')
+    # A tag shows only its notes; with no script, every note shows.
+    out.append("""<script>
+(() => {
+  const chips = document.querySelectorAll(".tags a"), rows = document.querySelectorAll(".entry");
+  function show() {
+    const t = location.hash.slice(1);
+    chips.forEach(c => c.setAttribute("aria-current", String(c.dataset.tag === t)));
+    rows.forEach(r => { r.hidden = !!t && !r.dataset.tags.split(" ").includes(t); });
+    document.querySelectorAll(".year").forEach(y => {
+      let el = y.nextElementSibling, any = false;
+      while (el && !el.classList.contains("year")) { if (!el.hidden) any = true; el = el.nextElementSibling; }
+      y.hidden = !any;
+    });
+  }
+  addEventListener("hashchange", show); show();
+})();
+</script>""")
+    return "\n".join(out)
+
+
+def note_page(n, newer, older):
+    tags = ", ".join(f'<a href="../notes.html#{tag_id(t)}">{html_escape(t)}</a>' for t in n["tags"])
+    nav = []
+    if older:
+        nav.append(f'<a href="{older["slug"]}.html" rel="prev"><span>Older</span>{html_escape(older["title"])}</a>')
+    if newer:
+        nav.append(f'<a href="{newer["slug"]}.html" rel="next" style="text-align:right;margin-left:auto"><span>Newer</span>{html_escape(newer["title"])}</a>')
+    return (f'<article class="note-page">'
+            f'<div class="head"><small>{" · ".join(n["tags"])} · <time datetime="{n["date"].isoformat()}">{nice_date(n["date"])}</time></small>'
+            f'<h1>{html_escape(n["title"])}{draft_flag(n)}</h1></div>'
+            f'<div class="aside">{n["minutes"]} min read' + (f'<br>{tags}' if tags else "") +
+            f'<br><a href="../notes.html">All notes</a></div>'
+            f'<div class="body">{n["html"]}</div>'
+            f'<nav class="note-nav" aria-label="More notes">{"".join(nav)}</nav></article>')
+
+
+def feed_xml(site, notes):
+    from email.utils import format_datetime
+    from xml.sax.saxutils import escape
+    url = site["site_url"].rstrip("/")
+    items = []
+    for n in notes[:20]:
+        when = dt.datetime(n["date"].year, n["date"].month, n["date"].day, 12, tzinfo=dt.timezone.utc)
+        link = f"{url}/notes/{n['slug']}.html"
+        items.append(f"<item><title>{escape(n['title'])}</title><link>{link}</link><guid>{link}</guid>"
+                     f"<pubDate>{format_datetime(when)}</pubDate><description>{escape(n['summary'])}</description></item>")
+    return ('<?xml version="1.0" encoding="utf-8"?>\n<rss version="2.0"><channel>'
+            f"<title>{escape(site['app_name'])} — Developer notes</title><link>{url}/notes.html</link>"
+            "<description>The hard problems, the design choices, and what changed because a reader said so.</description>"
+            + "".join(items) + "</channel></rss>\n")
+
+
+def render(layout, site, meta, body, out_name, root="", current=None):
+    """One page: the body in the layout, the values filled in, the assets
+    versioned, the current page marked in the bar, written to out_name."""
+    html = layout.replace("{{content}}", body)
+    html = html.replace("{{title}}", meta.get("title", site["app_name"]))
+    html = html.replace("{{description}}", meta.get("description", ""))
+    html = html.replace("{{nav}}", meta.get("nav", ""))
+    html = html.replace("{{layout}}", meta.get("layout", ""))
+    html = html.replace("{{root}}", root)
+    html = fill(html, site)
+    # A version on the stylesheet and script, from their contents, so a
+    # browser holding an older copy (Cloudflare tells it to keep one for
+    # hours) fetches the new one the moment it changes.
+    for asset in ("css/site.css", "js/shorts.js"):
+        html = html.replace(f'"{root}{asset}"', f'"{root}{asset}?v={asset_version(asset)}"')
+    # Mark the current page in the bar and the menu (not the brand, which also links home).
+    here = f'{root}{current or out_name}'
+    html = re.sub(r'<nav class="site".*?</nav>|<details class="menu">.*?</details>',
+                  lambda m: m.group(0).replace(f'<a href="{here}"', f'<a href="{here}" aria-current="page"', 1),
+                  html, flags=re.S)
+    path = os.path.join(ROOT, out_name)
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    with open(path, "w", encoding="utf-8") as f:
+        f.write(html)
+
+
 def build():
     site = load_site()
     with open(os.path.join(SRC, "_layout.html"), encoding="utf-8") as f:
         layout = f.read()
+    notes = load_notes()
     built = []
     for name in sorted(os.listdir(SRC)):
         if not name.endswith(".html") or name.startswith("_"):
@@ -289,24 +456,21 @@ def build():
         body = page[m.end():] if m else page
         if name == "guide.html":
             body = body.replace("{{guide}}", guide_html())
-        html = layout.replace("{{content}}", body)
-        html = html.replace("{{title}}", meta.get("title", site["app_name"]))
-        html = html.replace("{{description}}", meta.get("description", ""))
-        html = html.replace("{{nav}}", meta.get("nav", ""))
-        html = html.replace("{{layout}}", meta.get("layout", ""))
-        html = fill(html, site)
-        # A version on the stylesheet and script, from their contents, so a
-        # browser holding an older copy (Cloudflare tells it to keep one for
-        # hours) fetches the new one the moment it changes.
-        for asset in ("css/site.css", "js/shorts.js"):
-            html = html.replace(f'"{asset}"', f'"{asset}?v={asset_version(asset)}"')
-        # Mark the current page in the nav (in the nav only: the brand also links home).
-        html = re.sub(r'<nav class="site".*?</nav>',
-                      lambda m: m.group(0).replace(f'<a href="{name}"', f'<a href="{name}" aria-current="page"', 1),
-                      html, count=1, flags=re.S)
-        with open(os.path.join(ROOT, name), "w", encoding="utf-8") as f:
-            f.write(html)
+        body = body.replace("{{notes_latest}}", notes_latest(notes))
+        render(layout, site, meta, body, name)
         built.append(name)
+
+    # The notes: an index, a page each, and a feed.
+    render(layout, site, {"title": f"Developer notes — {site['app_name']}",
+                          "description": "How the Tell Me More Bible Reader is made: the hard problems, the design choices, and what changed because a reader said so."},
+           notes_index(notes), "notes.html")
+    for i, n in enumerate(notes):
+        render(layout, site, {"title": f"{n['title']} — {site['app_name']}", "description": n["summary"]},
+               note_page(n, notes[i - 1] if i > 0 else None, notes[i + 1] if i + 1 < len(notes) else None),
+               f"notes/{n['slug']}.html", root="../", current="notes.html")
+    with open(os.path.join(ROOT, "feed.xml"), "w", encoding="utf-8") as f:
+        f.write(feed_xml(site, notes))
+    built.append(f"notes.html + {len(notes)} note(s) + feed.xml")
     print("built " + ", ".join(built) + (" (with drafts)" if DRAFTS else ""))
 
 

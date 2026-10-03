@@ -31,7 +31,7 @@ Rare Bible names are said the way the concordance spells them out — *Habakkuk*
 Three ways; use whichever is natural.
 
 - Tap the chapter name and pick from the grid.
-- Say it: tap **Ask**, tap the microphone, and say *"Romans 8"* or *"John chapter 3 verse 16"* or just *"chapter 4"*.
+- Say it: tap **Ask**, tap the microphone, and say *"Romans 8"* or *"John chapter 3 verse 16"* or just *"chapter 4"* — or *"Read me Romans 8"* to go there and hear it.
 - Ask Siri: *"Navigate in Bible Reader"* — Siri asks which book, chapter or verse — then say *"Romans 8."* (More under **Siri and Shortcuts**.)
 
 ## Search
@@ -49,6 +49,8 @@ You get the reference works' own words: what a name means (*Noah — rest; repos
 Tap a result to select it; its scripture references become links you can open where they stand, and **Speak** reads the entry. Press and hold to copy it.
 
 **Suggestions** offers the questions worth asking about the passage you are on — *"Tell me more about Jeremiah 29:11"*, *"What was happening when this was written?"* — so you type nothing. **History** keeps what you have asked, searched and gone to, so you can do it again with one tap.
+
+Ask also does what you tell it. Say or type *"Read me John 6"* and it goes there and reads the chapter aloud; *"Read me John 3:16"* reads that one verse (then *"Keep reading"* carries on). *"Read this chapter"*, *"Read from verse 16"*, *"Stop"*, *"Pause"*, *"Keep reading"*, *"Next chapter"*, *"Bigger"*, *"Smaller"* and *"Search for mercy"* do what they say, and Ask gets out of the way. *"Go to John 6"* or *"Open John 6"* just goes there. Anything else is a question, as before.
 
 Siri can ask for you: *"Ask Bible Reader"* — Siri says *"What would you like to ask?"* — and your question goes to Ask as if you had said it there.
 
