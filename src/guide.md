@@ -40,7 +40,7 @@ Three ways; use whichever is natural.
 
 ## Search
 
-Tap **Search** and type or say a word. You see every verse that contains it. The count at the top — *"281 verses, with related forms"* — opens to show what else was matched (*loved*, *loveth*, *lovingkindness*). **Strict**, in the row of chips, turns that off: only the exact word. Tap a result to open it in the page.
+Tap **Search** and type or say a word or a phrase. You see every verse that contains it. With more than one word, two choices appear under the count: the words together as a phrase (*“kingdom of heaven”*), or all the words in any order. Each shows how many verses it finds. For a single word, the count at the top — *"281 verses, with related forms"* — opens to show what else was matched (*loved*, *loveth*, *lovingkindness*). **Strict**, in the row of chips, turns that off: only the exact word. Tap a result to open it in the page.
 
 ## Ask
 
