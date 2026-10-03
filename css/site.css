@@ -177,6 +177,19 @@ footer.site a:hover { color: var(--ink); text-decoration: underline; }
   .flist li { grid-template-columns: 9rem 1fr; }
 }
 
+/* ---- home: what's in the app, as tiers ---- */
+.tiers { list-style: none; margin: 1.6rem 0 0; padding: 0; display: grid; gap: 0; }
+.tiers > li { margin: 0; padding: 1.4rem 0; border-top: 1px solid var(--rule); }
+.tiers > li:first-child { border-top: 0; padding-top: .4rem; }
+.tiers h3 { font: 500 clamp(1.35rem, 2.4vw, 1.6rem)/1.2 var(--serif); margin: .5rem 0 .4rem; letter-spacing: -.005em; }
+.tiers p { margin: 0; color: var(--ink-2); max-width: 60ch; }
+.tier-tag { display: inline-block; font-size: .75rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2) !important; border: 1px solid var(--rule); border-radius: 999px; padding: .2rem .7rem; }
+.tier-tag.free { color: var(--accent) !important; border-color: var(--accent); }
+.works { list-style: none; margin: 1rem 0 0; padding: 0; display: grid; gap: 0; }
+.works li { margin: 0; display: grid; grid-template-columns: 9.5rem 1fr; gap: 1rem; padding: .55rem 0; border-top: 1px dashed var(--rule); font-size: 1rem; color: var(--ink-2); }
+.works b { color: var(--ink); font-weight: 600; }
+@media (max-width: 560px) { .works li { grid-template-columns: 1fr; gap: .1rem; } }
+
 /* ---- the notes ---- */
 .nrow { display: grid; gap: .1rem; padding: 1rem 0; border-bottom: 1px solid var(--rule); text-decoration: none; color: var(--ink); }
 .nrow:first-child { padding-top: 0; }
