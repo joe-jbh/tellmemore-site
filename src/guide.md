@@ -78,7 +78,7 @@ Everything in it opens *over* the page: tap a verse there and you see it, can he
 
 The microphone works in both Search and Ask. Tap it, say what you want, and stop talking — it ends on its own after a pause. Tap it again to stop early.
 
-If it keeps mishearing you, **Settings › Read Aloud › Better speech recognition** sends your speech to Apple to be turned into words instead of doing it on the device. It is off unless you turn it on.
+If it keeps mishearing you, **Settings › Ask › Better Speech Recognition** sends your speech to Apple to be turned into words instead of doing it on the device. It is off unless you turn it on.
 
 ## Siri and Shortcuts
 
@@ -121,17 +121,23 @@ The same app, with a menu bar. The **Reading** menu has everything on the toolba
 
 ## Settings worth knowing
 
-- **Reading Profile** — **Simple Reader**, **Reference** or **Ask – Tell Me More**: one tap sets which buttons the toolbar shows and how big they are. Simple Reader is the page and Speak alone, with the largest buttons (and, on an iPhone, Books and the chapter arrows in the bottom row); Reference adds Search and the Margin; Ask – Tell Me More adds Ask. Every switch it sets stays a switch of its own, further down.
-- **Read Aloud** — the voice, and Slower / Faster. *Hear this voice* previews it. The first choice uses whatever voice the device's own Accessibility settings have chosen; that is the only way to get a Siri voice.
-- **Study References** — which reference works Ask searches. All on by default. Under **Commentary**, five more works — Matthew Henry's complete commentary, Adam Clarke, Jamieson-Fausset-Brown, Barnes on the New Testament and Spurgeon's Treasury of David — are a 157 MB download rather than part of the app: tap **Download** once, on Wi-Fi if you can, and they join the Margin and Ask like the rest; **Remove** frees the space. Barnes covers only the New Testament and the Treasury only the Psalms, and the rows say so.
-- **Reading** — verse numbers on or off; text size.
-- **About › Sources & Licenses** — where every text came from and the terms it is under, each exportable as a text file.
+Settings is a list of pages, with a search at the top: type what you're after (*voice*, *font*, *history*) and it takes you to the setting.
+
+- **Reading Profile** — **Simple Reader**, **Reference** or **Ask – Tell Me More**: one tap sets which buttons the toolbar shows and how big they are. Simple Reader is the page and Speak alone, with the largest buttons (and, on an iPhone, Books and the chapter arrows in the bottom row); Reference adds Search and the Margin; Ask – Tell Me More adds Ask. Every switch it sets stays a switch of its own.
+- **Reading** — text size, the theme, verse numbers, the words of Christ in red, and chapter summaries.
+- **Read Aloud** — the voice, and Slower / Faster. *Hear This Voice* previews it. The first choice uses whatever voice the device's own Accessibility settings have chosen; that is the only way to get a Siri voice. Under **Other Languages**, the voice for the Spanish and Chinese Bibles: if only basic ones are there, download one marked **Enhanced** or **Premium** in the iPad's Settings › Accessibility › Read & Speak › Voices (from the main list; apps can't use the Siri voices), and it appears once it has downloaded.
+- **Toolbar** — button size, labels, and which buttons show: Search, Ask and Margin. (Ask and Margin can also be turned on or off on their own pages.)
+- **Margin** — the Margin on or off, and its **sections**: check the ones you want, drag them into the order you want, and the Margin shows them that way.
+- **Ask** — Ask on or off, which references it searches, its History, and **Better Speech Recognition**.
+- **Bibles** — the King James is always the page. Beside it, in the Margin's **Parallel Translations**, the Berean Standard Bible comes with the app, and five more are one download (about 28 MB): the **World English Bible**, the **Reina-Valera 1909** and the **Nueva Biblia Viva** (Spanish; the second is a paraphrase), and the **Chinese Union Version** and the **Chinese Contemporary Bible**. Check the ones you want to see; **Speak** on a Spanish or Chinese card reads it in a voice for that language. Where a translation numbers a verse differently, or joins two verses into one, the card says so (*2:1*, *vv. 11–12*).
+- **References** — which reference works Ask searches and the Margin shows. All on by default. Under **Commentary**, five more works — Matthew Henry's complete commentary, Adam Clarke, Jamieson-Fausset-Brown, Barnes on the New Testament and Spurgeon's Treasury of David — are a 157 MB download rather than part of the app: tap **Download** once, on Wi-Fi if you can; **Remove** frees the space.
+- **Help** — Set Up This iPad, Diagnostics, this guide, and **Sources & Licenses**: where every text came from and the terms it is under.
 
 ## What to tell us
 
 - **Anything you could not hit** — a button, a chip, the panel's grab handle.
 - **Anything you could not read** — too small, too faint, the wrong colour in Night.
-- **What the microphone heard versus what you said.** Settings › Diagnostics has a log.
+- **What the microphone heard versus what you said.** Settings › Help › Diagnostics has a log.
 - **A Siri phrase that did not work,** with Siri's exact words back.
 - **A wrong answer in Ask** — say which chip and what you asked.
 - **Anything that felt like one step too many.**

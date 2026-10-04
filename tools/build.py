@@ -263,6 +263,7 @@ ESSENTIALS = """<aside class="essentials" aria-labelledby="essentials-title">
       <p>Turn it on in <em>Settings › Siri</em> on an iPad that supports it. Ask still finds everything without it. <a href="voices.html#apple-intelligence">How</a></p>
     </li>
   </ol>
+  <p class="ess-after">Then, in the app's own Settings, choose what the reader sees: which buttons are on the toolbar, which sections the Margin shows and in what order, whether Ask is there at all. <a href="voices.html#app-settings">App settings</a></p>
 </aside>"""
 
 

@@ -190,6 +190,7 @@ footer.site a:hover { color: var(--ink); text-decoration: underline; }
 .essentials h3 { margin: .2rem 0 0; font-size: 1.1rem; }
 .essentials li p { margin: 0; font-family: var(--sans); font-size: 1rem; color: var(--ink-2); line-height: 1.55; }
 .essentials a { white-space: nowrap; font-weight: 500; }
+.essentials .ess-after { margin: 1.1rem 0 0; padding-top: .9rem; border-top: 1px solid var(--rule); font-family: var(--sans); font-size: 1rem; color: var(--ink-2); line-height: 1.55; }
 
 /* ---- home: what's in the app, as tiers ---- */
 .tiers { list-style: none; margin: 1.6rem 0 0; padding: 0; display: grid; gap: 0; }
@@ -545,3 +546,37 @@ h2:target::before, h3:target::before { content: ""; position: absolute; left: -1
   }
 }
 @media (max-width: 900px) { header.site .brand span { display: none; } }
+
+/* ---- Setup: System Settings / App Settings tabs ----
+   Without script both panels show, one after the other, and the tabs are
+   links to them; with it, one panel at a time. */
+.setup-tabs { display: flex; flex-wrap: wrap; gap: .25rem; margin: 2rem 0 2rem; border-bottom: 1px solid var(--rule); max-width: 52rem; }
+.setup-tabs a {
+  font: 600 1.1rem/1 var(--sans); letter-spacing: .01em; color: var(--ink-2); text-decoration: none;
+  min-height: 48px; padding: .9rem 1.1rem .8rem; display: inline-flex; align-items: center;
+  border-bottom: 3px solid transparent; margin-bottom: -1px;
+}
+.setup-tabs a:hover { color: var(--ink); }
+.setup-tabs a[aria-selected="true"] { color: var(--accent); border-bottom-color: var(--accent); }
+html:not(.js-tabs) .setup-tabs a[aria-selected] { color: var(--accent); }
+.setup-tabs a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 6px; }
+.setup-panel { scroll-margin-top: 5.5rem; }
+html:not(.js-tabs) #app-settings { margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--rule); }
+
+/* The Margin's sections, drawn as they look in the app's Settings. */
+.settings-mock { max-width: 26rem; margin: 1.6rem 0 2rem; padding: 1rem 1rem .9rem; background: var(--band); border: 1px solid var(--rule); border-radius: 14px; }
+.settings-mock .mock-title { font: 500 .78rem/1 var(--sans); letter-spacing: .1em; text-transform: uppercase; color: var(--ink-2); margin: .2rem .4rem .7rem; }
+.settings-mock ul { list-style: none; margin: 0; padding: 0; background: var(--page); border-radius: 10px; overflow: hidden; }
+.settings-mock li { display: flex; align-items: center; gap: .8rem; min-height: 46px; padding: 0 .9rem; font: 400 1.05rem/1.2 var(--sans); }
+.settings-mock li + li { border-top: 1px solid var(--rule); }
+.settings-mock li::before { content: ""; flex: none; width: 1.3rem; height: 1.3rem; border-radius: 50%; box-sizing: border-box; border: 2px solid var(--rule); }
+.settings-mock li.on::before {
+  border: 0; background: var(--accent) no-repeat center / 70% auto;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 10'%3E%3Cpath d='M1 5.2l3.2 3L11 1.5' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+}
+.settings-mock li.off { color: var(--ink-2); }
+.settings-mock li::after { content: ""; margin-left: auto; width: 1.2rem; height: .7rem; flex: none; background: linear-gradient(var(--ink-2) 0 0) top / 100% 2px no-repeat, linear-gradient(var(--ink-2) 0 0) center / 100% 2px no-repeat, linear-gradient(var(--ink-2) 0 0) bottom / 100% 2px no-repeat; opacity: .55; }
+.settings-mock figcaption { font: 400 .95rem/1.5 var(--sans); color: var(--ink-2); margin: .8rem .3rem 0; }
+.settings-table { max-width: 52rem; }
+.settings-table td:first-child { white-space: nowrap; }
+.setup-tabs { scroll-margin-top: 5.5rem; }

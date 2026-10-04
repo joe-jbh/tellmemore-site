@@ -1,7 +1,17 @@
-<!-- title: Setting up — Tell Me More | description: How to set the Bible reader up: which natural voice to download in iPad Settings and pick in the app, and turning on Apple Intelligence for Ask. -->
+<!-- title: Setting up — Tell Me More | description: How to set the Bible reader up: the iPad's own settings (a natural voice, Apple Intelligence for Ask), and the app's own settings, where the toolbar, the Margin's sections and Ask are turned on or off. -->
 <div class="prose">
 <p class="eyebrow">Setup</p>
 <h1>Setting up the app</h1>
+<p>Two kinds of settings. The <strong>iPad's own</strong> settings are done once, by whoever sets the app up: a natural voice for reading aloud, and Apple Intelligence for Ask. The <strong>app's own</strong> settings choose what the reader sees, and can be changed at any time.</p>
+</div>
+
+<div class="setup-tabs" role="tablist" aria-label="Which settings">
+  <a role="tab" id="tab-system" href="#system-settings" aria-controls="system-settings" aria-selected="true">System Settings</a>
+  <a role="tab" id="tab-app" href="#app-settings" aria-controls="app-settings" aria-selected="false">App Settings</a>
+</div>
+
+<section id="system-settings" class="setup-panel" role="tabpanel" aria-labelledby="tab-system">
+<div class="prose">
 <p><span class="kbd">Speak</span> works the moment the app is installed. But the voice the iPad ships with is the small, robotic one, and a Bible read in that voice is hard to listen to for long. Ten minutes of setup gives it a voice you'd happily hear for an hour.</p>
 
 {{essentials}}
@@ -72,3 +82,109 @@
 </ol>
 <p>The app checks when it opens. If something still needs doing it says so, and once Apple Intelligence is ready it says nothing at all. If this iPad doesn't support Apple Intelligence, the app tells you once, and nothing else changes: Ask still finds everything, and for a question about a passage it shows a short summary of the chapter prepared ahead of time, labelled as such.</p>
 </div>
+</section>
+
+<section id="app-settings" class="setup-panel" role="tabpanel" aria-labelledby="tab-app">
+<div class="prose">
+<p>Tap <strong>⚙</strong> at the top of the page. Settings is a short list of pages, like the iPad's own, with a search at the top: type what you're after — <em>voice</em>, <em>font</em>, <em>history</em> — and it takes you to the setting. Nothing here is permanent; every switch can be turned back.</p>
+
+<h2 id="profile">Start with a reading profile</h2>
+<p>The first row, <strong>Reading Profile</strong>, sets several switches in one tap:</p>
+<ul>
+  <li><strong>Simple Reader</strong> — the page and <span class="kbd">Speak</span>, with the largest buttons. No Search, no Ask, no Margin: nothing to get lost in.</li>
+  <li><strong>Reference Bible</strong> — adds Search and the Margin.</li>
+  <li><strong>Ask – Tell Me More</strong> — adds Ask as well.</li>
+</ul>
+<p>Choosing a profile is only a starting point. Every switch it sets is still a switch of its own, so you can start from one and change what you like.</p>
+
+<h2 id="margin">The Margin, your way</h2>
+<p>The Margin shows what's known about the verse you tap, in sections. In <strong>Settings › Margin</strong> you choose <strong>which sections appear</strong> and <strong>in what order</strong>: check the ones you want, and drag them into place. Someone who only wants the verse in today's words and the cross-references can have just those two, at the top.</p>
+</div>
+
+<figure class="settings-mock" aria-label="The Margin's sections in Settings: each with a check and a handle to drag it.">
+  <p class="mock-title">Sections</p>
+  <ul>
+    <li class="on">Parallel Translations</li>
+    <li class="on">Cross-References</li>
+    <li class="on">Old Words</li>
+    <li class="on">Names</li>
+    <li class="on">Words</li>
+    <li class="on">Commentary</li>
+    <li class="off">Weights &amp; Measures</li>
+  </ul>
+  <figcaption>Checked sections show, in this order. Here Weights &amp; Measures is left out. <strong>Restore the Usual Order</strong> puts everything back.</figcaption>
+</figure>
+
+<div class="prose">
+<p>A section with nothing to say about the verse is skipped on its own, so you'll rarely see all seven at once. Inside the Margin, tapping a section's heading folds it away for now; leaving it out in Settings hides it altogether.</p>
+
+<h2 id="on-off">What else can be turned on or off</h2>
+</div>
+
+<div class="table-wrap settings-table">
+<table>
+  <tr><th>Page</th><th>What it changes</th></tr>
+  <tr><td><strong>Reading</strong></td><td>Text size, the theme, verse numbers, the words of Christ in red, and chapter summaries (and which tradition writes them).</td></tr>
+  <tr><td><strong>Read Aloud</strong></td><td>The voice and its speed, help with Bible names, and the voice for each Bible in Spanish or Chinese.</td></tr>
+  <tr><td><strong>Toolbar</strong></td><td>Button size, button labels, and which buttons show: <strong>Search</strong>, <strong>Ask</strong> and <strong>Margin</strong>. On an iPhone, a second set of chapter buttons at the bottom.</td></tr>
+  <tr><td><strong>Margin</strong></td><td>The Margin on or off, and its sections, as above.</td></tr>
+  <tr><td><strong>Ask</strong></td><td>Ask on or off, which references it searches, how long its History is kept, and <strong>Better Speech Recognition</strong> (off unless you turn it on: speech is recognised on the device).</td></tr>
+  <tr><td><strong>Bibles</strong></td><td>Which Bibles appear beside the verse in the Margin. The Berean Standard Bible comes with the app; five more, in English, Spanish and Chinese, are one download.</td></tr>
+  <tr><td><strong>References</strong></td><td>Which reference works Ask searches and the Margin shows — the dictionaries, Strong's, the topical Bibles, the commentaries — and the download of five more commentaries.</td></tr>
+  <tr><td><strong>Help</strong></td><td>Set Up This iPad, Diagnostics, the guide, and Sources &amp; Licenses.</td></tr>
+</table>
+</div>
+
+<div class="prose">
+<p>The Ask and Margin switches are in two places — on their own pages and under Toolbar — and either one changes both.</p>
+<div class="note"><p>Setting the app up for someone else? Choose the profile first, then remove anything they won't use. Fewer buttons and fewer sections mean less to find and less to tap by mistake.</p></div>
+</div>
+</section>
+
+<script>
+(() => {
+  const tabs = [...document.querySelectorAll('.setup-tabs [role="tab"]')];
+  const panels = tabs.map(t => document.getElementById(t.getAttribute("aria-controls")));
+  if (!tabs.length || panels.some(p => !p)) return;
+  document.documentElement.classList.add("js-tabs");
+  function show(i, focus) {
+    tabs.forEach((t, j) => {
+      t.setAttribute("aria-selected", String(i === j));
+      t.tabIndex = i === j ? 0 : -1;
+      panels[j].hidden = i !== j;
+    });
+    if (focus) tabs[i].focus();
+  }
+  // The tab holding the address's target: a tab's own panel, or a heading
+  // inside one (voices.html#apple-intelligence opens System Settings).
+  function fromHash() {
+    const target = location.hash && document.getElementById(location.hash.slice(1));
+    const i = target ? panels.findIndex(p => p === target || p.contains(target)) : -1;
+    show(i < 0 ? 0 : i, false);
+    if (!target || i < 0) return;
+    // A heading: to it. A whole panel: to the tabs over it, so the reader
+    // sees which one is open.
+    (target === panels[i] ? document.querySelector(".setup-tabs") : target).scrollIntoView();
+  }
+  tabs.forEach((t, i) => {
+    t.addEventListener("click", e => {
+      e.preventDefault();
+      show(i, false);
+      history.replaceState(null, "", "#" + panels[i].id);
+    });
+    t.addEventListener("keydown", e => {
+      const step = e.key === "ArrowRight" ? 1 : e.key === "ArrowLeft" ? -1 : 0;
+      if (!step) return;
+      e.preventDefault();
+      const k = (i + step + tabs.length) % tabs.length;
+      show(k, true);
+      history.replaceState(null, "", "#" + panels[k].id);
+    });
+  });
+  addEventListener("hashchange", fromHash);
+  fromHash();
+  // Again once the page has loaded: the browser's own jump to the address's
+  // target comes after this script, and would land under the tabs.
+  addEventListener("load", () => requestAnimationFrame(fromHash));
+})();
+</script>
