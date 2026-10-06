@@ -595,7 +595,8 @@ html:not(.js-tabs) #app-settings { margin-top: 3rem; padding-top: 2rem; border-t
 .faq h2 { scroll-margin-top: 5.5rem; }
 .faq .answer { font: 400 1.4rem/1.45 var(--serif); color: var(--ink); margin-top: .4rem; }
 .faq h3 { margin-top: 2.2rem; }
-.faq .steps ul { margin: .4rem 0 0; padding-left: 1.2rem; list-style: disc; }
+/* A list inside a step sits in the step's text column, not under its number. */
+.faq .steps > li > ul { grid-column: 2; margin: .4rem 0 0; padding-left: 1.2rem; list-style: disc; }
 .faq .steps ul li { display: list-item; counter-increment: none; padding: 0; border: 0; font-family: var(--serif); font-size: 1.1rem; }
 .faq .steps ul li + li { margin-top: .4rem; }
 .faq .steps ul li::before { content: none; }
