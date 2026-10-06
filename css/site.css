@@ -580,3 +580,66 @@ html:not(.js-tabs) #app-settings { margin-top: 3rem; padding-top: 2rem; border-t
 .settings-table { max-width: 52rem; }
 .settings-table td:first-child { white-space: nowrap; }
 .setup-tabs { scroll-margin-top: 5.5rem; }
+
+/* ---- Questions (faq.html) ----
+   A question, a one-line answer in larger type, then — where the screen
+   helps — an example to follow, step by step, with the app's Margin and
+   cards drawn beside the steps. The drawings use the site's own colours
+   and the app's shapes, like the Settings mock on the Setup page. */
+.faq-index { display: grid; gap: 0; max-width: var(--measure); margin: 2rem 0 1rem; border-top: 1px solid var(--rule); }
+.faq-index a { display: flex; flex-wrap: wrap; align-items: baseline; gap: .2rem 1rem; padding: .9rem .2rem; border-bottom: 1px solid var(--rule); text-decoration: none; color: var(--ink); min-height: 48px; }
+.faq-index a span { font: 500 1.2rem/1.35 var(--serif); }
+.faq-index a small { font: 400 .95rem/1.4 var(--sans); color: var(--ink-2); }
+.faq-index a:hover span { color: var(--accent); }
+.faq { margin-top: 4rem; scroll-margin-top: 5.5rem; }
+.faq h2 { scroll-margin-top: 5.5rem; }
+.faq .answer { font: 400 1.4rem/1.45 var(--serif); color: var(--ink); margin-top: .4rem; }
+.faq h3 { margin-top: 2.2rem; }
+.faq .steps ul { margin: .4rem 0 0; padding-left: 1.2rem; list-style: disc; }
+.faq .steps ul li { display: list-item; counter-increment: none; padding: 0; border: 0; font-family: var(--serif); font-size: 1.1rem; }
+.faq .steps ul li + li { margin-top: .4rem; }
+.faq .steps ul li::before { content: none; }
+.faq-table { max-width: 52rem; }
+.faq-table td.num { font-variant-numeric: tabular-nums; white-space: nowrap; color: var(--gold); font-weight: 600; }
+.faq-more { margin-top: 4.5rem; }
+
+.mock-pair { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 19rem), 1fr)); gap: 1.4rem; max-width: 52rem; margin: 1.6rem 0 2rem; align-items: start; }
+.app-mock { margin: 0; padding: 1rem 1.1rem 1rem; background: var(--band); border: 1px solid var(--rule); border-radius: 16px; font-family: var(--sans); min-width: 0; }
+.app-mock.card { background: var(--page); box-shadow: var(--shadow); border-radius: 18px; }
+.app-mock figcaption { font: 400 .92rem/1.5 var(--sans); color: var(--ink-2); margin-top: .9rem; }
+.mock-head { display: flex; align-items: center; gap: .6rem; font-size: 1.05rem; margin-bottom: .8rem; }
+.mock-tag { font: 600 .78rem/1 var(--sans); letter-spacing: .06em; text-transform: uppercase; color: var(--ink-2); border: 1px solid var(--rule); border-radius: 999px; padding: .35rem .6rem; background: var(--page); }
+.mock-sect { font: 600 .82rem/1 var(--sans); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2); margin: .2rem 0 .7rem; }
+.mock-sect span { font-weight: 500; letter-spacing: 0; margin-left: .3rem; }
+.chips { display: flex; flex-wrap: wrap; gap: .45rem; }
+.chips span { font: 600 .95rem/1 var(--sans); color: var(--gold); background: var(--page); border: 1px solid var(--rule); border-radius: 999px; padding: .55rem .8rem; }
+.chips span.tap { color: var(--on-accent); background: var(--accent); border-color: var(--accent); box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 22%, transparent); }
+.mt-block { background: var(--page); border: 1px solid var(--rule); border-radius: 12px; padding: .8rem .9rem; }
+.mt-block p { margin: .25rem 0 0; font: 400 1.02rem/1.45 var(--serif); }
+.mt-block p.soft, .app-mock .soft { color: var(--ink-2); font-size: .95rem; }
+.mt-head { font: 600 1.02rem/1.35 var(--sans); color: var(--gold); display: flex; gap: .5rem; justify-content: space-between; }
+.mt-head i { font-style: normal; }
+.mock-links { display: flex; flex-wrap: wrap; gap: .6rem 1rem; margin-top: .8rem; font: 600 .9rem/1 var(--sans); color: var(--gold); }
+.mock-links span:first-child { border: 1px solid var(--rule); border-radius: 999px; padding: .5rem .8rem; background: var(--page); color: var(--ink); }
+.band { position: relative; height: .7rem; margin: .8rem 0 .3rem; border-radius: 999px; background: var(--band); border: 1px solid var(--rule); overflow: hidden;
+  background-image: linear-gradient(90deg, transparent calc(25% - .5px), var(--rule) 0 calc(25% + .5px), transparent 0 calc(50% - .5px), var(--rule) 0 calc(50% + .5px), transparent 0 calc(75% - .5px), var(--rule) 0 calc(75% + .5px), transparent 0); }
+.band .fill { position: absolute; top: 0; bottom: 0; left: var(--from); right: calc(100% - var(--to)); background: var(--gold); border-radius: 999px; }
+.band-labels { display: flex; justify-content: space-between; font: 400 .78rem/1 var(--sans); color: var(--ink-2); font-variant-numeric: tabular-nums; margin-bottom: .4rem; }
+.card-kicker { font: 600 .85rem/1.3 var(--sans); color: var(--ink-2); }
+.card-kicker span { font-weight: 400; }
+.card-title { font: 600 1.8rem/1.15 var(--display); color: var(--gold); margin: .2rem 0 .1rem; }
+.card-orig { font: 500 1.1rem/1.4 var(--serif); color: var(--ink-2); }
+.card-from { font: 400 .95rem/1.45 var(--serif); color: var(--ink-2); margin: .2rem 0 0; }
+.card-line { font: 400 1.15rem/1.4 var(--serif); margin: .5rem 0 0; }
+.card-text { font: 400 1rem/1.5 var(--serif); margin: .3rem 0 0; }
+.card-text b.ref { font-family: var(--sans); color: var(--gold); margin-right: .3rem; }
+.card-sect { font: 600 .85rem/1.2 var(--sans); color: var(--ink-2); margin-top: .9rem; }
+.renderings { margin: .3rem 0 0; display: grid; gap: .15rem; }
+.renderings div { display: flex; gap: .6rem; align-items: baseline; }
+.renderings dt { font: 600 1.1rem/1.3 var(--serif); }
+.renderings dd { margin: 0; font: 400 .9rem/1.3 var(--sans); color: var(--ink-2); }
+.card-rows { display: grid; margin-top: .9rem; border-top: 1px solid var(--rule); }
+.card-rows span { display: flex; justify-content: space-between; gap: 1rem; font: 500 .95rem/1.3 var(--sans); padding: .6rem 0; border-bottom: 1px solid var(--rule); }
+.card-rows b { font-weight: 600; color: var(--ink-2); font-variant-numeric: tabular-nums; }
+.card-buttons { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1rem; }
+.card-buttons span { font: 600 .9rem/1 var(--sans); border: 1px solid var(--rule); background: var(--band); border-radius: 999px; padding: .55rem .9rem; }
