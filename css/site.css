@@ -660,3 +660,34 @@ details.faq[open] > summary .q { font-size: 1.6rem; }
 .card-rows b { font-weight: 600; color: var(--ink-2); font-variant-numeric: tabular-nums; }
 .card-buttons { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1rem; }
 .card-buttons span { font: 600 .9rem/1 var(--sans); border: 1px solid var(--rule); background: var(--band); border-radius: 999px; padding: .55rem .9rem; }
+
+/* The Margin / Ask choice inside an answer. Hidden until the script has
+   run; without it both walkthroughs show, one after the other. */
+.faq-tabs { display: none; gap: .5rem; flex-wrap: wrap; margin: 1rem 0 1.4rem; }
+.faq-tabs.ready { display: flex; }
+.faq-tabs [role="tab"] { display: grid; text-align: left; gap: .1rem; min-height: 56px; padding: .65rem 1.1rem; border-radius: 12px; border: 1px solid var(--rule); background: var(--page); color: var(--ink); font: 600 1.05rem/1.2 var(--sans); cursor: pointer; }
+.faq-tabs [role="tab"] small { font: 400 .85rem/1.2 var(--sans); color: var(--ink-2); }
+.faq-tabs [role="tab"][aria-selected="true"] { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+.faq-tabs [role="tab"][aria-selected="true"] small { color: var(--on-accent); opacity: .85; }
+.faq-tabs [role="tab"]:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.faq-panel > .prose:first-child > h3:first-child { margin-top: 0; }
+html:not(.js) .faq-panel + .faq-panel { margin-top: 2rem; }
+.mock-filters { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: .7rem; }
+.mock-filters span { font: 600 .85rem/1 var(--sans); padding: .45rem .7rem; border-radius: 999px; border: 1px solid var(--rule); background: var(--page); color: var(--ink-2); }
+.faq-body .mock-filters span { background: var(--band); }
+.mock-filters span.on { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+.mock-rows { list-style: none; margin: 0; padding: 0; display: grid; gap: .45rem; }
+.mock-rows li { display: grid; gap: .15rem; padding: .65rem .8rem; border: 1px solid var(--rule); border-radius: 12px; background: var(--page); }
+.faq-body .mock-rows li { background: var(--band); }
+.mock-rows li small { font: 400 .78rem/1.2 var(--sans); color: var(--ink-2); }
+.mock-rows li b { font: 600 1rem/1.3 var(--sans); color: var(--gold); }
+.mock-rows li span { font: 400 .95rem/1.35 var(--serif); color: var(--ink); }
+.mock-rows li.tap { border-color: var(--accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 22%, transparent); }
+.card-sect .count { font-weight: 400; margin-left: .3rem; }
+.relatives { list-style: none; margin: .3rem 0 0; padding: 0; border-top: 1px solid var(--rule); }
+.relatives li { display: grid; grid-template-columns: 1fr auto; gap: 0 .8rem; padding: .5rem 0; border-bottom: 1px solid var(--rule); }
+.relatives b { font: 600 .95rem/1.3 var(--sans); color: var(--gold); }
+.relatives span { grid-column: 1; font: 400 .95rem/1.35 var(--serif); }
+.relatives i { grid-column: 2; grid-row: 1 / span 2; align-self: center; font: 400 .82rem/1 var(--sans); font-style: normal; color: var(--ink-2); font-variant-numeric: tabular-nums; }
+.card-more { font: 600 .9rem/1 var(--sans); color: var(--gold); padding: .6rem 0 0; }
+.card-text u { color: var(--gold); text-underline-offset: .15em; }

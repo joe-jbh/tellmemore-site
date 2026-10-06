@@ -14,7 +14,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Public+Sans:wght@400;500;600&display=swap">
-<link rel="stylesheet" href="css/site.css?v=3e7b12af">
+<link rel="stylesheet" href="css/site.css?v=866e6309">
 </head>
 <body class="">
 <header class="site">
@@ -82,12 +82,23 @@
 
 <!-- ============================================================ -->
 <details class="faq" id="using-strongs">
-<summary><span class="q">How do I use Strong's numbers in the app?</span><small>Example: “Feed” in John 21:16</small></summary>
+<summary><span class="q">How do I use Strong's numbers in the app?</span><small>From the Margin or from Ask, with “feed” as the example</small></summary>
 <div class="faq-body">
 <div class="prose">
-<p class="answer">Open the Margin beside a verse and tap a word under <strong>Strong's Words</strong>. A card opens with the original word, what it means, Strong's entry, and every other verse that uses it.</p>
-<p>The Margin is on the <strong>Reference</strong> and <strong>Ask – Tell Me More</strong> reading profiles. If you don't see a <span class="kbd">Margin</span> button, choose one of those in <strong>Settings › Reading Profile</strong>.</p>
+<p class="answer">Tap a word under <strong>Strong's Words</strong> in the Margin, or ask about an English word in Ask and tap one of its Strong's entries. Either way a card opens with the original word, what it means, Strong's entry, and the other verses and words that go with it.</p>
+<p>The Margin and Ask are on the <strong>Reference</strong> and <strong>Ask – Tell Me More</strong> reading profiles. If you don't see a <span class="kbd">Margin</span> or <span class="kbd">Ask</span> button, choose one of those in <strong>Settings › Reading Profile</strong>.</p>
+<p>Choose where to start:</p>
+</div>
+
+<div class="faq-tabs" role="tablist" aria-label="Where to start">
+  <button type="button" role="tab" id="tab-strongs-margin" aria-controls="strongs-margin" aria-selected="true">From the Margin <small>a word in a verse</small></button>
+  <button type="button" role="tab" id="tab-strongs-ask" aria-controls="strongs-ask" aria-selected="false">From Ask <small>an English word</small></button>
+</div>
+
+<div class="faq-panel" id="strongs-margin" role="tabpanel" aria-labelledby="tab-strongs-margin">
+<div class="prose">
 <h3>Try it: “Feed my sheep”, John 21:16</h3>
+<p>The card from the Margin is about the word <em>in that verse</em>: it shows how each English Bible translates it there.</p>
 <ol class="steps">
   <li><p>Go to <strong>John 21</strong> and tap <strong>verse 16</strong> to select it. Then tap <span class="kbd">Margin</span>.</p></li>
   <li><p>Find <strong>Strong's Words</strong>. Each chip is a word of the verse as the King James has it, in the verse's order. A small book on a chip means a Bible dictionary has an article on that word too. Tap <strong>Feed</strong>.</p></li>
@@ -136,7 +147,68 @@
     </ul></div></li>
   <li><p>To keep what you found, select a word or a phrase on the card and copy it, or tap <strong>Share</strong> to send the whole card with its source to Notes, Messages or Mail.</p></li>
 </ol>
-<p>The same works in Ask: when an answer or a result is a Strong's entry, tapping it opens the same card.</p>
+</div>
+</div>
+
+<div class="faq-panel" id="strongs-ask" role="tabpanel" aria-labelledby="tab-strongs-ask">
+<div class="prose">
+<h3>Try it: every word for “feed”</h3>
+<p>The card from Ask is about the word <em>itself</em>, not one verse: it lists every verse it's in, and every other Hebrew and Greek word the King James also translates “feed”.</p>
+<ol class="steps">
+  <li><p>Tap <span class="kbd">Ask</span> and type <strong>feed</strong> (or tap the microphone and say it).</p></li>
+  <li><p>Under the answer, tap the <strong>Strong's</strong> chip to see only Strong's entries. Each row is one Hebrew or Greek word that the King James translates “feed”, with the other ways it translates that word. Tap <strong>feed, rule (poimaino)</strong>.</p></li>
+</ol>
+</div>
+
+<div class="mock-pair">
+<figure class="app-mock" aria-label="Illustration: Ask's results for feed, filtered to Strong's">
+  <div class="mock-head"><span class="mock-tag">Ask</span><b>feed</b></div>
+  <div class="mock-filters"><span>All</span><span class="on">Strong's</span><span>Dictionary</span><span>Topics</span></div>
+  <ul class="mock-rows">
+    <li><small>Strong's · Strong's Concordance</small><b>feed, keep (bosko)</b><span>to pasture; to graze</span></li>
+    <li class="tap"><small>Strong's · Strong's Concordance</small><b>feed, rule (poimaino)</b><span>to tend as a shepherd</span></li>
+    <li><small>Strong's · Strong's Concordance</small><b>feed, fill, satisfy (chortazo)</b><span>to fodder, i.e. to supply food in abundance</span></li>
+    <li><small>Strong's · Strong's Concordance</small><b>break, companion, keep company with, devour (ra`ah)</b><span>to tend a flock, i.e. pasture it</span></li>
+  </ul>
+  <figcaption>Every Greek and Hebrew word the King James translates “feed” has its own row.</figcaption>
+</figure>
+
+<figure class="app-mock card" aria-label="Illustration: the word card for poimaino, opened from Ask">
+  <div class="card-kicker">The Greek word <span>· Strong's G4165</span></div>
+  <div class="card-title">poimaino</div>
+  <p class="card-line">to tend as a shepherd</p>
+  <div class="card-sect">Strong's Concordance</div>
+  <p class="card-text">Pronounced poy-mah'-ee-no. From <u>4166</u>; to tend as a shepherd of (figuratively, superviser). In the King James: feed (cattle), rule.</p>
+  <div class="card-rows">
+    <span>Other verses with this word <b>10</b></span>
+  </div>
+  <div class="card-sect">Other Greek words translated “feed” <span class="count">5</span></div>
+  <ul class="relatives">
+    <li><b>bosko · G1006</b><span>to pasture</span><i>9 verses</i></li>
+    <li><b>chortazo · G5526</b><span>to supply food in abundance</span><i>16 verses</i></li>
+    <li><b>trepho · G5142</b><span>to nourish, to bring up</span><i>9 verses</i></li>
+    <li><b>potizo · G4222</b><span>to give drink</span><i>15 verses</i></li>
+  </ul>
+  <div class="card-more">Show all 5</div>
+  <div class="card-sect">Other Hebrew words translated “feed” <span class="count">13</span></div>
+  <ul class="relatives">
+    <li><b>ra`ah · H7462</b><span>to tend a flock, to pasture it</span><i>148 verses</i></li>
+  </ul>
+  <div class="card-buttons"><span>Speak</span><span>Share</span><span>Done</span></div>
+</figure>
+</div>
+
+<div class="prose">
+<ol class="steps" start="3" style="counter-reset: step 2">
+  <li><p>The card is <strong>poimaino</strong>, Strong's <strong>G4165</strong>, <em>to tend as a shepherd</em>. There's no <em>In this verse</em> here, because you didn't come from a verse. Instead, <strong>Other verses with this word</strong> lists all ten verses with <em>poimaino</em>, John 21:16 among them.</p></li>
+  <li><p><strong>Other Greek words translated “feed”</strong> lists the rest of the family, each with its Strong's number, what it means and how many verses it's in: <strong>bosko</strong> (G1006) <em>to pasture</em>, <strong>chortazo</strong> (G5526), <strong>trepho</strong> (G5142) and more. Below them, the Hebrew words, led by <strong>ra`ah</strong> (H7462), the shepherd's word of Psalm 23. Tap any of them to open its own card on top. <strong>Done</strong> brings you back.</p></li>
+  <li><p>Numbers in Strong's entry, like <u>4166</u>, are links too: tap one to open that word's card.</p></li>
+</ol>
+</div>
+</div>
+
+<div class="prose">
+<p>On either card, select a word or a phrase to copy it, or tap <strong>Share</strong> to send the whole card with its source to Notes, Messages or Mail.</p>
 </div>
 <p class="faq-close"><button type="button" class="btn secondary" data-close>Close</button></p>
 </div>
@@ -267,6 +339,27 @@
     var d = location.hash && document.getElementById(location.hash.slice(1));
     if (d && d.matches('details.faq')) { d.open = true; d.querySelector('summary').scrollIntoView(); }
   }
+  // The Margin / Ask choice inside an answer: one panel at a time.
+  Array.prototype.forEach.call(document.querySelectorAll('.faq-tabs'), function (list) {
+    var tabs = Array.prototype.slice.call(list.querySelectorAll('[role="tab"]'));
+    function show(t) {
+      tabs.forEach(function (o) {
+        var on = o === t;
+        o.setAttribute('aria-selected', on ? 'true' : 'false');
+        o.tabIndex = on ? 0 : -1;
+        document.getElementById(o.getAttribute('aria-controls')).hidden = !on;
+      });
+    }
+    tabs.forEach(function (t, i) {
+      t.addEventListener('click', function () { show(t); });
+      t.addEventListener('keydown', function (e) {
+        var n = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+        if (n) { var next = tabs[(i + n + tabs.length) % tabs.length]; show(next); next.focus(); e.preventDefault(); }
+      });
+    });
+    show(tabs.filter(function (t) { return t.getAttribute('aria-selected') === 'true'; })[0] || tabs[0]);
+    list.classList.add('ready');
+  });
   openFromHash();
   addEventListener('hashchange', openFromHash);
 })();
