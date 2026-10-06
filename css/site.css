@@ -691,3 +691,12 @@ html:not(.js) .faq-panel + .faq-panel { margin-top: 2rem; }
 .relatives i { grid-column: 2; grid-row: 1 / span 2; align-self: center; font: 400 .82rem/1 var(--sans); font-style: normal; color: var(--ink-2); font-variant-numeric: tabular-nums; }
 .card-more { font: 600 .9rem/1 var(--sans); color: var(--gold); padding: .6rem 0 0; }
 .card-text u { color: var(--gold); text-underline-offset: .15em; }
+
+/* Settings › Bibles and Parallel Translations (faq.html). */
+.bible-rows li { grid-template-columns: 1fr auto; column-gap: .8rem; }
+.bible-rows li > * { grid-column: 1; }
+.bible-rows li.on::after { content: "✓"; grid-column: 2; grid-row: 1 / span 2; align-self: center; font: 700 1.1rem/1 var(--sans); color: var(--accent); }
+.bible-rows li:first-child b { color: var(--ink); }
+.par-list { display: grid; gap: .5rem; }
+.par-name { font: 600 .85rem/1.3 var(--sans); color: var(--ink-2); }
+.par-list p em { font-style: normal; color: var(--gold); font-weight: 600; }
