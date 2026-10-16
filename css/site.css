@@ -735,3 +735,56 @@ html:not(.js) .faq-panel + .faq-panel { margin-top: 2rem; }
 .info-card ul { margin: 0; padding-left: 1.1rem; display: grid; gap: .55rem; }
 .info-card li { margin: 0; font: 400 1.02rem/1.5 var(--serif); }
 .info-card li strong { font-weight: 600; }
+
+/* ---- Hear the voices (listen.html) -------------------------------------
+   A row per voice: its number, one big Play, who it is, the place in the
+   clip, and the whole chapter. Sized for the people the app is for: 64-px
+   Play, 18-px text, a bar thick enough to grab. */
+.listen-langs { display: flex; flex-wrap: wrap; gap: .6rem; margin: 1.8rem 0 .4rem; }
+.listen-langs a { display: inline-flex; align-items: center; min-height: 48px; padding: .4rem 1.2rem; border: 1px solid var(--rule); border-radius: 999px; color: var(--ink); text-decoration: none; font-size: 1.1rem; }
+.listen-langs a:hover { background: var(--band); }
+.listen { border-top: 1px solid var(--rule); margin-top: 2.6rem; padding-top: 2.2rem; scroll-margin-top: 5.5rem; max-width: 52rem; }
+.listen-head h2 { margin: 0 0 .3rem; }
+.listen-head .muted { margin: 0; font-size: 1rem; }
+.listen-head .eyebrow { margin-bottom: .5rem; }
+.passage { margin: 1.4rem 0 1.6rem; padding: 1.1rem 1.3rem; background: var(--band); border-radius: 10px; }
+.passage blockquote { margin: 0; }
+.passage p { margin: 0; font: 400 1.25rem/1.65 var(--serif); }
+.passage[lang="zh-Hans"] p, .listen[lang="zh-Hans"] .passage p { font-family: "Songti SC", "STSong", "Noto Serif SC", var(--serif); line-height: 1.85; }
+.passage sup { font: 600 .7rem/1 var(--sans); color: var(--ink-2); margin-right: .2em; vertical-align: .55em; }
+.passage figcaption { margin-top: .6rem; font-size: .9rem; color: var(--ink-2); }
+.voices { list-style: none; margin: 0; padding: 0; }
+.voice { display: grid; grid-template-columns: 2rem 1fr; align-items: center; gap: .4rem 1rem; padding: 1rem 0; border-top: 1px solid var(--rule); margin: 0; }
+.voice:first-child { border-top: 0; }
+.voice .num { font: 500 1.4rem/1 var(--display); color: var(--ink-2); text-align: center; font-variant-numeric: tabular-nums; }
+.voice .who { display: grid; gap: .1rem; }
+.voice .who b { font: 500 1.35rem/1.2 var(--serif); }
+.voice .who span { color: var(--ink-2); font-size: 1rem; }
+.voice .who i { font-style: normal; }
+.voice .tag { justify-self: start; white-space: nowrap; margin-top: .25rem; font-size: .75rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); border: 1px solid var(--accent); border-radius: 999px; padding: .15rem .65rem; }
+.voice audio { grid-column: 2; width: 100%; max-width: 26rem; }
+.voice .whole { grid-column: 2; justify-self: start; font-size: .95rem; min-height: 44px; display: inline-flex; align-items: center; }
+/* With script: Play beside the name, the bar under it. */
+.voice.enhanced { grid-template-columns: 2rem 64px minmax(9rem, 13rem) 1fr; }
+.voice.enhanced .whole { grid-column: 3 / -1; margin-top: -.3rem; }
+.voice .play { width: 64px; height: 64px; border-radius: 50%; border: 0; background: var(--ink); color: var(--page); display: grid; place-items: center; cursor: pointer; }
+.voice .play:hover { background: var(--accent); color: var(--on-accent); }
+.voice .play svg { width: 28px; height: 28px; fill: currentColor; }
+.voice .play .i-pause, .voice.playing .play .i-play { display: none; }
+.voice.playing .play .i-pause { display: block; }
+.voice.playing .play { background: var(--accent); color: var(--on-accent); }
+.voice.playing .who b { color: var(--accent); }
+.voice .meter { display: flex; align-items: center; gap: .8rem; min-width: 0; }
+.voice .time { font-size: .9rem; color: var(--ink-2); font-variant-numeric: tabular-nums; white-space: nowrap; min-width: 5.5rem; }
+.voice .track { -webkit-appearance: none; appearance: none; flex: 1; min-width: 6rem; height: 44px; background: transparent; margin: 0; cursor: pointer; --done: 0%; }
+.voice .track::-webkit-slider-runnable-track { height: 8px; border-radius: 4px; background: linear-gradient(to right, var(--accent) var(--done), var(--rule) var(--done)); }
+.voice .track::-moz-range-track { height: 8px; border-radius: 4px; background: var(--rule); }
+.voice .track::-moz-range-progress { height: 8px; border-radius: 4px; background: var(--accent); }
+.voice .track::-webkit-slider-thumb { -webkit-appearance: none; width: 22px; height: 22px; margin-top: -7px; border-radius: 50%; background: var(--page); border: 2px solid var(--accent); }
+.voice .track::-moz-range-thumb { width: 18px; height: 18px; border-radius: 50%; background: var(--page); border: 2px solid var(--accent); }
+.listen-notes { margin-top: 3rem; }
+@media (max-width: 640px) {
+  .voice.enhanced { grid-template-columns: 2rem 64px 1fr; }
+  .voice.enhanced .meter { grid-column: 3; }
+  .voice.enhanced .whole { grid-column: 3; }
+}
