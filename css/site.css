@@ -788,3 +788,44 @@ html:not(.js) .faq-panel + .faq-panel { margin-top: 2rem; }
   .voice.enhanced .meter { grid-column: 3; }
   .voice.enhanced .whole { grid-column: 3; }
 }
+
+/* ---- Checking a recording against its text: a recording to check against its text (check-zh-hant.html) ---- */
+.check { max-width: 46rem; margin: 0 auto; padding: 1rem 0 4rem; }
+.check, .check textarea, .check input { font-family: "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", var(--sans); }
+.check h1 { font-family: "PingFang TC", "Noto Sans TC", var(--display); font-weight: 600; font-size: clamp(1.8rem, 5vw, 2.4rem); line-height: 1.3; margin: 0 0 1rem; }
+.check .eyebrow { letter-spacing: .08em; }
+.check .lede { font-size: 1.15rem; line-height: 1.8; }
+.check-steps { padding-left: 1.4rem; line-height: 1.8; }
+.check-steps li { margin: .4rem 0; }
+.check-note { background: var(--band); border-left: 3px solid var(--gold); border-radius: 6px; padding: .8rem 1rem; margin: 1.4rem 0; line-height: 1.75; }
+.check-note p { margin: 0; }
+.check-tabs { display: flex; gap: .4rem; margin: 2rem 0 0; border-bottom: 1px solid var(--rule); }
+.check-tabs button { flex: 1 1 0; text-align: center; font: inherit; font-size: 1.05rem; font-weight: 600; padding: .75rem .4rem; min-height: 48px; border: 1px solid var(--rule); border-bottom: 0; border-radius: 10px 10px 0 0; background: var(--band); color: var(--ink-2); cursor: pointer; }
+.check-tabs button[aria-selected="true"] { background: var(--page); color: var(--accent); border-color: var(--accent); box-shadow: 0 1px 0 var(--page); }
+.check-player { position: sticky; top: 60px; z-index: 5; display: flex; flex-wrap: wrap; gap: .6rem; align-items: center; padding: .8rem 0; background: var(--page); border-bottom: 1px solid var(--rule); }
+.check-player audio { flex: 1 1 18rem; min-width: 0; height: 44px; }
+.check-speed { display: flex; gap: .3rem; }
+.check-speed button, .check-mark { font: inherit; font-size: .95rem; min-height: 44px; padding: 0 .75rem; white-space: nowrap; border-radius: 999px; border: 1px solid var(--rule); background: var(--band); color: var(--ink); cursor: pointer; }
+.check-speed button[aria-pressed="true"] { border-color: var(--accent); color: var(--accent); font-weight: 600; }
+.check-verses { list-style: none; padding: 0; margin: .4rem 0 2rem; }
+.check-verses li { display: grid; grid-template-columns: 1fr auto; gap: .2rem .5rem; align-items: start; padding: .55rem .6rem; border-radius: 10px; border: 2px solid transparent; transition: background .2s; }
+.check-verses li.now { background: color-mix(in srgb, var(--accent) 14%, transparent); }
+.check-verses li.marked { border-color: var(--red); }
+.check-verse { all: unset; cursor: pointer; font-size: 1.35rem; line-height: 1.9; color: var(--ink); border-radius: 6px; }
+.check-verse:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+.check-verse sup { font-family: var(--sans); font-size: .7rem; color: var(--ink-2); margin-right: .35rem; vertical-align: .6em; }
+.check-mark[aria-pressed="true"] { border-color: var(--red); color: var(--red); font-weight: 600; }
+.check-verses textarea { grid-column: 1 / -1; font-size: 1.05rem; line-height: 1.6; padding: .6rem .7rem; border: 1px solid var(--red); border-radius: 8px; background: var(--page); color: var(--ink); width: 100%; box-sizing: border-box; }
+.check-form { border-top: 1px solid var(--rule); padding-top: 1.4rem; margin-top: 1rem; }
+.check-form h2 { font-size: 1.5rem; margin: 0 0 1rem; }
+.check-form fieldset { border: 0; padding: 0; margin: 0 0 1.2rem; }
+.check-form legend { font-weight: 600; margin-bottom: .5rem; font-size: 1.1rem; }
+.check-form fieldset label { display: inline-flex; align-items: center; gap: .4rem; min-height: 44px; margin-right: 1.2rem; font-size: 1.1rem; }
+.check-form input[type="radio"] { width: 22px; height: 22px; accent-color: var(--accent); }
+.check-field { display: grid; gap: .4rem; font-weight: 600; font-size: 1.1rem; margin: 0 0 1.1rem; }
+.check-field textarea, .check-field input { font-weight: 400; font-size: 1.05rem; padding: .7rem; border: 1px solid var(--rule); border-radius: 8px; background: var(--page); color: var(--ink); box-sizing: border-box; width: 100%; min-height: 48px; }
+.check-send { display: flex; flex-wrap: wrap; gap: .8rem; }
+.check-send .btn { min-height: 52px; font-size: 1.1rem; }
+.check-count, .check-status { color: var(--ink-2); line-height: 1.7; }
+.check-status:empty, .check-count:empty { display: none; }
+.check-thanks { margin-top: 2rem; font-size: 1.2rem; }

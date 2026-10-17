@@ -504,7 +504,7 @@ def render(layout, site, meta, body, out_name, root="", current=None):
     # A version on the stylesheet and script, from their contents, so a
     # browser holding an older copy (Cloudflare tells it to keep one for
     # hours) fetches the new one the moment it changes.
-    for asset in ("css/site.css", "js/shorts.js"):
+    for asset in ("css/site.css", "js/shorts.js", "js/listen.js", "js/listen-check.js"):
         html = html.replace(f'"{root}{asset}"', f'"{root}{asset}?v={asset_version(asset)}"')
     # Mark the current page in the bar and the menu (not the brand, which also links home).
     here = f'{root}{current or out_name}'
