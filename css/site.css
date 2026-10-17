@@ -829,3 +829,13 @@ html:not(.js) .faq-panel + .faq-panel { margin-top: 2rem; }
 .check-count, .check-status { color: var(--ink-2); line-height: 1.7; }
 .check-status:empty, .check-count:empty { display: none; }
 .check-thanks { margin-top: 2rem; font-size: 1.2rem; }
+/* The English beside the Chinese, for whoever is helping the listener. */
+.check .en { display: block; font-family: var(--sans); font-size: .82em; font-weight: 400; color: var(--ink-2); line-height: 1.5; margin-top: .15rem; }
+.check h1 .en { font-size: .5em; font-weight: 500; margin-top: .4rem; }
+.check .eyebrow .en, .check-speed .en, .check-mark .en, .check-form fieldset label .en, .check-send .en { display: inline; margin: 0 0 0 .25em; }
+.check p.en.lede { font-size: 1rem; margin-top: -.4rem; }
+.check-note p + p { margin-top: .6rem; }
+.check-tabs button .en { font-size: .78rem; margin-top: .2rem; }
+.check-tabs button[aria-selected="true"] .en { color: var(--accent); }
+.check-field .en { display: inline; }
+.check-send .btn .en { color: inherit; opacity: .8; }
