@@ -170,7 +170,17 @@
     this.video.muted = this.muted;
     var p = this.video.play();
     if (p && p.catch) p.catch(function () {
-      // Autoplay refused: show the poster and wait for a tap.
+      // Refused with sound (no tap yet, as when a shared link opens the
+      // page): play without it; the Sound button turns it on.
+      if (!self.video.muted) {
+        self.muted = true;
+        self.video.muted = true;
+        var q = self.video.play();
+        if (q && q.catch) q.catch(function () { self.paused = true; self.sync(); });
+        self.sync();
+        return;
+      }
+      // Autoplay refused altogether: show the poster and wait for a tap.
       self.paused = true;
       self.sync();
     });
@@ -398,6 +408,11 @@
           else if (!e.isIntersecting && begun && !player.video.paused) { player.video.pause(); player.sync(); }
         });
       }, { threshold: 0.4 }).observe(root);
+    } else if (root.getAttribute("data-mode") === "single" && root.hasAttribute("data-autoplay")) {
+      // A short's own page (watch/<id>.html): it plays on opening, as a
+      // tap on its tile would.
+      player.muted = false;
+      player.go(0, true);
     } else if (root.getAttribute("data-mode") === "single") {
       // A single video waits on its title card for a tap, with sound on.
       player.paused = true;
@@ -428,8 +443,45 @@
     });
     dlg.addEventListener("close", function () { if (root.player) { root.player.paused = true; root.player.video.pause(); clearTimeout(root.player.timer); } });
     dlg.querySelector("[data-act=close]").addEventListener("click", function () { dlg.close(); });
-    if (location.hash === "#play-all") open("");
+    // tutorials.html#play-<id> opens with that short playing (as a tap on its
+    // tile would); #play-all plays them all. Plain #<id> still just scrolls.
+    var hash = location.hash.slice(1);
+    if (hash === "play-all") open("");
+    else if (hash.indexOf("play-") === 0) {
+      var id = hash.slice(5).replace(/[^\w-]/g, "");
+      if (document.querySelector('[data-open="' + id + '"]')) open(id);
+    }
   }
+
+  /* Share: the share sheet where there is one (iPhone, iPad, Safari on the
+     Mac: Messages, Mail, Copy), else the link copied. A short's own page is
+     what's shared, so the message shows its picture and title. */
+  function shareLink(btn) {
+    var rel = btn.getAttribute("data-url"), title = btn.getAttribute("data-title") || document.title;
+    if (btn.hasAttribute("data-current")) {          // the tutorials dialog: whatever is playing
+      var root = document.querySelector("#reel-dialog [data-shorts]"), p = root && root.player;
+      var it = p && p.items[p.index];
+      if (!it || it.kind !== "short") return;
+      rel = "watch/" + it.id + ".html";
+      title = it.title;
+    }
+    var url = new URL(rel || location.href, location.href).href;
+    if (navigator.share) {
+      navigator.share({ title: title, url: url }).catch(function () {});
+      return;
+    }
+    var label = btn.querySelector("span") || btn, was = label.textContent;
+    function said(t) { label.textContent = t; setTimeout(function () { label.textContent = was; }, 2200); }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(url).then(function () { said("Link copied"); }, function () { location.href = url; });
+    } else {
+      location.href = url;
+    }
+  }
+  document.addEventListener("click", function (e) {
+    var b = e.target.closest && e.target.closest("[data-share]");
+    if (b) { e.preventDefault(); shareLink(b); }
+  });
 
   document.addEventListener("DOMContentLoaded", function () {
     document.querySelectorAll("[data-shorts]").forEach(function (r) {

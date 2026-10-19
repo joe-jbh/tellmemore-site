@@ -839,3 +839,23 @@ html:not(.js) .faq-panel + .faq-panel { margin-top: 2rem; }
 .check-tabs button[aria-selected="true"] .en { color: var(--accent); }
 .check-field .en { display: inline; }
 .check-send .btn .en { color: inherit; opacity: .8; }
+
+/* Sharing a short: its own page (watch/<id>.html) and a Share button on each tile. */
+.tile h3 a { color: inherit; text-decoration: none; }
+.tile h3 a:hover { text-decoration: underline; text-underline-offset: .2em; }
+.tile-share { margin: .7rem 0 0; }
+.tile .share { display: inline-flex; align-items: center; gap: .45rem; min-height: 48px; padding: 0 1rem; border-radius: 999px;
+  border: 1px solid var(--rule); background: transparent; color: var(--ink); font: 500 1rem var(--sans); cursor: pointer; }
+.tile .share:hover { background: var(--page, transparent); border-color: var(--ink-2); }
+.share svg, .btn .i-share { width: 1.15em; height: 1.15em; fill: currentColor; flex: none; }
+.btn .i-share { margin-right: .45rem; vertical-align: -.15em; }
+dialog.reel .reel-top { gap: .8rem; }
+.watch h1 { margin-bottom: 1.4rem; }
+.watch .eyebrow a { color: inherit; }
+.watch-more { margin-top: 2.6rem; }
+.watch-more h2 { font-size: 1.5rem; }
+.watch-more ol { margin: .8rem 0 0; padding-left: 1.4rem; font-size: 1.1rem; }
+.watch-more li { padding: .45rem 0; }
+.watch-more li[aria-current] { font-weight: 600; }
+.watch-more .len { color: var(--ink-2); font: 500 .9rem var(--sans); margin-left: .3rem; }
+.watch .showcase-text h3 { display: none; }

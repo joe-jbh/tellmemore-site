@@ -26,6 +26,12 @@ Placeholders a page body may use:
     {{notes_latest}}      the three newest developer notes (src/notes/*.md; see load_notes)
     {{root}}              "" on top-level pages, "../" on notes/*.html (the layout's links use it)
 
+Every ready short also gets a page of its own, watch/<id>.html, to share by
+itself: it plays as soon as it opens (as a tap on its tile would), and its
+Open Graph tags give Messages, Mail and the rest a preview with the short's
+picture, title and description. tutorials.html#play-<id> opens the
+tutorials page with that short already playing.
+
 The shorts themselves are cut by tools/cut_shorts.py into video/. A short
 marked "draft" in shorts.json is left off the site unless you build with
 --drafts, which is the way to look at it before it's ready:
@@ -89,6 +95,7 @@ ICONS = {
     "next": '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.5 4.5 16 12l-7.5 7.5 1.8 1.8 9.3-9.3-9.3-9.3z"/></svg>',
     "play": '<svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z"/></svg>'
             '<svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4.5h4v15H6zm8 0h4v15h-4z"/></svg>',
+    "share": '<svg class="i-share" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.6 7.3 7.3l1.4 1.4L11 6.4V15h2V6.4l2.3 2.3 1.4-1.4z"/><path d="M5 10h3v2H7v8h10v-8h-1v-2h3v12H5z"/></svg>',
     "sound": '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4.5v15L8 15H4zm12.5-1.7a6 6 0 0 1 0 9.4l-1.2-1.4a4.2 4.2 0 0 0 0-6.6zm2.3-2.7a9.5 9.5 0 0 1 0 14.8l-1.2-1.4a7.7 7.7 0 0 0 0-12z"/></svg>',
 }
 
@@ -117,13 +124,13 @@ def asset_version(path):
         return hashlib.sha1(f.read()).hexdigest()[:8]
 
 
-def item_for(s, chapters, **extra):
+def item_for(s, chapters, root="", **extra):
     """What the player needs to know about one short."""
     ch = chapters.get(s.get("chapter"), {})
     if usable(s):
         it = {"kind": "short", "id": s["id"], "title": s["title"], "text": s.get("blurb", ""),
-              "eyebrow": ch.get("title", ""), "src": f"video/{s['id']}.mp4",
-              "poster": f"video/{s['id']}.jpg", "cues": s.get("cues", [])}
+              "eyebrow": ch.get("title", ""), "src": f"{root}video/{s['id']}.mp4",
+              "poster": f"{root}video/{s['id']}.jpg", "cues": s.get("cues", [])}
         if s.get("taps"):
             it["taps"] = s["taps"]
         if s.get("silent"):
@@ -134,7 +141,7 @@ def item_for(s, chapters, **extra):
     return it
 
 
-def player_html(items, mode, frame, tabs=None, label="Videos"):
+def player_html(items, mode, frame, tabs=None, label="Videos", autoplay=False):
     first = items[0]
     tab_html = ""
     if tabs:
@@ -155,7 +162,8 @@ def player_html(items, mode, frame, tabs=None, label="Videos"):
     if mode != "single":
         controls += f'<button type="button" data-act="next" aria-label="Next">{ICONS["next"]}<span class="lbl">Next</span></button>'
     data = json.dumps({"items": items}, ensure_ascii=False).replace("</", "<\\/")
-    return f'''<section class="shorts" data-shorts data-mode="{mode}" aria-label="{html_escape(label)}">
+    auto = " data-autoplay" if autoplay else ""
+    return f'''<section class="shorts" data-shorts data-mode="{mode}"{auto} aria-label="{html_escape(label)}">
 {tab_html}<div class="device" data-frame="{frame}">
   <div class="screen"><div class="hold"></div><video playsinline muted preload="metadata"{src}{poster}></video><div class="overlay"></div><div class="titlecard" aria-hidden="true"></div></div>
 </div>
@@ -224,15 +232,67 @@ def shorts_tiles(sh):
             else:
                 thumb = '<div class="thumb soon">Video coming soon</div>'
                 length = ""
-            out.append(f'<article class="tile" id="{s["id"]}">{thumb}<div class="body"><h3>{html_escape(s["title"])}{flag}</h3>{length}<p>{html_escape(s.get("blurb", ""))}</p></div></article>')
+            title = html_escape(s["title"])
+            share = ""
+            if usable(s):
+                title = f'<a href="watch/{s["id"]}.html">{title}</a>'
+                share = (f'<p class="tile-share"><button class="share" type="button" data-share data-url="watch/{s["id"]}.html" '
+                         f'data-title="{html_escape(s["title"])}">{ICONS["share"]}<span>Share</span></button></p>')
+            out.append(f'<article class="tile" id="{s["id"]}">{thumb}<div class="body"><h3>{title}{flag}</h3>{length}<p>{html_escape(s.get("blurb", ""))}</p>{share}</div></article>')
         out.append("</div>")
     if not any_ready:
         return "\n".join(out)
     play_all = '<p class="btn-row"><a class="btn" href="#play-all" data-open="">Play them all, one after another</a></p>'
     dialog = ('<dialog class="reel" id="reel-dialog" aria-label="Tutorial videos">'
-              '<div class="reel-top"><button class="btn secondary" type="button" data-act="close">Close</button></div>'
+              '<div class="reel-top"><button class="btn secondary" type="button" data-share data-current>Share this video</button>'
+              '<button class="btn secondary" type="button" data-act="close">Close</button></div>'
               + player_html(reel, "reel", sh.get("frame", "ipad"), label="Tutorial videos") + "</dialog>")
     return play_all + "\n".join(out) + dialog
+
+
+def watch_page(sh, site, s):
+    """A short's own page: it plays on opening, with links to the rest of its
+    chapter, and Open Graph tags so a shared link shows the short."""
+    chapters = {c["id"]: c for c in sh["chapters"]}
+    ch = chapters.get(s.get("chapter"), {})
+    url = site["site_url"].rstrip("/")
+    page = f"{url}/watch/{s['id']}.html"
+    title, blurb = s["title"], s.get("blurb", "")
+    e = html_escape
+    head = "\n".join([
+        f'<link rel="canonical" href="{page}">',
+        '<meta property="og:type" content="video.other">',
+        f'<meta property="og:site_name" content="{e(site["app_name"])} — {e(site["app_subtitle"])}">',
+        f'<meta property="og:title" content="{e(title)}">',
+        f'<meta property="og:description" content="{e(blurb)}">',
+        f'<meta property="og:url" content="{page}">',
+        f'<meta property="og:image" content="{url}/video/{s["id"]}.jpg">',
+        '<meta property="og:image:width" content="1280">',
+        '<meta property="og:image:height" content="882">',
+        f'<meta property="og:video" content="{url}/video/{s["id"]}.mp4">',
+        '<meta property="og:video:type" content="video/mp4">',
+        '<meta property="og:video:width" content="1280">',
+        '<meta property="og:video:height" content="882">',
+        '<meta name="twitter:card" content="summary_large_image">',
+    ])
+    mine = [x for x in sh["shorts"] if x.get("chapter") == s.get("chapter") and usable(x)]
+    at = next(i for i, x in enumerate(mine) if x["id"] == s["id"])
+    nxt = mine[at + 1] if at + 1 < len(mine) else None
+    more = "".join(
+        (f'<li aria-current="true">{e(x["title"])} <span class="len">{short_length(x)}</span></li>' if x["id"] == s["id"] else
+         f'<li><a href="{x["id"]}.html">{e(x["title"])}</a> <span class="len">{short_length(x)}</span></li>')
+        for x in mine)
+    body = (f'<div class="watch">'
+            f'<p class="eyebrow"><a href="../tutorials.html">Tutorials</a> · <a href="../tutorials.html#{ch.get("id", "")}">{e(ch.get("title", ""))}</a></p>'
+            f'<h1>{e(title)}</h1>'
+            + player_html([item_for(s, chapters, root="../")], "single", sh.get("frame", "ipad"), label=title, autoplay=True) +
+            f'<p class="btn-row"><button class="btn" type="button" data-share data-url="{s["id"]}.html" data-title="{e(title)}">{ICONS["share"]}Share this video</button>'
+            + (f'<a class="btn secondary" href="{nxt["id"]}.html">Next: {e(nxt["title"])}</a>' if nxt else "")
+            + '<a class="link" href="../tutorials.html">All tutorials</a></p>'
+            f'<nav class="watch-more" aria-label="{e(ch.get("title", ""))}"><h2>{e(ch.get("title", ""))}</h2><ol>{more}</ol></nav>'
+            f'</div>')
+    meta = {"title": f"{title} — {site['app_name']} tutorial", "description": blurb, "head": head}
+    return meta, body
 
 
 def join_or_soon(site):
@@ -499,6 +559,7 @@ def render(layout, site, meta, body, out_name, root="", current=None):
     html = html.replace("{{description}}", meta.get("description", ""))
     html = html.replace("{{nav}}", meta.get("nav", ""))
     html = html.replace("{{layout}}", meta.get("layout", ""))
+    html = html.replace("{{head}}", meta.get("head", ""))
     html = html.replace("{{root}}", root)
     html = fill(html, site)
     # A version on the stylesheet and script, from their contents, so a
@@ -538,6 +599,15 @@ def build():
         body = body.replace("{{notes_latest}}", notes_latest(notes))
         render(layout, site, meta, body, name)
         built.append(name)
+
+    # A page for each ready short, to share by itself.
+    sh = load_shorts()
+    if sh:
+        ready = [s for s in sh["shorts"] if usable(s)]
+        for s in ready:
+            meta, body = watch_page(sh, site, s)
+            render(layout, site, meta, body, f"watch/{s['id']}.html", root="../", current="tutorials.html")
+        built.append(f"watch/ ({len(ready)} videos)")
 
     # The notes: an index, a page each, and a feed.
     render(layout, site, {"title": f"Developer notes — {site['app_name']}",
