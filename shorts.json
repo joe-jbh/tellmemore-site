@@ -1015,6 +1015,511 @@
    ]
   },
   {
+   "id": "maps",
+   "chapter": "margin",
+   "title": "Maps beside the verse",
+   "blurb": "The Margin lists the maps for the verse you're on. Open one: its passages are links, and each numbered event takes the map to its place.",
+   "segments": [
+    [
+     "Maps Demo - from Margin.mov",
+     2.4,
+     26.6
+    ]
+   ],
+   "crop": [
+    1280,
+    882,
+    0,
+    5
+   ],
+   "poster": 9.5,
+   "cues": [
+    {
+     "t": 0.2,
+     "d": 1.6,
+     "box": [
+      41,
+      12,
+      9,
+      10
+     ],
+     "text": "Open the Margin"
+    },
+    {
+     "t": 3.2,
+     "d": 2.6,
+     "box": [
+      60,
+      20,
+      39,
+      78
+     ],
+     "text": "Scroll down to Maps"
+    },
+    {
+     "t": 6.0,
+     "d": 2.4,
+     "box": [
+      59,
+      40,
+      40,
+      34
+     ],
+     "text": "The maps for this verse, closest first"
+    },
+    {
+     "t": 8.8,
+     "d": 2.0,
+     "box": [
+      58,
+      26,
+      30,
+      55
+     ],
+     "text": "The map's own text, beside it"
+    },
+    {
+     "t": 10.4,
+     "d": 1.4,
+     "box": [
+      11,
+      18,
+      12,
+      5
+     ],
+     "text": "Each passage is a link"
+    },
+    {
+     "t": 12.2,
+     "d": 2.2,
+     "box": [
+      25,
+      48,
+      49,
+      48
+     ],
+     "text": "The verse opens over the map"
+    },
+    {
+     "t": 14.4,
+     "d": 2.0,
+     "box": [
+      58,
+      26,
+      30,
+      17
+     ],
+     "text": "Tap an event"
+    },
+    {
+     "t": 16.8,
+     "d": 3.4,
+     "box": [
+      12,
+      26,
+      45,
+      55
+     ],
+     "text": "The map moves to where it happened"
+    },
+    {
+     "t": 20.8,
+     "d": 3.2,
+     "box": [
+      22,
+      48,
+      26,
+      12
+     ],
+     "text": "The Last Supper: the Upper Room"
+    }
+   ],
+   "taps": [
+    {
+     "t": 1.3,
+     "at": [
+      45.5,
+      16.5
+     ]
+    },
+    {
+     "t": 4.0,
+     "at": [
+      80,
+      80
+     ],
+     "to": [
+      80,
+      35
+     ],
+     "d": 1.2
+    },
+    {
+     "t": 8.0,
+     "at": [
+      73,
+      66
+     ]
+    },
+    {
+     "t": 11.4,
+     "at": [
+      16,
+      20
+     ]
+    },
+    {
+     "t": 14.0,
+     "at": [
+      61,
+      91
+     ]
+    },
+    {
+     "t": 15.0,
+     "at": [
+      71,
+      31
+     ]
+    },
+    {
+     "t": 16.9,
+     "at": [
+      71,
+      50
+     ]
+    },
+    {
+     "t": 18.9,
+     "at": [
+      72,
+      67
+     ]
+    },
+    {
+     "t": 19.7,
+     "at": [
+      72,
+      75
+     ],
+     "to": [
+      72,
+      42
+     ],
+     "d": 0.5
+    },
+    {
+     "t": 21.4,
+     "at": [
+      70,
+      70
+     ]
+    }
+   ]
+  },
+  {
+   "id": "maps-expand",
+   "chapter": "margin",
+   "title": "A map on the whole screen",
+   "blurb": "Expand a map to fill the screen. Tap a number for its event, or step through them in order. Verses open where you are.",
+   "segments": [
+    [
+     "Maps Demo - from Margin.mov",
+     25.4,
+     50.4
+    ]
+   ],
+   "crop": [
+    1280,
+    882,
+    0,
+    5
+   ],
+   "poster": 6.8,
+   "cues": [
+    {
+     "t": 0.2,
+     "d": 1.6,
+     "box": [
+      50,
+      26,
+      7,
+      9
+     ],
+     "text": "Expand"
+    },
+    {
+     "t": 2.6,
+     "d": 2.4,
+     "box": [
+      14,
+      73,
+      69,
+      21
+     ],
+     "text": "The event, its verses, Previous and Next"
+    },
+    {
+     "t": 5.2,
+     "d": 1.6,
+     "box": [
+      27,
+      14,
+      9,
+      11
+     ],
+     "text": "Tap a number on the map"
+    },
+    {
+     "t": 8.2,
+     "d": 2.2,
+     "box": [
+      14,
+      73,
+      69,
+      21
+     ],
+     "text": "Its event shows below"
+    },
+    {
+     "t": 11.4,
+     "d": 4.0,
+     "box": [
+      14,
+      84,
+      55,
+      9
+     ],
+     "text": "Closer, Farther, and the story in order"
+    },
+    {
+     "t": 16.8,
+     "d": 1.6,
+     "box": [
+      45,
+      79,
+      13,
+      6
+     ],
+     "text": "A verse link"
+    },
+    {
+     "t": 18.6,
+     "d": 2.4,
+     "box": [
+      26,
+      47,
+      48,
+      52
+     ],
+     "text": "Read it here, then Done"
+    },
+    {
+     "t": 23.0,
+     "d": 1.8,
+     "box": [
+      93,
+      3,
+      6,
+      9
+     ],
+     "text": "Back to the card"
+    }
+   ],
+   "taps": [
+    {
+     "t": 1.5,
+     "at": [
+      53,
+      30
+     ]
+    },
+    {
+     "t": 6.1,
+     "at": [
+      33.5,
+      20
+     ]
+    },
+    {
+     "t": 7.7,
+     "at": [
+      39.5,
+      25.5
+     ]
+    },
+    {
+     "t": 10.5,
+     "at": [
+      80,
+      56
+     ]
+    },
+    {
+     "t": 17.8,
+     "at": [
+      51,
+      82
+     ]
+    },
+    {
+     "t": 21.3,
+     "at": [
+      62,
+      91
+     ]
+    },
+    {
+     "t": 24.0,
+     "at": [
+      96,
+      7
+     ]
+    }
+   ]
+  },
+  {
+   "id": "maps-goto",
+   "chapter": "margin",
+   "title": "Go to the verse, and come back",
+   "blurb": "Go to Verse takes you to the passage, with a bookmark to bring you back. The Margin follows, maps and all.",
+   "segments": [
+    [
+     "Maps Demo - from Margin.mov",
+     50.4,
+     75.1
+    ]
+   ],
+   "crop": [
+    1280,
+    882,
+    0,
+    5
+   ],
+   "poster": 20,
+   "cues": [
+    {
+     "t": 3.6,
+     "d": 1.6,
+     "box": [
+      70,
+      42,
+      12,
+      6
+     ],
+     "text": "Tap a passage"
+    },
+    {
+     "t": 5.6,
+     "d": 1.4,
+     "box": [
+      25,
+      43,
+      49,
+      55
+     ],
+     "text": "The verse, over the map"
+    },
+    {
+     "t": 7.1,
+     "d": 1.4,
+     "box": [
+      43,
+      79,
+      15,
+      7
+     ],
+     "text": "Go to Verse"
+    },
+    {
+     "t": 9.0,
+     "d": 3.0,
+     "box": [
+      45,
+      23,
+      9,
+      6
+     ],
+     "text": "A bookmark keeps your place in Luke"
+    },
+    {
+     "t": 12.4,
+     "d": 3.4,
+     "box": [
+      60,
+      20,
+      39,
+      78
+     ],
+     "text": "The Margin follows, maps included"
+    },
+    {
+     "t": 16.8,
+     "d": 1.8,
+     "box": [
+      60,
+      62,
+      39,
+      12
+     ],
+     "text": "Another map"
+    },
+    {
+     "t": 19.0,
+     "d": 3.0,
+     "box": [
+      58,
+      28,
+      23,
+      18
+     ],
+     "text": "Places on this map: tap one to find it"
+    }
+   ],
+   "taps": [
+    {
+     "t": 4.9,
+     "at": [
+      75,
+      45
+     ]
+    },
+    {
+     "t": 8.1,
+     "at": [
+      50.5,
+      82.5
+     ]
+    },
+    {
+     "t": 10.2,
+     "at": [
+      80,
+      70
+     ],
+     "to": [
+      80,
+      55
+     ],
+     "d": 0.8
+    },
+    {
+     "t": 18.0,
+     "at": [
+      80,
+      70
+     ]
+    },
+    {
+     "t": 22.3,
+     "at": [
+      71,
+      90
+     ]
+    }
+   ]
+  },
+  {
    "id": "search",
    "chapter": "search",
    "title": "Search for a word",
